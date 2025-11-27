@@ -218,57 +218,64 @@ const Page = () => {
       >
         <Header />
 
-        <section className="font-jakarta mx-auto px-10 pt-24 pb-12">
-          <div className="flex flex-row gap-2 items-center page-load-y">
-            {/* Left Side */}
-            <div className="w-2/3">
-              <h3 className="text-xl uppercase text font-semibold text-[#c2e28fdd]">
+        <section className="font-jakarta mx-auto px-6 md:px-10 pt-14 md:pt-20 md:pb-12">
+          <div className="flex flex-col lg:flex-row gap-10 lg:gap-2 items-center page-load-y">
+            {/* LEFT SIDE */}
+            <div className="w-full lg:w-2/3 text-center md:text-left">
+              <h3 className="text-base md:text-lg lg:text-xl uppercase font-semibold text-[#c2e28fdd]">
                 Business Consulting Agency
               </h3>
-              <h1 className="text-6xl xl:text-7xl leading-20 text-white font-bold my-3 ">
-                Inspire, Support, Empower &
-                <span className="inline-block items-end">
-                  &nbsp;Elevate yourself
+
+              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight text-white font-bold my-3">
+                Inspire, Support, Empower &{" "}
+                <span className="inline-block">
+                  Elevate yourself
                   <img
                     src="/h1-img.jpg"
                     alt="Business consulting"
-                    className="inline-block w-42 h-14 ml-4 rounded-full reveal-img"
+                    className="
+              inline-block 
+              w-32 h-10 
+              md:w-40 md:h-12 
+              lg:w-42 lg:h-14 
+              ml-2 md:ml-4 
+              rounded-full reveal-img
+            "
                   />
                 </span>
               </h1>
+
               <div className="my-6"></div>
 
               <Button
                 className="
-    relative overflow-hidden group
-    bg-primary/90 text-black
-    hover:text-white
-    text-lg tracking-wide rounded-none
-    !px-7 !py-7 mt-2 cursor-pointer
-  "
+          relative overflow-hidden group
+          bg-primary/90 text-black hover:text-white
+          text-base md:text-lg tracking-wide rounded-none
+          !px-6 !py-6 md:!px-7 md:!py-7 cursor-pointer
+        "
               >
                 <Link href="/membership">
                   <span className="relative z-10 flex items-center gap-2">
                     Apply for Membership <ArrowRight size={20} />
                   </span>
 
-                  {/* WAVY FILL */}
+                  {/* WAVY ANIMATION BACKGROUND */}
                   <span
                     className="
-      absolute inset-0 -z-0
-      before:absolute before:inset-0
-      before:bg-secondary
-      before:[clip-path:url(#wave-clip)]
-      before:translate-y-full
-      group-hover:before:translate-y-0
-      before:transition-transform before:duration-700 before:ease-in-out
-    "
+              absolute inset-0 -z-0
+              before:absolute before:inset-0
+              before:bg-secondary
+              before:[clip-path:url(#wave-clip)]
+              before:translate-y-full
+              group-hover:before:translate-y-0
+              before:transition-transform before:duration-700 before:ease-in-out
+            "
                   ></span>
 
-                  {/* Hidden SVG wave definition */}
+                  {/* Hidden SVG */}
                   <svg className="hidden">
                     <clipPath id="wave-clip" clipPathUnits="objectBoundingBox">
-                      {/* <!-- ACTUAL WAVY SHAPE --> */}
                       <path d="M0,0.7 C0.25,0.6 0.75,0.8 1,0.7 L1,1 L0,1 Z"></path>
                     </clipPath>
                   </svg>
@@ -276,63 +283,72 @@ const Page = () => {
               </Button>
             </div>
 
-            {/* Right Side */}
-            <div className="w-1/3 px-10">
-              <div className="mb-4">
-                <div className="flex gap-2 mb-4">
-                  {/* 4 Avatars */}
+            {/* RIGHT SIDE */}
+            <div className="w-full lg:w-1/3 px-0 lg:px-10 text-center lg:text-left">
+              {/* AVATARS + NUMBERS */}
+              <div className="mb-5">
+                <div className="flex justify-center lg:justify-start gap-2 mb-4">
                   {[1, 2, 3, 4].map((i) => (
                     <img
                       key={i}
-                      src={`/a${i}.jpg`} // Ensure these exist or use placeholders
+                      src={`/a${i}.jpg`}
                       alt="avatar"
-                      className="w-12 h-12 rounded-full gsap-avatar"
+                      className="
+                w-10 h-10 
+                md:w-12 md:h-12 
+                rounded-full gsap-avatar
+              "
                     />
                   ))}
                 </div>
-                <p className="text-lg text-white font-semibold">
-                  <span className="text-2xl">180M</span> Active Customers
+
+                <p className="text-lg md:text-xl text-white font-semibold">
+                  <span className="text-2xl md:text-3xl">180M</span> Active
+                  Customers
                 </p>
               </div>
-              <p className="text-white text-[15px] font-medium leading-8">
-                Our mission is to empowers businesses off our all size too
-                thrive in an businesses ever changing marketplaces. In today's
-                dynamicis business environment
+
+              {/* DESCRIPTION TEXT */}
+              <p className="text-white text-sm md:text-[15px] font-medium leading-7 md:leading-8 max-w-lg mx-auto lg:mx-0">
+                Our mission is to empower businesses of all sizes to thrive in
+                an ever-changing marketplace. In today's dynamic environment,
+                sustainable growth begins with clarity, connection, and
+                collaboration.
               </p>
             </div>
           </div>
         </section>
 
         <section aria-labelledby="hero-media">
-          <figure ref={containerRef} className="relative mt-18 ">
+          <figure ref={containerRef} className="relative mt-10 md:mt-18 ">
             <img
               ref={imageRef}
               src="/p1.jpg"
               alt="Hero Bottom"
-              className="w-full max-h-[700px] object-cover absolute top-10 object-center z-20 px-10 page-load-y"
+              className="w-full max-h-[700px] object-cover md:absolute md:mb-0 top-10 object-center z-20 px-5 py-10 md:py-0 md:px-10 page-load-y"
             />
 
             {/* This background box will scroll normally, creating the disconnect */}
-            <div className="w-[865px] h-[810px] bg-primary ml-auto"></div>
+            <div className=" hidden md:block md:w-[770px] lg:w-[800px] xl:w-[865px] md:h-[700px] lg:h-[750px] xl:h-[800px] bg-primary ml-auto"></div>
           </figure>
         </section>
       </div>
 
       <section
-        className=" min-h-dvh bg-top bg-cover pt-22 pb-32"
+        className=" min-h-dvh bg-top bg-cover pt-16 md:pt-22 pb-32"
         style={{
           backgroundImage: "url('/service-bg.png')",
         }}
         ref={fadeRef}
       >
-        <div className="container mx-auto text-center mb-20 gsap-fade-up font-jakarta">
-          <h4 className="text-secondary text-xl font-bold uppercase tracking-widest mb-3 gsap-why">
+        <div className="container mx-auto text-center mb-14 md:mb-20 gsap-fade-up font-jakarta">
+          <h4 className="text-secondary text-lg md:text-xl font-bold uppercase tracking-widest mb-3 gsap-why">
             Why GYR UP?
           </h4>
-          <h2 className="text-4xl lg:text-6xl font-bold text-[#0e1d34] mb-6 gsap-heading">
+          <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold text-[#0e1d34] mb-6 gsap-heading">
             Trusted Network
           </h2>
-          <p className="text-gray-600 text-lg md:max-w-5xl xl:max-w-3xl mx-auto gsap-para">
+          <p className="text-gray-600 text-base md:text-lg xl:max-w-3xl px-2 md:px-0 mx-auto gsap-para">
             We are not just a networking group we are a growth-driven business
             community where credibility, ethics, and collaboration come first.
           </p>
@@ -340,12 +356,12 @@ const Page = () => {
 
         <div
           ref={uspsWrapperRef}
-          className="container mx-auto xl:px-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 gsap-usps-wrapper"
+          className="container mx-auto px-5 xl:px-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 gsap-usps-wrapper"
         >
           {usps.map((item, index) => (
             <div
               key={index}
-              className=" gsap-usps-card bg-transparent p-8 border border-[#e4e7ea] 
+              className=" gsap-usps-card bg-transparent p-6 md:p-8 border border-[#e4e7ea] 
                  hover:shadow-lg hover:-translate-y-2 duration-300 
                  rounded-lg group"
             >
@@ -435,21 +451,24 @@ const Page = () => {
       </section>
 
       {/* ---------------- SECTION 4: ELIGIBILITY ---------------- */}
-      <section className="py-26 bg-gray-50">
-        <div ref={j_containerRef} className="container mx-auto px-6 lg:px-12">
+      <section className="pt-14 pb-0 md:pt-26 md:pb-26 bg-gray-50">
+        <div
+          ref={j_containerRef}
+          className="container mx-auto px-3 md:px-6 lg:px-12"
+        >
           <div
             ref={j_cardRef}
-            className="bg-white p-10 lg:p-16 rounded-2xl shadow-xl flex flex-col lg:flex-row gap-12 items-center border-l-8 border-primary gsap-fade-up"
+            className="bg-white p-6 md:p-10 lg:p-16 rounded-2xl shadow-xl flex flex-col lg:flex-row gap-12 items-center border-l-8 border-primary gsap-fade-up"
           >
             <div className="lg:w-1/2">
-              <h2 className="text-4xl lg:text-6xl font-bold text-[#0e1d34] mb-6">
+              <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold text-[#0e1d34] mb-6">
                 Who Can Join?
               </h2>
-              <p className="text-gray-600 mb-6 text-lg">
+              <p className="text-gray-600 mb-6 text-base md:text-lg">
                 We maintain high standards to ensure quality referrals.
               </p>
-              <ul className="space-y-4 text-lg">
-                <li className="flex items-center gap-3">
+              <ul className="space-y-4 text-base md:text-lg">
+                <li className="flex flex-col md:flex-row items-center gap-3">
                   <TrendingUp className="text-secondary w-5 h-5" />
                   <span className="font-semibold text-[#0e1d34]">
                     Turnover:
@@ -458,14 +477,14 @@ const Page = () => {
                     ₹1 Cr+ (Trade) OR ₹20L+ (Service)
                   </span>
                 </li>
-                <li className="flex items-center gap-3">
+                <li className="flex flex-col md:flex-row items-center gap-3">
                   <Clock className="text-secondary w-5 h-5" />
                   <span className="font-semibold text-[#0e1d34]">
                     Experience:
                   </span>
                   <span className="text-gray-600">Minimum 5 Years</span>
                 </li>
-                <li className="flex items-center gap-3">
+                <li className="flex flex-col md:flex-row items-center gap-3">
                   <ShieldCheck className="text-secondary w-5 h-5" />
                   <span className="font-semibold text-[#0e1d34]">
                     CIBIL Score:
@@ -474,13 +493,13 @@ const Page = () => {
                 </li>
               </ul>
             </div>
-            <div className="lg:w-1/2 relative text-lg">
+            <div className="lg:w-1/2 relative">
               {/* Visual representation or Quote */}
               <div className="bg-[#0e1d34] p-8 rounded-lg text-white">
-                <p className="italic text-lg mb-4">
+                <p className="italic text-base md:text-lg mb-4">
                   "The strength of the wolf is the pack."
                 </p>
-                <p className="text-gray-400">
+                <p className="text-gray-400 text-sm md:text-lg">
                   We verify ethical practices, strong reputation, and ensure
                   non-conflicting categories for every member.
                 </p>
@@ -506,7 +525,7 @@ const Page = () => {
                   - Set initial text to "0" 
               */}
               <h2
-                className="stat-number text-5xl font-bold text-[#0e1d34] mb-2"
+                className="stat-number text-4xl md:text-5xl font-bold text-[#0e1d34] mb-2"
                 data-val={stat.val}
                 data-suffix={stat.suffix}
               >
@@ -521,15 +540,18 @@ const Page = () => {
       </section>
 
       {/* ---------------- SECTION 6: TESTIMONIALS ---------------- */}
-      <section className="py-24 bg-white">
+      <section className="py-18 md:py-24 bg-white">
         <div className="container mx-auto px-6 lg:px-12 text-center gsap-fade-up">
           <div className="max-w-4xl mx-auto">
             <div className="mb-8 flex justify-center text-secondary gap-2">
               {[1, 2, 3, 4, 5].map((s) => (
-                <StarIcon key={s} className="w-6 h-6 fill-current" />
+                <StarIcon
+                  key={s}
+                  className="w-4 h-4 md:w-6 md:h-6 fill-current"
+                />
               ))}
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#0e1d34] leading-tight mb-8">
+            <h2 className="text-2xl md:text-5xl font-bold text-[#0e1d34] leading-tight mb-5">
               “GYR UP helped me grow my business through real, verified
               referrals. The system actually works.”
             </h2>
@@ -542,7 +564,7 @@ const Page = () => {
       </section>
 
       {/* // The elite network site  */}
-      <section className="relative py-28 bg-[#063231] overflow-hidden isolate">
+      <section className="relative py-22 md:py-28 bg-[#063231] overflow-hidden isolate">
         {/* 1. BACKGROUND TEXTURE (Grid Pattern) */}
         <div
           className="absolute inset-0 opacity-[0.05]"
@@ -574,16 +596,16 @@ const Page = () => {
             <span className="py-2 px-4">The Elite Network</span>
           </div> */}
 
-          <div className="inline-flex items-center mb-4 rounded-full bg-white/5 border border-white/10 text-secondary text-lg font-bold tracking-widest uppercase backdrop-blur-md py-2 px-4 gap-2">
+          <div className="inline-flex items-center mb-4 rounded-full bg-white/5 border border-white/10 text-secondary text-base md:text-lg font-bold tracking-widest uppercase backdrop-blur-md py-2 px-4 gap-2">
             <Network className="w-5 h-5 text-secondary" />
             <span className="">The Elite Network</span>
           </div>
-          <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight">
+          <h2 className="text-4xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight">
             Ready to <span className="text-primary">Elevate</span> Your
             Business?
           </h2>
 
-          <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-gray-300 mb-12 md:max-w-2xl mx-auto leading-relaxed">
             Join a community where credibility meets opportunity. Empower
             others, get verified referrals, and scale your growth.
           </p>
@@ -595,7 +617,7 @@ const Page = () => {
       relative overflow-hidden group
       bg-primary/90 text-black hover:text-white
       text-xl tracking-wide rounded-none
-      !px-8 !py-8
+      !px-8 !py-8 md:scale-100 scale-85
       flex items-center justify-center cursor-pointer
     "
             >
@@ -630,7 +652,7 @@ const Page = () => {
               <div
                 className="
         flex items-center gap-4
-        !px-8 !py-[10px]
+        !px-8 !py-[10px] md:scale-100 scale-85
         border border-white/10
         hover:border-primary/50 hover:bg-white/5
         transition-all duration-300 

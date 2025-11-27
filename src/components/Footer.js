@@ -17,22 +17,22 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#063231] text-white relative overflow-hidden font-jakarta pt-20 pb-10 border-t border-white/5">
+    <footer className="bg-[#063231] text-white relative overflow-hidden font-jakarta pt-16 md:pt-20 pb-10 border-t border-white/5">
       {/* Background Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50"></div>
 
       <div className="container mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* COLUMN 1: BRAND */}
-          <div className="space-y-6">
+          <div className="space-y-5 md:space-y-6">
             <Link href="/" className="inline-block">
               <img
                 src="/logo2.png"
                 alt="Bizzen logo"
-                className="w-42 h-18 object-contain"
+                className="w-32 md:w-42 h-18 object-contain"
               />
             </Link>
-            <p className="text-gray-400 leading-relaxed text-lg">
+            <p className="text-gray-400 leading-relaxed text-base md:text-lg">
               Empowering businesses through verified referrals and ethical
               networking. Join the elite community of growth-driven
               entrepreneurs.
@@ -52,11 +52,11 @@ const Footer = () => {
 
           {/* COLUMN 2: QUICK LINKS */}
           <div>
-            <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+            <h3 className="text-lg md:text-xl font-bold text-white mb-6 flex items-center gap-2">
               <span className="w-2 h-2 bg-primary rounded-full"></span> Quick
               Links
             </h3>
-            <ul className="space-y-4 ">
+            <ul className="space-y-3 md:space-y-4">
               {[
                 "Home",
                 "About",
@@ -69,7 +69,7 @@ const Footer = () => {
                 <li key={item}>
                   <Link
                     href={`/${item.toLowerCase()}`}
-                    className="text-gray-400 hover:text-secondary transition-colors flex items-center gap-2 group text-lg"
+                    className="text-gray-400 hover:text-secondary transition-colors flex items-center gap-2 group text-base md:text-lg"
                   >
                     <span className="w-0 overflow-hidden group-hover:w-5 transition-all duration-300 text-secondary">
                       <ArrowUpRight className="w-5 h-5" />
@@ -83,12 +83,12 @@ const Footer = () => {
 
           {/* COLUMN 3: CONTACT INFO */}
           <div>
-            <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+            <h3 className="text-lg md:text-xl font-bold text-white mb-6 flex items-center gap-2">
               <span className="w-2 h-2 bg-primary rounded-full"></span> Contact
               Us
             </h3>
             <ul className="space-y-5">
-              <li className="flex items-start gap-4 text-lg text-gray-400">
+              <li className="flex items-start gap-4 text-base md:text-lg text-gray-400">
                 <MapPin className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
                 <span>
                   123 Business Park, Sector 62,
@@ -96,7 +96,7 @@ const Footer = () => {
                   Noida, Uttar Pradesh, India
                 </span>
               </li>
-              <li className="flex items-center gap-4 text-lg text-gray-400">
+              <li className="flex items-center gap-4 text-base md:text-lg text-gray-400">
                 <Mail className="w-5 h-5 text-secondary shrink-0" />
                 <a
                   href="mailto:info@gyrup.com"
@@ -105,7 +105,7 @@ const Footer = () => {
                   info@gyrup.com
                 </a>
               </li>
-              <li className="flex items-start gap-4 text-lg text-gray-400">
+              <li className="flex items-start gap-4 text-base md:text-lg text-gray-400">
                 <Phone className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
                 <div className="flex flex-col gap-1">
                   <a
@@ -127,10 +127,10 @@ const Footer = () => {
 
           {/* COLUMN 4: NEWSLETTER (Optional but Sexy) */}
           <div className="bg-[#083f3f] p-6 rounded-none border border-white/5">
-            <h3 className="text-xl font-bold text-white mb-2">
+            <h3 className="text-lg md:text-xl font-bold text-white mb-2">
               Weekly Insights
             </h3>
-            <p className="text-sm text-gray-400 mb-4">
+            <p className="text-xs md:text-sm text-gray-400 mb-4">
               Get the latest business growth strategies.
             </p>
             <div className="space-y-3">
@@ -144,8 +144,8 @@ const Footer = () => {
                 className="
       relative overflow-hidden group
       w-full bg-primary text-black hover:text-white
-      text-lg tracking-wide rounded-none
-      !px-8 !py-5
+      text-base md:text-lg tracking-wide rounded-none
+      !px-8 !py-3 md:!py-5
       flex items-center justify-center mt-2 cursor-pointer
     "
               >
@@ -183,7 +183,7 @@ const Footer = () => {
             <span className="text-white font-semibold">GYR UP</span>. All Rights
             Reserved.
           </p>
-          <div className="flex gap-6 text-sm text-gray-500">
+          <div className="flex gap-6 text-xs md:text-sm text-gray-500">
             <Link
               href="/refund-policy"
               className="hover:text-primary transition-colors"
