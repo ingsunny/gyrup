@@ -43,7 +43,7 @@ export default function Header() {
 
   return (
     <motion.header
-      // style={{ y }}
+      style={{ y }}
       className="header w-full bg-transparent border-b border-[#365a59] px-10 z-50"
     >
       {/* --- MAIN NAVBAR --- */}
@@ -86,13 +86,14 @@ export default function Header() {
                 !px-7 !py-7 mt-2 cursor-pointer
               "
             >
-              <span className="relative z-10 flex items-center gap-2">
-                Join Gy Rup <ArrowRight size={20} />
-              </span>
+              <Link href="/join-gyrup">
+                <span className="relative z-10 flex items-center gap-2">
+                  Join Gy Rup <ArrowRight size={20} />
+                </span>
 
-              {/* WAVY FILL */}
-              <span
-                className="
+                {/* WAVY FILL */}
+                <span
+                  className="
                   absolute inset-0 -z-0
                   before:absolute before:inset-0
                   before:bg-secondary
@@ -101,15 +102,16 @@ export default function Header() {
                   group-hover:before:translate-y-0
                   before:transition-transform before:duration-700 before:ease-in-out
                 "
-              ></span>
+                ></span>
 
-              {/* Hidden SVG wave definition */}
-              <svg className="hidden">
-                <clipPath id="wave-clip" clipPathUnits="objectBoundingBox">
-                  {/* <!-- ACTUAL WAVY SHAPE --> */}
-                  <path d="M0,0.7 C0.25,0.6 0.75,0.8 1,0.7 L1,1 L0,1 Z"></path>
-                </clipPath>
-              </svg>
+                {/* Hidden SVG wave definition */}
+                <svg className="hidden">
+                  <clipPath id="wave-clip" clipPathUnits="objectBoundingBox">
+                    {/* <!-- ACTUAL WAVY SHAPE --> */}
+                    <path d="M0,0.7 C0.25,0.6 0.75,0.8 1,0.7 L1,1 L0,1 Z"></path>
+                  </clipPath>
+                </svg>
+              </Link>
             </Button>
           </div>
 

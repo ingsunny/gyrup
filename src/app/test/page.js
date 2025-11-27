@@ -22,45 +22,45 @@ const Page = () => {
   const imageRef = useRef(null);
   const mainRef = useRef(null);
 
-  // useLayoutEffect(() => {
-  //   gsap.registerPlugin(ScrollTrigger);
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
 
-  //   const ctx = gsap.context(() => {
-  //     // 1. HERO PARALLAX (Your existing code)
-  //     gsap.to(imageRef.current, {
-  //       y: -100,
-  //       ease: "none",
-  //       scrollTrigger: {
-  //         trigger: containerRef.current,
-  //         start: "top bottom",
-  //         end: "bottom top",
-  //         scrub: 1,
-  //       },
-  //     });
+    const ctx = gsap.context(() => {
+      // 1. HERO PARALLAX (Your existing code)
+      gsap.to(imageRef.current, {
+        y: -100,
+        ease: "none",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1,
+        },
+      });
 
-  //     // 2. REVEAL ANIMATIONS FOR  NEW SECTIONS
-  //     // This finds all elements with class 'gsap-fade-up' and animates them
-  //     const items = gsap.utils.toArray(".gsap-fade-up");
-  //     items.forEach((item) => {
-  //       gsap.fromTo(
-  //         item,
-  //         { y: 50, opacity: 0 },
-  //         {
-  //           y: 0,
-  //           opacity: 1,
-  //           duration: 1,
-  //           ease: "power3.out",
-  //           scrollTrigger: {
-  //             trigger: item,
-  //             start: "top 85%", // Triggers when top of element hits 85% of viewport
-  //           },
-  //         }
-  //       );
-  //     });
-  //   }, mainRef);
+      // 2. REVEAL ANIMATIONS FOR  NEW SECTIONS
+      // This finds all elements with class 'gsap-fade-up' and animates them
+      const items = gsap.utils.toArray(".gsap-fade-up");
+      items.forEach((item) => {
+        gsap.fromTo(
+          item,
+          { y: 50, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: item,
+              start: "top 85%", // Triggers when top of element hits 85% of viewport
+            },
+          }
+        );
+      });
+    }, mainRef);
 
-  //   return () => ctx.revert();
-  // }, []);
+    return () => ctx.revert();
+  }, []);
 
   // --- DATA ARRAYS (For cleaner JSX) ---
   const usps = [
