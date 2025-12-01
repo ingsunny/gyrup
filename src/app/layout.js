@@ -21,6 +21,11 @@ const plusJakarta = Plus_Jakarta_Sans({
 export const metadata = {
   title: "GYR UP — Premium Business Networking for Credible Entrepreneurs",
   description: "Business Networking for Credible Entrepreneurs",
+  icons: {
+    icon: "/logo2.png", // 32x32 or 48x48
+    shortcut: "/logo2.png",
+    apple: "/logo2.png", // 180x180 (optional)
+  },
 };
 
 export default function RootLayout({ children }) {
