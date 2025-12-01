@@ -342,13 +342,13 @@ const Page = () => {
         ref={fadeRef}
       >
         <div className="container mx-auto text-center mb-14 md:mb-20 px-6 lg:px-12 gsap-fade-up font-jakarta">
-          <h4 className="text-secondary text-lg md:text-xl font-bold uppercase tracking-widest mb-3 gsap-why">
+          <h4 className="text-secondary text-lg md:text-xl font-bold uppercase tracking-widest mb-3 ">
             Why GYR UP?
           </h4>
-          <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold text-[#0e1d34] mb-6 gsap-heading">
+          <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold text-[#0e1d34] mb-6">
             Trusted Network
           </h2>
-          <p className="text-gray-600 text-base md:text-lg xl:max-w-3xl px-2 md:px-0 mx-auto gsap-para">
+          <p className="text-gray-600 text-base md:text-lg xl:max-w-3xl px-2 md:px-0 mx-auto ">
             We are not just a networking group we are a growth-driven business
             community where credibility, ethics, and collaboration come first.
           </p>
