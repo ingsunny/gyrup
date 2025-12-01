@@ -142,7 +142,7 @@ export default function ResourcesPage() {
       ========================================= */}
       <section className="bg-[#0e1d34]  text-white relative overflow-hidden">
         <Header />
-        <div className="pt-24 pb-40">
+        <div className="pt-14 md:pt-24 pb-20 md:pb-32">
           {/* Abstract Book/Doc Graphic */}
           <div className="absolute right-[-100px] top-1/2 -translate-y-1/2 opacity-5 rotate-12">
             <BookOpen size={600} />
@@ -150,13 +150,13 @@ export default function ResourcesPage() {
 
           <div className="container mx-auto px-6 lg:px-12 relative z-10">
             <div className="hero-content max-w-5xl">
-              <div className="inline-flex items-center gap-2 text-primary border border-primary/30 bg-primary/10 px-4 py-1.5 rounded-full text-lg font-bold uppercase tracking-widest mb-6">
+              <div className="inline-flex items-center gap-2 text-primary border border-primary/30 bg-primary/10 px-4 py-1.5 rounded-full text-sm md:text-lg font-bold uppercase tracking-widest mb-6">
                 <Search className="w-4 h-4" /> Knowledge Hub
               </div>
-              <h1 className=" text-5xl md:text-7xl lg:text-8xl font-bold mb-6">
+              <h1 className=" text-4xl md:text-7xl lg:text-8xl font-bold mb-6">
                 Tools for <span className="text-primary">Growth.</span>
               </h1>
-              <p className="text-xl text-gray-300 max-w-3xl leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-300 max-w-3xl leading-relaxed">
                 Don't reinvent the wheel. Access our curated library of
                 templates, guides, and insights designed to accelerate your
                 networking success.
@@ -175,7 +175,7 @@ export default function ResourcesPage() {
             {downloads.map((item, i) => (
               <div
                 key={i}
-                className="resource-card bg-white p-8 rounded-2xl shadow-xl border border-gray-100 hover:-translate-y-2 transition-transform duration-300 flex flex-col group"
+                className="resource-card bg-white p-8 rounded-2xl shadow-sm md:shadow-xl border border-gray-100 hover:-translate-y-2 transition-transform duration-300 flex flex-col group"
               >
                 <div className="flex justify-between items-start mb-6">
                   <div className="w-14 h-14 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center group-hover:bg-primary group-hover:text-black transition-colors">
@@ -252,7 +252,9 @@ export default function ResourcesPage() {
           </div>
 
           <Button variant="outline" className="w-full mt-8 md:hidden">
-            View all posts
+            <Link href={"/blog"} className="md:hidden items-center">
+              View all posts
+            </Link>
           </Button>
         </div>
       </section>

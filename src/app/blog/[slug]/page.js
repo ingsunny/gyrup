@@ -13,6 +13,8 @@ import {
   Facebook,
 } from "lucide-react";
 import { motion, useScroll, useSpring } from "framer-motion";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default function SingleBlogPage({ params }) {
   // Mock Data (In real app, fetch based on params.slug)
@@ -43,13 +45,14 @@ export default function SingleBlogPage({ params }) {
       />
 
       {/* 2. HEADER */}
-      <header className="bg-[#0e1d34] pt-32 pb-24 text-white relative">
-        <div className="container mx-auto px-6 lg:px-12 relative z-10 max-w-4xl mx-auto text-center">
+      <div className="bg-[#0e1d34]  text-white relative">
+        <Header />
+        <div className="container pt-14 md:pt-24 pb-16 md:pb-32 px-6 lg:px-12 relative z-10 max-w-4xl mx-auto text-center">
           <Link
             href="/blog"
             className="inline-flex items-center text-gray-400 hover:text-primary mb-8 transition-colors"
           >
-            <ArrowLeft className="w-4 h-4 mr-2" /> Back to Intelligence
+            <ArrowLeft className="w-4 h-4 mr-2" /> Back to Resources
           </Link>
 
           <div className="mb-6 flex justify-center gap-4 text-sm font-bold uppercase tracking-wider text-primary">
@@ -82,7 +85,7 @@ export default function SingleBlogPage({ params }) {
             </div>
           </div>
         </div>
-      </header>
+      </div>
 
       {/* 3. CONTENT AREA */}
       <article className="container mx-auto px-6 lg:px-12 py-16">
@@ -205,7 +208,7 @@ export default function SingleBlogPage({ params }) {
                 Join a GYR UP chapter near you and put your 45-second intro to
                 the test with credible entrepreneurs.
               </p>
-              <Link href="/join">
+              <Link href="/join-gyrup">
                 <Button className="bg-primary text-black hover:bg-white font-bold px-8 py-4 h-auto">
                   Apply for Membership
                 </Button>
@@ -236,7 +239,7 @@ export default function SingleBlogPage({ params }) {
         </div>
 
         {/* 4. READ NEXT */}
-        <div className="max-w-6xl mx-auto mt-24 border-t border-gray-100 pt-16">
+        <div className="max-w-6xl mx-auto mt-12 md:mt-24 mb-10 border-t border-gray-100 pt-16">
           <h3 className="text-2xl font-bold text-[#0e1d34] mb-8">Read Next</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[1, 2, 3].map((i) => (
@@ -255,6 +258,8 @@ export default function SingleBlogPage({ params }) {
           </div>
         </div>
       </article>
+
+      <Footer />
     </main>
   );
 }

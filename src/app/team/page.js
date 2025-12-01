@@ -102,7 +102,7 @@ export default function TeamPage() {
       ========================================= */}
       <section className="bg-[#0e1d34] text-white relative overflow-hidden">
         <Header />
-        <div className="pt-24 pb-32">
+        <div className="pt-14 md:pt-24 pb-18 md:pb-32">
           {/* Background Texture */}
           <div
             className="absolute inset-0 opacity-5"
@@ -120,7 +120,7 @@ export default function TeamPage() {
                 Our Leadership
               </span>
             </div>
-            <h1 className="hero-text text-5xl md:text-7xl lg:text-8xl font-bold mb-6">
+            <h1 className="hero-text text-4xl md:text-7xl lg:text-8xl font-bold mb-6">
               Meet the Leaders Who
               <br />
               <span className="text-gray-400">Run Your Chapters.</span>

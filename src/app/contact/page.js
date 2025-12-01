@@ -82,16 +82,16 @@ export default function ContactPage() {
       ========================================= */}
       <section className="bg-[#0e1d34]  relative overflow-hidden">
         <Header />
-        <div className="pt-24 pb-40">
+        <div className="pt-14 md:pt-24 pb-28 md:pb-32">
           {/* Decorative Circles */}
           <div className="absolute top-20 right-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-10 left-10 w-40 h-40 bg-white/5 rounded-full blur-2xl"></div>
 
           <div className="container mx-auto px-6 lg:px-12 relative z-10 text-center">
-            <h1 className="hero-text text-5xl md:text-7xl font-bold text-white mb-6">
+            <h1 className="hero-text text-4xl md:text-7xl font-bold text-white mb-6">
               Let’s Talk <span className="text-primary">Business.</span>
             </h1>
-            <p className="hero-text text-xl text-gray-300 max-w-2xl mx-auto">
+            <p className="hero-text text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
               We’re here to help you scale. Reach out for membership inquiries,
               partnership opportunities, or general support.
             </p>
@@ -118,13 +118,13 @@ export default function ContactPage() {
                 <div className="space-y-2">
                   <a
                     href="tel:+919911569713"
-                    className="block text-gray-600 hover:text-primary font-medium transition-colors text-lg"
+                    className="block text-gray-600 hover:text-primary font-medium transition-colors text-base md:text-lg"
                   >
                     +91 99115 69713
                   </a>
                   <a
                     href="tel:+919973213369"
-                    className="block text-gray-600 hover:text-primary font-medium transition-colors text-lg"
+                    className="block text-gray-600 hover:text-primary font-medium transition-colors text-base md:text-lg"
                   >
                     +91 99732 13369
                   </a>
@@ -331,50 +331,47 @@ export default function ContactPage() {
         {/* 4. MAIN CONTENT */}
         <div className="container mx-auto px-6 lg:px-12 relative z-10 text-center gsap-fade-up">
           {/* Animated Badge */}
-          <div className="inline-flex items-center mb-4 rounded-full bg-white/5 border border-white/10 text-secondary text-lg font-bold tracking-widest uppercase backdrop-blur-md py-2 px-4 gap-2">
+          <div className="inline-flex items-center mb-4 rounded-full bg-white/5 border border-white/10 text-secondary text-base md:text-lg font-bold tracking-widest uppercase backdrop-blur-md py-2 px-4 gap-2">
             <Contact className="w-5 h-5 text-secondary" />
             <span className="">Connect With Us</span>
           </div>
 
-          <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight">
+          <h2 className="text-4xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight">
             Let{"'"}s Build Something{" "}
             <span className="text-primary">Extraordinary</span> Together
           </h2>
 
-          <p className="text-xl text-gray-300 mb-6 max-w-5xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-gray-300 mb-6 max-w-5xl mx-auto leading-relaxed">
             Tell us what you need, and we’ll make sure the right person from our
             team gets back to you.
           </p>
 
           <div className="flex flex-col md:flex-row items-stretch md:items-center justify-center gap-6 w-full">
-            {/* PRIMARY BUTTON */}
             <Button
               onClick={scrollToForm}
               className="
-      relative overflow-hidden group
-      bg-primary/90 text-black hover:text-white
-      text-xl tracking-wide rounded-none
-      !px-8 !py-8
-      flex items-center justify-center cursor-pointer
-    "
+                      relative overflow-hidden group
+                      bg-primary/90 text-black hover:text-white
+                      text-xl tracking-wide rounded-none
+                      !px-8 !py-8 md:scale-100 scale-85
+                      flex items-center justify-center cursor-pointer
+                    "
             >
               <span className="relative z-10 flex items-center gap-2">
                 Get in Touch <ArrowRight size={20} />
               </span>
 
-              {/* WAVY FILL */}
               <span
                 className="
-        absolute inset-0 -z-0
-        before:absolute before:inset-0 before:bg-secondary
-        before:[clip-path:url(#wave-clip)]
-        before:translate-y-full
-        group-hover:before:translate-y-0
-        before:transition-transform before:duration-700 before:ease-in-out
-      "
+                        absolute inset-0 -z-0
+                        before:absolute before:inset-0 before:bg-secondary
+                        before:[clip-path:url(#wave-clip)]
+                        before:translate-y-full
+                        group-hover:before:translate-y-0
+                        before:transition-transform before:duration-700 before:ease-in-out
+                      "
               ></span>
 
-              {/* Wave definition */}
               <svg className="hidden">
                 <clipPath id="wave-clip" clipPathUnits="objectBoundingBox">
                   <path d="M0,0.7 C0.25,0.6 0.75,0.8 1,0.7 L1,1 L0,1 Z"></path>

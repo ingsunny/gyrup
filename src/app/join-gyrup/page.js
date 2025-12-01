@@ -90,7 +90,7 @@ export default function JoinPage() {
       <section className="bg-[#0e1d34] text-white relative overflow-hidden">
         <Header />
 
-        <div className="pt-24 pb-32">
+        <div className="pt-14 md:pt-24 pb-16 md:pb-32s">
           {/* Abstract Glow */}
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2"></div>
 
@@ -99,11 +99,11 @@ export default function JoinPage() {
               <div className="hero-text inline-flex items-center gap-2 border border-primary/30 bg-primary/10 px-4 py-1 rounded-full text-primary text-sm md:text-lg  font-bold tracking-[0.2rem] uppercase mb-6">
                 <ShieldCheck className="w-4 h-4" /> Application Portal
               </div>
-              <h1 className="hero-text text-5xl md:text-7xl lg:text-8xl font-bold mb-6">
+              <h1 className="hero-text text-4xl md:text-7xl lg:text-8xl font-bold mb-6">
                 Start Your Journey to <br />
                 <span className="text-primary">Exponential Growth.</span>
               </h1>
-              <p className="hero-text text-gray-300 text-xl max-w-3xl">
+              <p className="hero-text text-gray-300 text-lg md:text-xl max-w-3xl">
                 Complete the form below to apply for membership. Our team
                 reviews every application to ensure the integrity of the
                 network.
@@ -444,57 +444,54 @@ export default function JoinPage() {
         {/* 4. MAIN CONTENT */}
         <div className="container mx-auto px-6 lg:px-12 relative z-10 text-center gsap-fade-up">
           {/* Animated Badge */}
-          <div className="inline-flex items-center mb-4 rounded-full bg-white/5 border border-white/10 text-secondary text-lg font-bold tracking-widest uppercase backdrop-blur-md py-2 px-4 gap-2">
+          <div className="inline-flex flex-col md:flex-row items-center mb-4 rounded-full bg-white/5 border border-white/10 text-secondary text-base md:text-lg font-bold tracking-widest uppercase backdrop-blur-md py-2 px-4 gap-2">
             <Users className="w-5 h-5 text-secondary" />
             <span className="">The Growth Acceleration Network</span>
           </div>
 
-          <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight">
+          <h2 className="text-4xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight">
             Join India{"'"}s Most Ambitious{" "}
             <span className="text-primary">Circle</span> of Growth-Driven
             Entrepreneurs
           </h2>
 
-          <p className="text-xl text-gray-300 mb-6 max-w-5xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-gray-300 mb-6 max-w-5xl mx-auto leading-relaxed">
             Step into a high-trust business ecosystem built for founders,
             decision-makers, and leaders who don’t settle for average. GYR UP
             connects you with verified entrepreneurs, powerful opportunities,
             strategic collaborations, and a culture of ethical growth.
           </p>
-          <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
             This is where the next level begins — if you’re ready to rise with
             us.
           </p>
 
           <div className="flex flex-col md:flex-row items-stretch md:items-center justify-center gap-6 w-full">
-            {/* PRIMARY BUTTON */}
             <Button
               onClick={scrollToForm}
               className="
-      relative overflow-hidden group
-      bg-primary/90 text-black hover:text-white
-      text-xl tracking-wide rounded-none
-      !px-8 !py-8
-      flex items-center justify-center cursor-pointer
-    "
+            relative overflow-hidden group
+            bg-primary/90 text-black hover:text-white
+            text-xl tracking-wide rounded-none
+            !px-8 !py-8 md:scale-100 scale-85
+            flex items-center justify-center cursor-pointer
+          "
             >
               <span className="relative z-10 flex items-center gap-2">
                 Continue Your Application <ArrowRight size={20} />
               </span>
 
-              {/* WAVY FILL */}
               <span
                 className="
-        absolute inset-0 -z-0
-        before:absolute before:inset-0 before:bg-secondary
-        before:[clip-path:url(#wave-clip)]
-        before:translate-y-full
-        group-hover:before:translate-y-0
-        before:transition-transform before:duration-700 before:ease-in-out
-      "
+              absolute inset-0 -z-0
+              before:absolute before:inset-0 before:bg-secondary
+              before:[clip-path:url(#wave-clip)]
+              before:translate-y-full
+              group-hover:before:translate-y-0
+              before:transition-transform before:duration-700 before:ease-in-out
+            "
               ></span>
 
-              {/* Wave definition */}
               <svg className="hidden">
                 <clipPath id="wave-clip" clipPathUnits="objectBoundingBox">
                   <path d="M0,0.7 C0.25,0.6 0.75,0.8 1,0.7 L1,1 L0,1 Z"></path>

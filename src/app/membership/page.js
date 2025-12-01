@@ -189,7 +189,7 @@ export default function MembershipPage() {
       <section className="relative bg-[#063231] text-white">
         {/* Background Gradients */}
         <Header />
-        <div className="pt-14 md:pt-24 pb-32">
+        <div className="pt-14 md:pt-24 pb-14 md:pb-32">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] h-[500px] bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
           <div className="container mx-auto px-6 lg:px-12 text-center relative z-10">
             <div className="inline-flex items-center border border-white/10 bg-white/5 rounded-full px-4 py-1.5 mb-6 backdrop-blur-md">
@@ -231,17 +231,17 @@ export default function MembershipPage() {
         style={{
           backgroundImage: "url('/service-bg.png')",
         }}
-        className="features-section py-24"
+        className="features-section pt-24 md:pb-24 pb-20"
       >
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="mb-16 text-center">
-            <h4 className="text-secondary text-xl font-bold  tracking-widest mb-3 gsap-why">
+          <div className="mb-14 md:mb-16 text-center">
+            <h4 className="text-secondary text-lg md:text-xl font-bold uppercase tracking-widest mb-3 gsap-why">
               Why Join GYR UP?
             </h4>
-            <h2 className="text-4xl lg:text-6xl font-bold text-[#0e1d34] mb-6 gsap-heading">
+            <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold text-[#0e1d34] mb-6 gsap-heading">
               Features you are looking for
             </h2>
-            <p className="text-gray-600 text-lg md:max-w-5xl xl:max-w-3xl mx-auto">
+            <p className="text-gray-600 text-base md:text-lg xl:max-w-3xl px-2 md:px-0 mx-auto">
               Everything you need to grow, nothing you don't.
             </p>
           </div>
@@ -303,7 +303,7 @@ export default function MembershipPage() {
             <h2 className="text-4xl md:text-6xl font-bold text-white">
               Choose Your Path
             </h2>
-            <p className="text-gray-400 text-lg mt-4">
+            <p className="text-gray-400 text-base md:text-lg mt-4">
               Transparent quarterly investments for serious players.
             </p>
           </div>
@@ -315,12 +315,14 @@ export default function MembershipPage() {
                 <h3 className="text-2xl font-bold text-white mb-2">
                   Core Membership
                 </h3>
-                <p className="text-gray-400 text-lg">
+                <p className="text-gray-400 text-base md:text-lg">
                   Best for established SMEs & Professionals.
                 </p>
               </div>
               <div className="mb-8">
-                <span className="text-4xl font-bold text-white">₹4999</span>
+                <span className="text-3xl md:text-4xl font-bold text-white">
+                  ₹4999
+                </span>
                 <span className="text-gray-500"> / quarter</span>
               </div>
               <ul className="space-y-4 mb-10 flex-grow">
@@ -332,7 +334,7 @@ export default function MembershipPage() {
                 ].map((feat, i) => (
                   <li
                     key={i}
-                    className="flex items-center gap-3 text-gray-300 text-lg"
+                    className="flex items-center gap-3 text-gray-300 text-base md:text-lg"
                   >
                     <Check className="text-primary w-5 h-5 shrink-0" /> {feat}
                   </li>
@@ -352,7 +354,7 @@ export default function MembershipPage() {
               >
                 {" "}
                 <Link href={"/join-gyrup?selected=core"}>
-                  <span className="relative z-10 flex items-center gap-2">
+                  <span className="relative z-10 flex items-center gap-2 text-lg md:text-xl">
                     Select Core <ArrowRight size={20} />
                   </span>
 
@@ -363,7 +365,7 @@ export default function MembershipPage() {
                       before:absolute before:inset-0 before:bg-primary
                       before:[clip-path:url(#wave-clip)]
                       before:translate-y-full
-                      group-hover:before:translate-y-0
+                      group-hover:before:translate-y-0 
                       before:transition-transform before:duration-700 before:ease-in-out
                     "
                   ></span>
@@ -387,12 +389,14 @@ export default function MembershipPage() {
                 <h3 className="text-2xl font-bold text-white mb-2">
                   Founder Membership
                 </h3>
-                <p className="text-primary text-lg">
+                <p className="text-primary text-base md:text-lg">
                   Maximum visibility & priority leads.
                 </p>
               </div>
               <div className="mb-8">
-                <span className="text-4xl font-bold text-white">₹9999</span>
+                <span className="text-3xl md:text-4xl font-bold text-white">
+                  ₹9999
+                </span>
                 <span className="text-gray-500"> / quarter</span>
               </div>
               <ul className="space-y-4 mb-10 flex-grow">
@@ -405,7 +409,7 @@ export default function MembershipPage() {
                 ].map((feat, i) => (
                   <li
                     key={i}
-                    className="flex items-center gap-3 text-white text-lg"
+                    className="flex items-center gap-3 text-white text-base md:text-lg"
                   >
                     <div className="bg-primary/20 rounded-full p-0.5">
                       <Check className="text-primary w-4 h-4 shrink-0" />
@@ -426,7 +430,7 @@ export default function MembershipPage() {
                   "
               >
                 <Link href={"/join-gyrup?selected=founder"}>
-                  <span className="relative z-10 flex items-center gap-2">
+                  <span className="relative z-10 flex items-center gap-2 text-lg md:text-xl">
                     Apply for Membership <ArrowRight size={20} />
                   </span>
 
@@ -457,7 +461,7 @@ export default function MembershipPage() {
           <div className="mt-12 text-center">
             <div className="inline-flex items-center gap-3 bg-white/5 border border-white/10 px-6 py-3 rounded-full">
               <ShieldCheck className="text-green-500 w-5 h-5" />
-              <span className="text-gray-300 text-sm">
+              <span className="text-gray-300 text-xs md:text-sm">
                 Backed by our{" "}
                 <span className="text-white font-bold">
                   Pro-Rata Money-Back Guarantee
@@ -473,11 +477,11 @@ export default function MembershipPage() {
       ========================================= */}
       <section className="formula-section py-24 bg-white">
         <div ref={successTextRef} className="container mx-auto px-6 lg:px-12">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-bold text-[#0e1d34 ] gsap-success-heading">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-3xl md:text-6xl font-bold text-[#0e1d34 ] gsap-success-heading">
               The Success Formula
             </h2>
-            <p className="text-gray-500 mt-4 text-lg gsap-success-subheading">
+            <p className="text-gray-500 mt-4 text-base md:text-lg gsap-success-subheading">
               Master the perfect 45-second introduction.
             </p>
           </div>
@@ -487,7 +491,7 @@ export default function MembershipPage() {
             {/* Connecting Line (Desktop) */}
             <div className="hidden lg:block absolute top-1/2 left-0 w-full h-1 bg-gray-100 -translate-y-1/2 -z-10"></div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-1 md:gap-6">
               {formulaSteps.map((step, i) => (
                 <div
                   key={i}
@@ -557,17 +561,17 @@ export default function MembershipPage() {
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
 
         <div className="container mx-auto px-6 lg:px-12 relative z-10 text-center gsap-fade-up">
-          <div className="inline-flex items-center mb-4 rounded-full bg-white/5 border border-white/10 text-secondary text-lg font-bold tracking-widest uppercase backdrop-blur-md py-2 px-4 gap-2">
+          <div className="inline-flex flex-col md:flex-row items-center mb-4 rounded-full bg-white/5 border border-white/10 text-secondary text-base md:text-lg font-bold tracking-widest uppercase backdrop-blur-md py-2 px-4 gap-2">
             <Unlock className="w-5 h-5 text-secondary" />
             <span className="">Exclusive Access For New Members</span>
           </div>
 
-          <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight">
+          <h2 className="text-4xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight">
             Where Ambitious People <span className="text-primary">Grow</span>{" "}
             Together
           </h2>
 
-          <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base md:text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
             Gain unmatched support, structured mentorship, and a platform
             designed to elevate your business and your personal development.
           </p>
@@ -579,7 +583,7 @@ export default function MembershipPage() {
             relative overflow-hidden group
             bg-primary/90 text-black hover:text-white
             text-xl tracking-wide rounded-none
-            !px-8 !py-8
+            !px-8 !py-8 md:scale-100 scale-85
             flex items-center justify-center cursor-pointer
           "
             >

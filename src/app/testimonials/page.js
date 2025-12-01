@@ -137,7 +137,7 @@ export default function TestimonialsPage() {
       ========================================= */}
       <section className="bg-[#0e1d34] text-white relative overflow-hidden">
         <Header />
-        <div className="pt-24 pb-40">
+        <div className="pt-14 md:pt-24 pb-18 md:pb-32">
           {/* Abstract Chart Graphic */}
           <div className="absolute right-0 bottom-0 opacity-10 w-[600px] h-[400px]">
             <svg
@@ -149,15 +149,15 @@ export default function TestimonialsPage() {
           </div>
 
           <div className="container mx-auto px-6 lg:px-12 relative z-10 text-center">
-            <div className="hero-text inline-flex items-center gap-2 bg-primary/20 border border-primary/30 px-4 py-1.5 rounded-full text-primary text-lg font-bold uppercase tracking-widest mb-6">
+            <div className="hero-text inline-flex items-center gap-2 bg-primary/20 border border-primary/30 px-4 py-1.5 rounded-full text-primary text-base md:text-lg font-bold uppercase tracking-widest mb-6">
               <TrendingUp className="w-4 h-4" /> Proven Results
             </div>
-            <h1 className="hero-text  text-5xl md:text-7xl lg:text-8xl font-bold mb-6">
+            <h1 className="hero-text  text-4xl md:text-7xl lg:text-8xl font-bold mb-6">
               Real Stories.
               <br />
               <span className="text-primary">Measurable ROI.</span>
             </h1>
-            <p className="hero-text text-xl text-gray-300 max-w-2xl mx-auto">
+            <p className="hero-text text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
               We don't deal in vague promises. See how our members are
               generating verified revenue through ethical networking.
             </p>
@@ -168,7 +168,7 @@ export default function TestimonialsPage() {
       {/* =========================================
           SECTION 2: TESTIMONIAL CAROUSEL
       ========================================= */}
-      <section className="py-24 bg-gray-50 border-b border-gray-100 relative">
+      <section className="py-18 md:py-24 bg-gray-50 border-b border-gray-100 relative">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex justify-between items-end mb-12">
             <div>
