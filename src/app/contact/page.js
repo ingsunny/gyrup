@@ -117,22 +117,22 @@ export default function ContactPage() {
                 </h3>
                 <div className="space-y-2">
                   <a
-                    href="tel:+919911569713"
+                    href="tel:+919873123396"
                     className="block text-gray-600 hover:text-primary font-medium transition-colors text-base md:text-lg"
                   >
-                    +91 99115 69713
+                    9873123396
                   </a>
-                  <a
+                  {/* <a
                     href="tel:+919973213369"
                     className="block text-gray-600 hover:text-primary font-medium transition-colors text-base md:text-lg"
                   >
                     +91 99732 13369
-                  </a>
+                  </a> */}
                 </div>
 
                 {/* WhatsApp Button */}
                 <a
-                  href="https://wa.me/919911569713"
+                  href="https://wa.me/919873123396"
                   target="_blank"
                   className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-green-600 bg-green-50 px-4 py-2 rounded-full hover:bg-green-100 transition-colors"
                 >
@@ -154,7 +154,7 @@ export default function ContactPage() {
                     href="mailto:membership@gyrup.com"
                     className="text-gray-300 hover:text-white transition-colors border-b border-gray-700 hover:border-white pb-0.5"
                   >
-                    membership@gyrup.com
+                    info@gyrupuniverse.com
                   </a>
                 </div>
 
@@ -165,9 +165,10 @@ export default function ContactPage() {
                     <span className="font-bold">Headquarters</span>
                   </div>
                   <p className="text-gray-400 text-sm leading-relaxed">
-                    Cyber City, DLF Phase 2,
+                    First & Second Floor T-1 Kailash Park,
                     <br />
-                    Gurugram, Haryana 122002
+                    Main Najafgarh Road Opp Metro Pillar No-328 Moti Nagar New
+                    Delhi-110015
                   </p>
                 </div>
 

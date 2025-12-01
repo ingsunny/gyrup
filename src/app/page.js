@@ -648,7 +648,7 @@ const Page = () => {
             </Button>
 
             {/* SECONDARY BUTTON */}
-            <a href="tel:+919911569713" className="group w-full md:w-auto">
+            <a href="tel:+919873123396" className="group w-full md:w-auto">
               <div
                 className="
         flex items-center gap-4
@@ -672,7 +672,7 @@ const Page = () => {
                   <p className="text-xs text-gray-400 uppercase tracking-widest group-hover:text-primary transition-colors">
                     Call Us Directly
                   </p>
-                  <p className="text-xl font-bold text-white">9911569713</p>
+                  <p className="text-xl font-bold text-white">9873123396</p>
                 </div>
               </div>
             </a>
