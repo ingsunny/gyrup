@@ -42,6 +42,17 @@ export default function Header() {
     { name: "Contact", href: "/contact" },
   ];
 
+  const mobileNavItems = [
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Chapters", href: "/chapters" },
+    { name: "Membership", href: "/membership" },
+    { name: "Resources", href: "/resources" },
+    { name: "Testimonials", href: "/testimonials" },
+    { name: "Meet Directors", href: "/team" },
+    { name: "Contact", href: "/contact" },
+  ];
+
   const { scrollY } = useScroll();
 
   const y = useTransform(scrollY, [2, 300], [0, -300]);
@@ -198,7 +209,7 @@ export default function Header() {
                         exit="hidden"
                         className="flex flex-col gap-6 mb-6"
                       >
-                        {navItems.map((item, i) => (
+                        {mobileNavItems.map((item, i) => (
                           <motion.li key={item.name} variants={itemVars}>
                             <Link
                               href={item.href}
