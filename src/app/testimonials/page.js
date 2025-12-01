@@ -26,30 +26,30 @@ const testimonials = [
     text: "I closed a ₹40L turnkey project within my first 3 months. The quality of referrals here is unmatched.",
     roi: "₹40 Lakhs",
   },
-  {
-    name: "Meera Iyer",
-    role: "Founder, TechSprout",
-    text: "Unlike other groups, GYR UP is strictly business. No forced coffee meets, just actionable leads.",
-    roi: "12 New Clients",
-  },
-  {
-    name: "Amit Verma",
-    role: "Director, Verma Logistics",
-    text: "The verification process filters out the noise. I only meet people who are serious about growth.",
-    roi: "3 Strategic Partners",
-  },
-  {
-    name: "Sanya Khurana",
-    role: "Chartered Accountant",
-    text: "My practice grew by 30% year-on-year solely through the Founder Membership tier leads.",
-    roi: "30% Growth",
-  },
-  {
-    name: "Vikram Sethi",
-    role: "Architect",
-    text: "Found my primary construction partner here. We've done 5 projects together since.",
-    roi: "5 Joint Ventures",
-  },
+  // {
+  //   name: "Meera Iyer",
+  //   role: "Founder, TechSprout",
+  //   text: "Unlike other groups, GYR UP is strictly business. No forced coffee meets, just actionable leads.",
+  //   roi: "12 New Clients",
+  // },
+  // {
+  //   name: "Amit Verma",
+  //   role: "Director, Verma Logistics",
+  //   text: "The verification process filters out the noise. I only meet people who are serious about growth.",
+  //   roi: "3 Strategic Partners",
+  // },
+  // {
+  //   name: "Sanya Khurana",
+  //   role: "Chartered Accountant",
+  //   text: "My practice grew by 30% year-on-year solely through the Founder Membership tier leads.",
+  //   roi: "30% Growth",
+  // },
+  // {
+  //   name: "Vikram Sethi",
+  //   role: "Architect",
+  //   text: "Found my primary construction partner here. We've done 5 projects together since.",
+  //   roi: "5 Joint Ventures",
+  // },
 ];
 
 const caseStudies = [

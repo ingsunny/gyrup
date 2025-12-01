@@ -122,7 +122,7 @@ export default function Header() {
             >
               <Link href="/join-gyrup">
                 <span className="relative z-10 flex items-center gap-2">
-                  Join Gy Rup <ArrowRight size={20} />
+                  Join Gyr Up <ArrowRight size={20} />
                 </span>
 
                 {/* WAVY FILL */}
@@ -236,7 +236,7 @@ export default function Header() {
                     <Button className="w-full bg-primary text-black hover:bg-white font-bold h-12 text-lg rounded-none">
                       <Link href="/join-gyrup">
                         <span className="flex items-center gap-2">
-                          Join Gy Rup <ArrowRight size={20} />
+                          Join Gyr Up <ArrowRight size={20} />
                         </span>
                       </Link>
                     </Button>

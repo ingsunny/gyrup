@@ -91,35 +91,36 @@ const Footer = () => {
               <li className="flex items-start gap-4 text-base md:text-lg text-gray-400">
                 <MapPin className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
                 <span>
-                  123 Business Park, Sector 62,
+                  First & Second Floor T-1 Kailash Park,
                   <br />
-                  Noida, Uttar Pradesh, India
+                  Main Najafgarh Road Opp Metro Pillar No-328 Moti Nagar New
+                  Delhi-110015
                 </span>
               </li>
               <li className="flex items-center gap-4 text-base md:text-lg text-gray-400">
                 <Mail className="w-5 h-5 text-secondary shrink-0" />
                 <a
-                  href="mailto:info@gyrup.com"
+                  href="mailto:info@gyrupuniverse.com"
                   className="hover:text-white transition-colors"
                 >
-                  info@gyrup.com
+                  info@gyrupuniverse.com
                 </a>
               </li>
               <li className="flex items-start gap-4 text-base md:text-lg text-gray-400">
                 <Phone className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
                 <div className="flex flex-col gap-1">
                   <a
-                    href="tel:+919911569713"
+                    href="tel:+919873123396"
                     className="hover:text-white transition-colors"
                   >
-                    +91 99115 69713
+                    +91 98731 23396
                   </a>
-                  <a
+                  {/* <a
                     href="tel:+919973213369"
                     className="hover:text-white transition-colors"
                   >
                     +91 99732 13369
-                  </a>
+                  </a> */}
                 </div>
               </li>
             </ul>
