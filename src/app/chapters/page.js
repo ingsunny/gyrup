@@ -361,7 +361,7 @@ export default function ChaptersPage() {
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
 
         <div className="container mx-auto px-6 lg:px-12 relative z-10 text-center gsap-fade-up">
-          <div className="flex flex-col md:flex-row md:inline-flex items-center mb-4 rounded-full bg-white/5 border border-white/10 text-secondary text-base md:text-lg font-bold tracking-widest uppercase backdrop-blur-md py-2 px-4 gap-2">
+          <div className="inline-flex flex-col md:flex-row items-center mb-4 rounded-full bg-white/5 border border-white/10 text-secondary text-base md:text-lg font-bold tracking-widest uppercase backdrop-blur-md py-2 px-4 gap-2">
             <Unlock className="w-5 h-5 text-secondary" />
             <span className="">Exclusive Access For New Members</span>
           </div>
@@ -384,11 +384,11 @@ export default function ChaptersPage() {
             <Button
               // onClick={scrollToForm}
               className="
-            relative overflow-hidden group
-            bg-primary/90 text-black hover:text-white
-            text-xl tracking-wide rounded-none
-            !px-8 !py-8
-            flex items-center justify-center cursor-pointer
+             relative overflow-hidden group
+      bg-primary/90 text-black hover:text-white
+      text-xl tracking-wide rounded-none
+      !px-8 !py-8 md:scale-100 scale-85
+      flex items-center justify-center cursor-pointer
           "
             >
               <span className="relative z-10 flex items-center gap-2">
