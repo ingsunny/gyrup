@@ -138,7 +138,7 @@ export default function ChaptersPage() {
       ========================================= */}
       <section className="bg-[#0e1d34]  text-white relative">
         <Header />
-        <div className="pt-24 pb-40">
+        <div className="pt-14 md:pt-24 pb-32">
           <div
             className="absolute inset-0 opacity-10"
             style={{
@@ -149,10 +149,10 @@ export default function ChaptersPage() {
 
           <div className="container mx-auto px-6 lg:px-12 relative z-10 text-center">
             <div className="hero-content">
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4">
+              <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold mb-4">
                 Find Your <span className="text-primary">Tribe.</span>
               </h1>
-              <p className="text-gray-300 text-xl max-w-2xl mx-auto">
+              <p className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto">
                 Join a high-performing chapter near you. Every seat is
                 exclusive—once a category is filled, it's closed.
               </p>
@@ -160,17 +160,18 @@ export default function ChaptersPage() {
 
             {/* SEARCH BAR WIDGET */}
             <div className="search-bar-container max-w-5xl mx-auto bg-white rounded-full p-2 flex items-center shadow-2xl transform translate-y-16 border-4 border-white/10">
-              <div className="pl-6 text-gray-400">
+              <div className="pl-6 text-gray-400 hidden md:inline-block">
                 <Search className="w-5 h-5" />
               </div>
               <Input
-                className="border-none shadow-none text-black h-14 text-lg focus-visible:ring-0 placeholder:text-gray-400"
+                className="border-none shadow-none text-black md:h-14 text-base md:text-lg focus-visible:ring-0 placeholder:text-gray-400"
                 placeholder="Search by City or Chapter Name..."
                 value={filter}
                 onChange={(e) => setFilter(e.target.value)}
               />
-              <Button className="rounded-full h-12 px-8 bg-primary text-black hover:bg-[#0e1d34] hover:text-white font-bold transition-colors">
-                Search
+              <Button className="rounded-full h-10 md:h-12 min-w-10 md:min-w-auto md:px-8 bg-primary text-black hover:bg-[#0e1d34] hover:text-white font-bold transition-colors">
+                <span className="md:inline-block hidden">Search</span>
+                <Search className="min-w-5 min-h-5 md:hidden" />
               </Button>
             </div>
           </div>
@@ -180,10 +181,10 @@ export default function ChaptersPage() {
       {/* =========================================
           SECTION 2: CHAPTERS GRID
       ========================================= */}
-      <section className="pt-22 pb-24">
+      <section className="pt-18 pb-20 md:pt-22 md:pb-24">
         <div className="container mx-auto px-6 lg:px-12">
           {/* Header & Results Count */}
-          <div className="flex justify-between items-center mb-10">
+          <div className="flex flex-col md:flex-row gap-4 md:gap-0 justify-between items-center mb-10">
             <h2 className="text-2xl font-bold text-[#0e1d34] flex items-center gap-2">
               <MapPin className="text-primary" /> Available Chapters
             </h2>
@@ -360,22 +361,22 @@ export default function ChaptersPage() {
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
 
         <div className="container mx-auto px-6 lg:px-12 relative z-10 text-center gsap-fade-up">
-          <div className="inline-flex items-center mb-4 rounded-full bg-white/5 border border-white/10 text-secondary text-lg font-bold tracking-widest uppercase backdrop-blur-md py-2 px-4 gap-2">
+          <div className="flex flex-col md:flex-row md:inline-flex items-center mb-4 rounded-full bg-white/5 border border-white/10 text-secondary text-base md:text-lg font-bold tracking-widest uppercase backdrop-blur-md py-2 px-4 gap-2">
             <Unlock className="w-5 h-5 text-secondary" />
             <span className="">Exclusive Access For New Members</span>
           </div>
 
-          <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight">
+          <h2 className="text-4xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight">
             Find the <span className="text-primary">Chapter</span> That Matches
             Your Vision.
           </h2>
 
-          <p className="text-xl text-gray-300 mb-4 max-w-5xl mx-auto leading-relaxed">
+          <p className="text-base md:text-xl text-gray-300 mb-4 max-w-5xl mx-auto leading-relaxed">
             Each GYR UP chapter brings together curated business owners,
             structured meetings, real accountability, and a zero-pressure
             networking culture.
           </p>
-          <p className="text-xl text-gray-300 mb-12 max-w-5xl mx-auto leading-relaxed">
+          <p className="text-base md:text-xl text-gray-300 mb-12 max-w-5xl mx-auto leading-relaxed">
             Find a chapter near you — and grow with people who mean business.
           </p>
 

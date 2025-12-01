@@ -154,7 +154,7 @@ export default function AboutPage() {
         />
         <Header />
 
-        <div className="pt-24 pb-32">
+        <div className="pt-14 md:pt-24 pb-28 md:pb-32">
           {/* Abstract Background Elements */}
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2"></div>
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white/5 rounded-full blur-[80px] -translate-x-1/2 translate-y-1/2"></div>
@@ -163,7 +163,7 @@ export default function AboutPage() {
             <p className="hero-text text-secondary font-bold tracking-[0.2em] uppercase mb-4 text-sm md:text-lg">
               About GYR UP
             </p>
-            <h1 className="hero-text text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-8">
+            <h1 className="hero-text text-4xl md:text-7xl lg:text-8xl font-bold leading-tight mb-8">
               Built for <span className="text-primary">Credibility.</span>
               <br />
               Designed for <span className="text-white">Growth.</span>
@@ -176,9 +176,9 @@ export default function AboutPage() {
       {/* =========================================
           SECTION 2: OUR STORY (The "Why")
       ========================================= */}
-      <section className="story-section py-24 relative">
+      <section className="story-section pt-24 md:pb-24 pb-20 relative">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
+          <div className="flex flex-col lg:flex-row items-center gap-0 md:gap-16">
             {/* Left: Image/Visual */}
             <div className="w-full lg:w-1/2 relative z-30">
               {/* // decorative dot */}
@@ -216,16 +216,16 @@ export default function AboutPage() {
 
             {/* Right: Copy */}
             <div className="w-full lg:w-1/2 story-content">
-              <h2 className="text-4xl md:text-5xl font-bold text-[#0e1d34] mb-6 leading-tight">
+              <h2 className="text-3xl md:text-5xl font-bold text-[#0e1d34] mb-6 leading-tight">
                 Networking that actually{" "}
                 <span className="text-primary italic">works.</span>
               </h2>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              <p className="text-base md:text-lg text-gray-600 mb-6 leading-relaxed">
                 GYR UP began to solve a simple yet persistent problem in the
                 business world — networking that leads to empty conversations
                 rather than tangible business.
               </p>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              <p className="text-base md:text-lg text-gray-600 mb-8 leading-relaxed">
                 We realized that for networking to be effective, it needs a
                 backbone. It combines{" "}
                 <strong>verification, accountability, and structure</strong> so
@@ -234,7 +234,7 @@ export default function AboutPage() {
               </p>
               <div className="flex items-center gap-4">
                 <div className="h-px bg-gray-300 w-12"></div>
-                <span className="text-[#0e1d34] font-bold uppercase tracking-widest text-sm">
+                <span className="text-[#0e1d34] font-bold uppercase tracking-widest text-xs md:text-sm">
                   Our Philosophy
                 </span>
               </div>
@@ -246,7 +246,7 @@ export default function AboutPage() {
       {/* =========================================
           SECTION 3: MANIFESTO (Grid)
       ========================================= */}
-      <section className="py-24 bg-[#063231] text-white relative">
+      <section className="pt-20 md:pt-24 md:pb-24 pb-20  bg-[#063231] text-white relative">
         {/* Background Texture */}
         <div
           className="absolute inset-0 opacity-[0.03]"
@@ -258,11 +258,11 @@ export default function AboutPage() {
         ></div>
 
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
-          <div className="text-center max-w-3xl mx-auto mb-20">
+          <div className="text-center max-w-3xl mx-auto mb-14 md:mb-20">
             <h2 className="text-primary text-sm font-bold tracking-[0.2em] uppercase mb-3">
               Our Core Values
             </h2>
-            <h3 className="text-4xl md:text-5xl font-bold">
+            <h3 className="text-3xl md:text-5xl font-bold">
               The GYR UP Manifesto
             </h3>
           </div>
@@ -291,21 +291,21 @@ export default function AboutPage() {
       {/* =========================================
           SECTION 4: VISION & MISSION
       ========================================= */}
-      <section className="vm-section py-24 bg-gray-50 overflow-hidden">
+      <section className="vm-section py-20 md:py-24 bg-gray-50 overflow-hidden">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Vision */}
-            <div className="vision-box bg-white p-10 lg:p-14 rounded-3xl shadow-sm border border-gray-100 relative overflow-hidden group">
+            <div className="vision-box bg-white p-6 md:p-10 lg:p-14 rounded-3xl shadow-sm border border-gray-100 relative overflow-hidden group">
               <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity transform group-hover:scale-110 duration-700">
                 <Eye size={180} />
               </div>
-              <span className="text-6xl font-bold text-gray-200 mb-6 block">
+              <span className="text-5xl md:text-6xl font-bold text-gray-200 mb-6 block">
                 01
               </span>
               <h3 className="text-3xl font-bold text-[#0e1d34] mb-4">
                 Our Vision
               </h3>
-              <p className="text-gray-600 text-lg leading-relaxed">
+              <p className="text-gray-600 text-base md:text-lg leading-relaxed">
                 To cultivate a thriving business ecosystem where{" "}
                 <span className="text-primary font-bold">
                   trust drives growth
@@ -316,17 +316,17 @@ export default function AboutPage() {
             </div>
 
             {/* Mission */}
-            <div className="mission-box bg-[#063231] p-10 lg:p-14 rounded-3xl shadow-xl relative overflow-hidden group text-white">
+            <div className="mission-box bg-[#063231] p-6 md:p-10 lg:p-14 rounded-3xl shadow-xl relative overflow-hidden group text-white">
               <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity transform group-hover:scale-110 duration-700 text-white">
                 <Target size={180} />
               </div>
-              <span className="text-6xl font-bold text-white/20 mb-6 block">
+              <span className="text-5xl md:text-6xl font-bold text-white/20 mb-6 block">
                 02
               </span>
               <h3 className="text-3xl font-bold text-white mb-4">
                 Our Mission
               </h3>
-              <p className="text-gray-300 text-lg leading-relaxed">
+              <p className="text-gray-300 text-base md:text-lg leading-relaxed">
                 To create{" "}
                 <span className="text-primary font-bold">
                   verified, measurable referral pipelines
@@ -370,16 +370,16 @@ export default function AboutPage() {
         {/* 4. MAIN CONTENT */}
         <div className="container mx-auto px-6 lg:px-12 relative z-10 text-center gsap-fade-up">
           {/* Animated Badge */}
-          <div className="inline-flex items-center mb-4 rounded-full bg-white/5 border border-white/10 text-secondary text-lg font-bold tracking-widest uppercase backdrop-blur-md py-2 px-4 gap-2">
+          <div className="inline-flex items-center mb-4 rounded-full bg-white/5 border border-white/10 text-secondary text-base md:text-lg font-bold tracking-widest uppercase backdrop-blur-md py-2 px-4 gap-2">
             <Users className="w-5 h-5 text-secondary" />
             <span className="">The Elite Network</span>
           </div>
 
-          <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight">
+          <h2 className="text-4xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight">
             Meet the <span className="text-primary">Minds</span> Behind GY RUP
           </h2>
 
-          <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
             Guided by experienced industry leaders committed to ethical business
             practices and community growth.
           </p>
@@ -391,7 +391,7 @@ export default function AboutPage() {
       relative overflow-hidden group
       bg-primary/90 text-black hover:text-white
       text-xl tracking-wide rounded-none
-      !px-8 !py-8
+      !px-8 !py-8 md:scale-100 scale-85
       flex items-center justify-center cursor-pointer
     "
             >
