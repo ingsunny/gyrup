@@ -290,7 +290,7 @@ export default function ContactPage() {
           <div className="mt-12 w-full h-64 bg-gray-200 rounded-2xl overflow-hidden relative grayscale hover:grayscale-0 transition-all duration-500">
             {/* Replace src with your actual Google Maps Embed URL */}
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224345.83923192776!2d77.06889754725782!3d28.52758200617607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x52c2b7494e204dce!2sNew%20Delhi%2C%20Delhi%2C%20India!5e0!3m2!1sen!2sus!4v1699999999999!5m2!1sen!2sus"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14003.983279486887!2d77.13817171082678!3d28.659843829256033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1764582953619!5m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0 }}
