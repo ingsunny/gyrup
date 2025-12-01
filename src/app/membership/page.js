@@ -189,7 +189,7 @@ export default function MembershipPage() {
       <section className="relative bg-[#063231] text-white">
         {/* Background Gradients */}
         <Header />
-        <div className="pt-24 pb-32">
+        <div className="pt-14 md:pt-24 pb-32">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] h-[500px] bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
           <div className="container mx-auto px-6 lg:px-12 text-center relative z-10">
             <div className="inline-flex items-center border border-white/10 bg-white/5 rounded-full px-4 py-1.5 mb-6 backdrop-blur-md">
@@ -199,7 +199,7 @@ export default function MembershipPage() {
               </span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+            <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
               <span className="hero-char inline-block">One</span>{" "}
               <span className="hero-char inline-block text-gray-400">
                 Membership.

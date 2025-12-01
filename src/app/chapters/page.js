@@ -391,12 +391,13 @@ export default function ChaptersPage() {
       flex items-center justify-center cursor-pointer
           "
             >
-              <span className="relative z-10 flex items-center gap-2">
-                Apply for Membership <ArrowRight size={20} />
-              </span>
+              <Link href="/membership">
+                <span className="relative z-10 flex items-center gap-2">
+                  Apply for Membership <ArrowRight size={20} />
+                </span>
 
-              <span
-                className="
+                <span
+                  className="
               absolute inset-0 -z-0
               before:absolute before:inset-0 before:bg-secondary
               before:[clip-path:url(#wave-clip)]
@@ -404,13 +405,14 @@ export default function ChaptersPage() {
               group-hover:before:translate-y-0
               before:transition-transform before:duration-700 before:ease-in-out
             "
-              ></span>
+                ></span>
 
-              <svg className="hidden">
-                <clipPath id="wave-clip" clipPathUnits="objectBoundingBox">
-                  <path d="M0,0.7 C0.25,0.6 0.75,0.8 1,0.7 L1,1 L0,1 Z"></path>
-                </clipPath>
-              </svg>
+                <svg className="hidden">
+                  <clipPath id="wave-clip" clipPathUnits="objectBoundingBox">
+                    <path d="M0,0.7 C0.25,0.6 0.75,0.8 1,0.7 L1,1 L0,1 Z"></path>
+                  </clipPath>
+                </svg>
+              </Link>
             </Button>
           </div>
         </div>
