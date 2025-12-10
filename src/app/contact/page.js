@@ -20,6 +20,7 @@ import {
 import gsap from "gsap";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import FAQSection from "@/components/FAQSection";
 
 export default function ContactPage() {
   const mainRef = useRef(null);
@@ -382,6 +383,11 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      <FAQSection
+        title="GYR UP Universe – FAQs"
+        highlight="Contact · FAQ"
+      />
 
       <Footer />
     </main>

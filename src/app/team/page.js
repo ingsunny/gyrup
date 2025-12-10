@@ -121,9 +121,9 @@ export default function TeamPage() {
               </span>
             </div>
             <h1 className="hero-text text-4xl md:text-7xl lg:text-8xl font-bold mb-6">
-              Meet the Leaders Who
+              Meet The Visionary Founders
               <br />
-              <span className="text-gray-400">Run Your Chapters.</span>
+              <span className="text-gray-400">Who Run Your Chapters.</span>
             </h1>
             <p className="hero-text text-gray-300 text-lg max-w-2xl mx-auto">
               These are not just administrators. They are seasoned industry

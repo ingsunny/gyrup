@@ -20,6 +20,7 @@ import React, { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Footer from "@/components/Footer";
+import FAQSection from "@/components/FAQSection";
 import Link from "next/link";
 
 const Page = () => {
@@ -284,8 +285,7 @@ const Page = () => {
             </div>
 
             {/* RIGHT SIDE */}
-            <div className="w-full lg:w-1/3 px-0 lg:px-10 text-center lg:text-left">
-              {/* AVATARS + NUMBERS */}
+            {/* <div className="w-full lg:w-1/3 px-0 lg:px-10 text-center lg:text-left">
               <div className="mb-5">
                 <div className="flex justify-center lg:justify-start gap-2 mb-4">
                   {[1, 2, 3, 4].map((i) => (
@@ -308,14 +308,13 @@ const Page = () => {
                 </p>
               </div>
 
-              {/* DESCRIPTION TEXT */}
               <p className="text-white text-sm md:text-[15px] font-medium leading-7 md:leading-8 max-w-lg mx-auto lg:mx-0">
                 Our mission is to empower businesses of all sizes to thrive in
                 an ever-changing marketplace. In today's dynamic environment,
                 sustainable growth begins with clarity, connection, and
                 collaboration.
               </p>
-            </div>
+            </div> */}
           </div>
         </section>
 
@@ -510,20 +509,14 @@ const Page = () => {
       </section>
 
       {/* ---------------- SECTION 5: STATS BLOCK ---------------- */}
-      <section ref={statsRef} className="bg-primary py-18">
+      {/* <section ref={statsRef} className="bg-primary py-18">
         <div className="container mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center text-center gap-8">
           {[
-            // 1. Updated Data Structure: Split value and suffix
             { label: "Businesses Evaluated", val: 500, suffix: "+" },
             { label: "Verified Referrals", val: 1200, suffix: "+" },
             { label: "Member Satisfaction", val: 98, suffix: "%" },
           ].map((stat, i) => (
             <div key={i} className="flex-1 gsap-fade-up">
-              {/* 2. The Number Element 
-                  - Added className="stat-number" for GSAP to find it
-                  - Added data-val and data-suffix for GSAP to read
-                  - Set initial text to "0" 
-              */}
               <h2
                 className="stat-number text-4xl md:text-5xl font-bold text-[#0e1d34] mb-2"
                 data-val={stat.val}
@@ -537,10 +530,10 @@ const Page = () => {
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
 
       {/* ---------------- SECTION 6: TESTIMONIALS ---------------- */}
-      <section className="py-18 md:py-24 bg-white">
+      {/* <section className="py-18 md:py-24 bg-white">
         <div className="container mx-auto px-6 lg:px-12 text-center gsap-fade-up">
           <div className="max-w-4xl mx-auto">
             <div className="mb-8 flex justify-center text-secondary gap-2">
@@ -561,17 +554,17 @@ const Page = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* // The elite network site  */}
       <section className="relative py-22 md:py-28 bg-[#063231] overflow-hidden isolate">
         {/* 1. BACKGROUND TEXTURE (Grid Pattern) */}
         <div
           className="absolute inset-0 opacity-[0.05]"
-          style={{
-            backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)",
-            backgroundSize: "32px 32px",
-          }}
+          // style={{
+          //   backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)",
+          //   backgroundSize: "32px 32px",
+          // }}
         ></div>
 
         {/* 2. GIANT OUTLINE TEXT (Depth) */}
@@ -679,6 +672,11 @@ const Page = () => {
           </div>
         </div>
       </section>
+
+      <FAQSection
+        title="GYR UP Universe – FAQs"
+        highlight="Home · FAQ"
+      />
 
       <Footer />
     </>

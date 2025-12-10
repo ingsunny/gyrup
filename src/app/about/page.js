@@ -19,6 +19,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import FAQSection from "@/components/FAQSection";
 
 export default function AboutPage() {
   const mainRef = useRef(null);
@@ -263,7 +264,7 @@ export default function AboutPage() {
               Our Core Values
             </h2>
             <h3 className="text-3xl md:text-5xl font-bold">
-              The GYR UP Manifesto
+              The GYR UP Core Values
             </h3>
           </div>
 
@@ -306,12 +307,57 @@ export default function AboutPage() {
                 Our Vision
               </h3>
               <p className="text-gray-600 text-base md:text-lg leading-relaxed">
-                To cultivate a thriving business ecosystem where{" "}
+                To build India&apos;s{" "}
                 <span className="text-primary font-bold">
-                  trust drives growth
+                  most trusted and impactful business networking ecosystem
                 </span>
-                , and entrepreneurs find the support they need to scale without
-                limits.
+                , where credible, growth-oriented entrepreneurs uplift each
+                other through verified referrals, powerful relationships, and
+                structured business networking.
+              </p>
+              <div className="mt-6 space-y-3 text-gray-600 text-sm md:text-base leading-relaxed">
+                <h4 className="font-semibold text-[#0e1d34] text-base md:text-lg">
+                  We envision a system where:
+                </h4>
+                <ul className="list-disc space-y-1 pl-5">
+                  <li>
+                    <span className="font-semibold">Trust</span> is the
+                    foundation
+                  </li>
+                  <li>
+                    <span className="font-semibold">Credibility</span> is the
+                    qualification
+                  </li>
+                  <li>
+                    <span className="font-semibold">Leadership</span> is the
+                    culture
+                  </li>
+                  <li>
+                    <span className="font-semibold">Collaboration</span> is the
+                    engine
+                  </li>
+                  <li>
+                    <span className="font-semibold">Growth</span> is the outcome
+                  </li>
+                </ul>
+              </div>
+              <div className="mt-6 space-y-3 text-gray-600 text-sm md:text-base leading-relaxed">
+                <h4 className="font-semibold text-[#0e1d34] text-base md:text-lg">
+                  We are building:
+                </h4>
+                <ul className="list-disc space-y-1 pl-5">
+                  <li>Chapters that inspire leadership</li>
+                  <li>Regions that nurture entrepreneurship</li>
+                  <li>Zones that connect business communities</li>
+                  <li>A Universe where every member rises together</li>
+                </ul>
+              </div>
+              <p className="mt-6 text-gray-600 text-sm md:text-base leading-relaxed">
+                GYR UP Universe strives to become the most reliable referral
+                platform in India, powered by entrepreneurs who believe in
+                giving before receiving, growing through relationships,
+                maintaining ethical business practices, contributing to
+                community success, and building a long-term legacy.
               </p>
             </div>
 
@@ -327,12 +373,57 @@ export default function AboutPage() {
                 Our Mission
               </h3>
               <p className="text-gray-300 text-base md:text-lg leading-relaxed">
-                To create{" "}
+                To empower entrepreneurs through{" "}
                 <span className="text-primary font-bold">
-                  verified, measurable referral pipelines
-                </span>{" "}
-                for credible entrepreneurs, ensuring that every interaction
-                holds potential for real business.
+                  verified referrals, credible connections, and purpose-driven
+                  leadership
+                </span>
+                , within a trusted, structured, and transformative networking
+                ecosystem where every member can grow confidently and
+                sustainably.
+              </p>
+              <div className="mt-6 space-y-4 text-gray-200 text-sm md:text-base leading-relaxed">
+                <h4 className="font-semibold text-white text-base md:text-lg">
+                  We are committed to:
+                </h4>
+                <ul className="list-disc space-y-1 pl-5">
+                  <li>
+                    Building a credible business community of entrepreneurs with
+                    proven experience, stable operations, strong financial
+                    discipline, and ethical reputations.
+                  </li>
+                  <li>
+                    Delivering verified, high-quality referrals that are genuine
+                    opportunities with serious prospects and meaningful business
+                    potential.
+                  </li>
+                  <li>
+                    Creating a culture of leadership and growth through chapter
+                    and regional leadership paths, training, mentorship, and
+                    communication mastery.
+                  </li>
+                  <li>
+                    Enabling sustainable, long-term business success through
+                    structured meetings, ongoing learning, clear accountability,
+                    and collaborative support.
+                  </li>
+                  <li>
+                    Expanding a nationwide network of connected chapters that
+                    create local impact, regional growth, and national-level
+                    opportunities.
+                  </li>
+                  <li>
+                    Promoting an ethical, supportive, and collaborative
+                    environment built on give-first philosophy, discipline, and
+                    trust-based relationships.
+                  </li>
+                </ul>
+              </div>
+              <p className="mt-6 text-gray-300 text-sm md:text-base leading-relaxed">
+                <strong>In one line:</strong> our mission is to help
+                entrepreneurs grow faster, smarter, and stronger through a
+                verified, credible, and leadership-driven business networking
+                system.
               </p>
             </div>
           </div>
@@ -376,7 +467,7 @@ export default function AboutPage() {
           </div>
 
           <h2 className="text-4xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight">
-            Meet the <span className="text-primary">Minds</span> Behind GY RUP
+            Meet the <span className="text-primary">Minds</span> Behind GYR UP
           </h2>
 
           <p className="text-lg md:text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
@@ -423,6 +514,11 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <FAQSection
+        title="GYR UP Universe – FAQs"
+        highlight="About · FAQ"
+      />
 
       <Footer />
     </main>

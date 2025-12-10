@@ -40,6 +40,7 @@ export default function Header() {
     { name: "Membership", href: "/membership" },
     { name: "Resources", href: "/resources" },
     { name: "Contact", href: "/contact" },
+    // { name: "Gallery", href: "/gallery" },
   ];
 
   const mobileNavItems = [
@@ -122,7 +123,7 @@ export default function Header() {
             >
               <Link href="/join-gyrup">
                 <span className="relative z-10 flex items-center gap-2">
-                  Join Gyr Up <ArrowRight size={20} />
+                  Join GYR UP <ArrowRight size={20} />
                 </span>
 
                 {/* WAVY FILL */}
@@ -164,7 +165,7 @@ export default function Header() {
 
               {/* 1. DARK THEME: bg-[#0b162a]
                   2. BORDER: border-white/10 for subtle edge
-                  3. FULL WIDTH on small screens: w-full
+                  3. FULL WIDTH on small screens: w-full3
               */}
               <SheetContent
                 side="right"

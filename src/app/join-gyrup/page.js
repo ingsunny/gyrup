@@ -25,6 +25,7 @@ import {
 import gsap from "gsap";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import FAQSection from "@/components/FAQSection";
 import Link from "next/link";
 
 export default function JoinPage() {
@@ -416,6 +417,11 @@ export default function JoinPage() {
           </div>
         </div>
       </section>
+
+      <FAQSection
+        title="GYR UP Universe – FAQs"
+        highlight="Join GYR UP · FAQ"
+      />
 
       <section className="relative py-28 bg-[#063231] overflow-hidden isolate">
         {/* 1. BACKGROUND TEXTURE (Grid Pattern) */}
