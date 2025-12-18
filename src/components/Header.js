@@ -38,9 +38,10 @@ export default function Header() {
     { name: "About", href: "/about" },
     { name: "Chapters", href: "/chapters" },
     { name: "Membership", href: "/membership" },
-    { name: "Resources", href: "/resources" },
-    { name: "Contact", href: "/contact" },
-    // { name: "Gallery", href: "/gallery" },
+    // { name: "Resources", href: "/resources" },
+    // { name: "Contact", href: "/contact" },
+    { name: "Team", href: "/team" },
+    { name: "Gallery", href: "/gallery" },
   ];
 
   const mobileNavItems = [
@@ -48,9 +49,10 @@ export default function Header() {
     { name: "About", href: "/about" },
     { name: "Chapters", href: "/chapters" },
     { name: "Membership", href: "/membership" },
-    { name: "Resources", href: "/resources" },
+    // { name: "Resources", href: "/resources" },
     { name: "Testimonials", href: "/testimonials" },
-    { name: "Meet Directors", href: "/team" },
+    { name: "Team", href: "/team" },
+    { name: "Gallery", href: "/gallery" },
     { name: "Contact", href: "/contact" },
   ];
 

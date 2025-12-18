@@ -7,10 +7,8 @@ import { Input } from "@/components/ui/input";
 import {
   MapPin,
   Calendar,
-  Clock,
   User,
   Search,
-  Filter,
   ArrowRight,
   Briefcase,
   Unlock,
@@ -20,18 +18,19 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-// --- MOCK DATA ---
+// --- MOCK DATA WITH PINCODES ---
 const chapters = [
   {
     id: 1,
     name: "Gurugram Central",
     status: "Active",
     city: "Gurugram",
+    pincode: "122002", // Added Pincode
     day: "Thursday",
     time: "7:30 AM - 9:30 AM",
     venue: "Hotel Le Meridien, Sector 26",
     director: "Rajiv Malhotra",
-    directorImg: "/a1.jpg", // Placeholder
+    directorImg: "/a1.jpg",
     openCategories: ["Architect", "Chartered Accountant", "Digital Marketer"],
   },
   {
@@ -39,6 +38,7 @@ const chapters = [
     name: "Noida Titans",
     status: "Active",
     city: "Noida",
+    pincode: "201301", // Added Pincode
     day: "Friday",
     time: "6:00 PM - 8:00 PM",
     venue: "Radisson Blu, Sector 18",
@@ -55,6 +55,7 @@ const chapters = [
     name: "Delhi South Elite",
     status: "Launching Soon",
     city: "New Delhi",
+    pincode: "110017", // Added Pincode
     day: "Wednesday",
     time: "7:00 AM - 9:00 AM",
     venue: "Sheraton, Saket",
@@ -67,6 +68,7 @@ const chapters = [
     name: "Cyber City Pioneers",
     status: "Active",
     city: "Gurugram",
+    pincode: "122008", // Added Pincode
     day: "Tuesday",
     time: "8:00 AM - 10:00 AM",
     venue: "The Oberoi, Gurgaon",
@@ -80,11 +82,12 @@ export default function ChaptersPage() {
   const mainRef = useRef(null);
   const [filter, setFilter] = useState("");
 
-  // Filter Logic
+  // Filter Logic: Matches Name OR City OR Pincode
   const filteredChapters = chapters.filter(
     (c) =>
       c.name.toLowerCase().includes(filter.toLowerCase()) ||
-      c.city.toLowerCase().includes(filter.toLowerCase())
+      c.city.toLowerCase().includes(filter.toLowerCase()) ||
+      c.pincode.includes(filter)
   );
 
   useLayoutEffect(() => {
@@ -108,8 +111,7 @@ export default function ChaptersPage() {
         ease: "back.out(1.7)",
       });
 
-      // 3. CHAPTER CARDS STAGGER (Grid Animation)
-      // We use a timeout to let React render the filtered list first if state changes
+      // 3. CHAPTER CARDS STAGGER
       ScrollTrigger.refresh();
       gsap.fromTo(
         ".chapter-card",
@@ -118,7 +120,7 @@ export default function ChaptersPage() {
           y: 0,
           opacity: 1,
           duration: 0.6,
-          stagger: 0.1, // Stagger effect
+          stagger: 0.1,
           ease: "power2.out",
           scrollTrigger: {
             trigger: ".chapters-grid",
@@ -136,7 +138,7 @@ export default function ChaptersPage() {
       {/* =========================================
           SECTION 1: HERO & SEARCH
       ========================================= */}
-      <section className="bg-[#0e1d34]  text-white relative">
+      <section className="bg-[#0e1d34] text-white relative">
         <Header />
         <div className="pt-14 md:pt-24 pb-32">
           <div
@@ -165,11 +167,12 @@ export default function ChaptersPage() {
               </div>
               <Input
                 className="border-none shadow-none text-black md:h-14 text-base md:text-lg focus-visible:ring-0 placeholder:text-gray-400"
-                placeholder="Search by City or Chapter Name..."
+                // Updated Placeholder
+                placeholder="Search by City, Pincode or Chapter Name..."
                 value={filter}
                 onChange={(e) => setFilter(e.target.value)}
               />
-              <Button className="rounded-full h-10 md:h-12 min-w-10 md:min-w-auto md:px-8 bg-primary text-black hover:bg-[#0e1d34] hover:text-white font-bold transition-colors">
+              <Button className="rounded-full !py-6 !px-4 md:py-9 md:!px-7 bg-primary text-black hover:bg-[#0e1d34] hover:text-white font-bold transition-colors">
                 <span className="md:inline-block hidden">Search</span>
                 <Search className="min-w-5 min-h-5 md:hidden" />
               </Button>
@@ -209,7 +212,8 @@ export default function ChaptersPage() {
                         {chapter.name}
                       </h3>
                       <p className="text-gray-400 text-sm flex items-center gap-1">
-                        <MapPin className="w-3 h-3" /> {chapter.city}
+                        <MapPin className="w-3 h-3" /> {chapter.city} (
+                        {chapter.pincode})
                       </p>
                     </div>
                     <span
@@ -223,9 +227,8 @@ export default function ChaptersPage() {
                     </span>
                   </div>
 
-                  {/* 2. Body Details */}
-                  <div className="p-6 space-y-4 flex-grow">
-                    {/* Schedule */}
+                  {/* 2. Body Details Hidden for now */}
+                  {/* <div className="p-6 space-y-4 flex-grow">
                     <div className="flex items-start gap-3 text-gray-600">
                       <div className="bg-blue-50 p-2 rounded text-blue-600 shrink-0">
                         <Calendar className="w-5 h-5" />
@@ -240,7 +243,6 @@ export default function ChaptersPage() {
                       </div>
                     </div>
 
-                    {/* Venue */}
                     <div className="flex items-start gap-3 text-gray-600">
                       <div className="bg-purple-50 p-2 rounded text-purple-600 shrink-0">
                         <MapPin className="w-5 h-5" />
@@ -251,7 +253,6 @@ export default function ChaptersPage() {
                       </div>
                     </div>
 
-                    {/* OPEN CATEGORIES (The "Hook") */}
                     <div className="bg-orange-50 border border-orange-100 rounded-lg p-4 mt-2">
                       <div className="flex items-center gap-2 mb-2 text-orange-800 font-bold text-xs uppercase tracking-wide">
                         <Briefcase className="w-3 h-3" /> Open Categories
@@ -267,7 +268,7 @@ export default function ChaptersPage() {
                         ))}
                       </div>
                     </div>
-                  </div>
+                  </div> */}
 
                   {/* 3. Footer (Director & CTA) */}
                   <div className="p-6 pt-0 mt-auto">
@@ -339,7 +340,7 @@ export default function ChaptersPage() {
         </div>
       </section>
 
-      <section className="relative py-28 bg-[#063231] overflow-hidden isolate">
+      {/* <section className="relative py-28 bg-[#063231] overflow-hidden isolate">
         <div
           className="absolute inset-0 opacity-[0.05]"
           style={{
@@ -382,7 +383,6 @@ export default function ChaptersPage() {
 
           <div className="flex flex-col md:flex-row items-stretch md:items-center justify-center gap-6 w-full">
             <Button
-              // onClick={scrollToForm}
               className="
              relative overflow-hidden group
       bg-primary/90 text-black hover:text-white
@@ -416,7 +416,7 @@ export default function ChaptersPage() {
             </Button>
           </div>
         </div>
-      </section>
+      </section> */}
       <Footer />
     </main>
   );

@@ -58,13 +58,15 @@ const Footer = () => {
             </h3>
             <ul className="space-y-3 md:space-y-4">
               {[
-                "Home",
+                // "Home",
+                "Contact",
                 "About",
                 "Chapters",
+                "Team",
+                "Gallery",
                 "Membership",
-                "Resources",
-                "Contact",
-                "Testimonials",
+                // "Resources",
+                // "Testimonials",
               ].map((item) => (
                 <li key={item}>
                   <Link

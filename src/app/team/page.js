@@ -13,48 +13,159 @@ import {
   Award,
   ArrowRight,
   User,
+  Star,
+  Target,
+  Clock,
+  Zap,
+  UserPlus,
+  Briefcase,
 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
-// --- MOCK DATA ---
-const directors = [
+// --- DATA ---
+const founders = [
+  {
+    id: 1,
+    name: "Amit Goyal",
+    title: "Co-Founder & Vision Lead",
+    image: "/founder-amit.jpg",
+    bio: "Serial entrepreneur building trusted ecosystems where business owners grow together.",
+    social: { linkedin: "#", email: "amit@gyrup.com" },
+  },
+  {
+    id: 2,
+    name: "Neha Verma",
+    title: "Co-Founder & Growth Architect",
+    image: "/founder-neha.jpg",
+    bio: "Marketing strategist with a decade of experience in scaling communities and B2B brands.",
+    social: { linkedin: "#", email: "neha@gyrup.com" },
+  },
+  {
+    id: 3,
+    name: "Kunal Mehta",
+    title: "Co-Founder & Operations Head",
+    image: "/founder-kunal.jpg",
+    bio: "Operations specialist ensuring every chapter runs with discipline and measurable outcomes.",
+    social: { linkedin: "#", email: "kunal@gyrup.com" },
+  },
+];
+
+const regionalDirectors = [
+  {
+    id: 1,
+    name: "Anjali Gupta",
+    role: "Regional Director",
+    region: "NCR Region",
+    image: "/a4.jpg",
+    bio: "Oversees multiple chapters, mentors directors, and ensures every region lives the GYRUP culture.",
+    social: { linkedin: "#", email: "anjali@gyrup.com" },
+  },
+  {
+    id: 2,
+    name: "Sanjay Rao",
+    role: "Regional Director",
+    region: "North 1 (N1)",
+    image: "/regional-1.jpg",
+    bio: "Champion for collaboration across cities, driving cross-chapter referrals and regional brand presence.",
+    social: { linkedin: "#", email: "sanjay@gyrup.com" },
+  },
+];
+
+const chapterDirectors = [
   {
     id: 1,
     name: "Rajiv Malhotra",
-    role: "Chapter Director – Gurugram Central",
-    image: "/a1.jpg", // Placeholder
-    bio: "Ex-VP at Citibank with 15+ years in corporate finance. Successfully scaled 3 startups to 8-figure valuations.",
-    focusAreas: ["Member Growth", "Financial Strategy", "Conflict Resolution"],
+    role: "Chapter Director",
+    chapter: "Gurugram Central",
+    regionCode: "N1",
+    location: "Gurugram",
+    image: "/a1.jpg",
+    bio: "Ex-VP at Citibank. Successfully scaled 3 startups to 8-figure valuations.",
     social: { linkedin: "#", email: "rajiv@gyrup.com" },
   },
   {
     id: 2,
     name: "Simran Kaur",
-    role: "Chapter Director – Noida Titans",
+    role: "Chapter Director",
+    chapter: "Noida Titans",
+    regionCode: "N1",
+    location: "Noida",
     image: "/a2.jpg",
-    bio: "Award-winning Real Estate Consultant. Known for building high-trust networks and facilitating large-ticket deals.",
-    focusAreas: ["Networking Ethics", "Event Management", "Lead Quality"],
+    bio: "Award-winning Real Estate Consultant known for building high-trust networks.",
     social: { linkedin: "#", email: "simran@gyrup.com" },
   },
   {
     id: 3,
     name: "Vikram Singh",
-    role: "Chapter Director – Delhi South",
+    role: "Chapter Director",
+    chapter: "Delhi South",
+    regionCode: "NCR",
+    location: "New Delhi",
     image: "/a3.jpg",
-    bio: "Manufacturing tycoon turned community builder. Passionate about mentoring young entrepreneurs in the manufacturing sector.",
-    focusAreas: ["Mentorship", "Supply Chain", "Operational Excellence"],
+    bio: "Manufacturing tycoon passionate about mentoring young entrepreneurs.",
     social: { linkedin: "#", email: "vikram@gyrup.com" },
+  },
+];
+
+const recognitionCategories = [
+  {
+    id: 1,
+    icon: <Star />,
+    title: "Excellence in Consistency",
+    criteria: "100% Attendance",
+    desc: "For members who show up every single time. Presence is power.",
+    color: "text-yellow-400",
+  },
+  {
+    id: 2,
+    icon: <Users />,
+    title: "Community Giver",
+    criteria: "Highest Referrals",
+    desc: "Recognizing the member who gives the most qualified business opportunities.",
+    color: "text-blue-400",
+  },
+  {
+    id: 3,
+    icon: <Clock />,
+    title: "Excellence in Timely Response",
+    criteria: "On-Time Follow-Up",
+    desc: "For members who respect time and close the loop instantly.",
+    color: "text-green-400",
   },
   {
     id: 4,
-    name: "Anjali Gupta",
-    role: "Regional Director – NCR",
-    image: "/a4.jpg",
-    bio: "A strategic powerhouse. Anjali oversees multiple chapters ensuring protocol compliance and cross-chapter collaboration.",
-    focusAreas: ["Compliance", "Leadership Training", "Expansion Strategy"],
-    social: { linkedin: "#", email: "anjali@gyrup.com" },
+    icon: <Target />,
+    title: "Conversion Champion",
+    criteria: "Highest Conversion Rate",
+    desc: "Celebrates the highest referral-to-business closure rate.",
+    color: "text-red-400",
+  },
+  {
+    id: 5,
+    icon: <Zap />,
+    title: "Growth Catalyst",
+    criteria: "Skill Enhancement",
+    desc: "For members actively investing in learning and personal development.",
+    color: "text-purple-400",
+  },
+  {
+    id: 6,
+    icon: <UserPlus />,
+    title: "Community Builder",
+    criteria: "New Member Addition",
+    desc: "For those who grow the tribe by inviting quality entrepreneurs.",
+    color: "text-orange-400",
+  },
+  {
+    id: 7,
+    icon: <Briefcase />,
+    title: "Business Achiever",
+    criteria: "₹1Cr / 5Cr / 10Cr+ Club",
+    desc: "Honoring members who close massive business deals through GYRUP.",
+    color: "text-amber-300", // Gold
   },
 ];
 
@@ -65,7 +176,7 @@ export default function TeamPage() {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      // 1. HERO TEXT
+      // Hero Animations
       gsap.from(".hero-text", {
         y: 60,
         opacity: 0,
@@ -74,22 +185,36 @@ export default function TeamPage() {
         ease: "power3.out",
       });
 
-      // 2. CARDS STAGGER
-      gsap.fromTo(
-        ".director-card",
-        { y: 80, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
+      // Founder Cards Stagger
+      gsap.from(".founder-card", {
+        y: 100,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power2.out",
+        delay: 0.5,
+      });
+
+      // Leader Sections
+      gsap.utils.toArray(".leader-section").forEach((section) => {
+        gsap.from(section, {
+          y: 50,
+          opacity: 0,
           duration: 0.8,
-          stagger: 0.2, // The "Wave" effect
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: ".team-grid",
-            start: "top 80%",
-          },
-        }
-      );
+          scrollTrigger: { trigger: section, start: "top 80%" },
+        });
+      });
+
+      // Reward Cards (Batched)
+      gsap.from(".reward-card", {
+        y: 40,
+        opacity: 0,
+        scale: 0.95,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: "back.out(1.5)",
+        scrollTrigger: { trigger: ".rewards-grid", start: "top 85%" },
+      });
     }, mainRef);
 
     return () => ctx.revert();
@@ -102,13 +227,14 @@ export default function TeamPage() {
       ========================================= */}
       <section className="bg-[#0e1d34] text-white relative overflow-hidden">
         <Header />
-        <div className="pt-14 md:pt-24 pb-18 md:pb-32">
-          {/* Background Texture */}
+
+        <div className="pt-14 md:pt-24 pb-18 md:pb-46">
           <div
             className="absolute inset-0 opacity-5"
             style={{
               backgroundImage:
                 "linear-gradient(135deg, #ffffff 1px, transparent 1px)",
+
               backgroundSize: "20px 20px",
             }}
           ></div>
@@ -116,136 +242,265 @@ export default function TeamPage() {
           <div className="container mx-auto px-6 lg:px-12 relative z-10 text-center">
             <div className="inline-flex items-center border border-white/10 bg-white/5 rounded-full px-4 py-1.5 mb-6 backdrop-blur-md">
               <User className="w-5 h-5 text-primary inline-block mr-2" />
+
               <span className="text-primary text-sm md:text-lg font-bold tracking-[0.2rem] uppercase">
-                Our Leadership
+                Our Core Team
               </span>
             </div>
+
             <h1 className="hero-text text-4xl md:text-7xl lg:text-8xl font-bold mb-6">
               Meet The Visionary Founders
               <br />
-              <span className="text-gray-400">Who Run Your Chapters.</span>
+              {/* <span className="text-gray-400">
+                And the leaders who grow your chapters.
+              </span> */}
             </h1>
-            <p className="hero-text text-gray-300 text-lg max-w-2xl mx-auto">
-              These are not just administrators. They are seasoned industry
-              veterans dedicated to your growth and the integrity of the
-              network.
+
+            <p className="hero-text text-gray-300 text-xl max-w-3xl mx-auto">
+              GYRUP is built by founders, regional directors and chapter leaders
+              who care about results, relationships, and recognition for every
+              member.
             </p>
           </div>
         </div>
       </section>
 
       {/* =========================================
-          SECTION 2: TEAM GRID
+          SECTION 2: FOUNDERS (Floating)
       ========================================= */}
-      <section className="py-24 -mt-20 relative z-20">
+      <section className="-mt-32 relative z-20 pb-24">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="team-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {directors.map((director) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {founders.map((founder) => (
               <div
-                key={director.id}
-                className="director-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col group"
+                key={founder.id}
+                className="founder-card bg-white rounded-2xl shadow-xl border border-gray-100 p-8 flex flex-col items-center text-center group hover:-translate-y-2 transition-transform duration-300"
               >
-                {/* 1. Card Header / Cover */}
-                <div className="h-32 bg-[#0e1d34] relative">
-                  {/* Abstract Pattern in Header */}
-                  <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-
-                  {/* Status Indicator */}
-                  <div className="absolute top-4 right-4 flex items-center gap-1.5 bg-black/30 backdrop-blur-sm px-2 py-1 rounded-full border border-white/10">
-                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                    <span className="text-[10px] text-white font-medium uppercase tracking-wide">
-                      Active
-                    </span>
-                  </div>
-                </div>
-
-                {/* 2. Profile Image & Basic Info */}
-                <div className="px-8 relative -mt-16 text-center">
-                  <div className="w-32 h-32 mx-auto rounded-full p-1.5 bg-white shadow-lg relative z-10">
-                    {/* Placeholder Image */}
-                    <div className="w-full h-full rounded-full bg-gray-200 overflow-hidden relative group-hover:scale-105 transition-transform duration-500">
-                      {/* <img src={director.image} /> goes here */}
-                      <div className="w-full h-full bg-gray-300 flex items-center justify-center text-gray-500">
-                        <Users />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mt-4">
-                    <h3 className="text-xl font-bold text-[#0e1d34]">
-                      {director.name}
-                    </h3>
-                    <p className="text-primary font-medium text-sm mt-1">
-                      {director.role}
-                    </p>
-                  </div>
-                </div>
-
-                {/* 3. Bio & Focus */}
-                <div className="p-8 pt-6 flex-grow flex flex-col">
-                  <p className="text-gray-600 text-sm leading-relaxed text-center mb-6">
-                    "{director.bio}"
-                  </p>
-
-                  <div className="mt-auto">
-                    <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3 text-center">
-                      Focus Areas
-                    </p>
-                    <div className="flex flex-wrap justify-center gap-2">
-                      {director.focusAreas.map((area, i) => (
-                        <span
-                          key={i}
-                          className="px-3 py-1 rounded-full bg-gray-50 border border-gray-200 text-gray-600 text-xs font-medium group-hover:border-primary/30 group-hover:bg-primary/5 transition-colors"
-                        >
-                          {area}
-                        </span>
-                      ))}
+                <div className="w-24 h-24 rounded-full p-1 bg-gradient-to-br from-primary to-[#0e1d34] mb-6">
+                  <div className="w-full h-full rounded-full bg-gray-200 overflow-hidden">
+                    {/* Img placeholder */}
+                    <div className="w-full h-full bg-gray-300 flex items-center justify-center text-gray-500 font-bold text-2xl">
+                      {founder.name.charAt(0)}
                     </div>
                   </div>
                 </div>
-
-                {/* 4. Action Footer */}
-                <div className="p-4 bg-gray-50 border-t border-gray-100 flex gap-2">
-                  <Button className="flex-1 bg-[#0e1d34] hover:bg-primary hover:text-black transition-colors font-bold text-xs h-10">
-                    <MessageSquare className="w-3 h-3 mr-2" /> Message Director
-                  </Button>
-
-                  <Link href={director.social.linkedin}>
+                <h3 className="text-xl font-bold text-[#0e1d34]">
+                  {founder.name}
+                </h3>
+                <p className="text-primary text-xs font-bold uppercase tracking-wider mb-4">
+                  {founder.title}
+                </p>
+                <p className="text-gray-600 text-sm mb-6 flex-grow">
+                  {founder.bio}
+                </p>
+                <div className="flex gap-3">
+                  <Link href={founder.social.linkedin}>
                     <Button
-                      size="icon"
                       variant="outline"
-                      className="border-gray-200 hover:text-[#0077b5] hover:border-[#0077b5]"
+                      size="icon"
+                      className="rounded-full w-8 h-8"
                     >
                       <Linkedin className="w-4 h-4" />
+                    </Button>
+                  </Link>
+                  <Link href={`mailto:${founder.social.email}`}>
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="rounded-full w-8 h-8"
+                    >
+                      <Mail className="w-4 h-4" />
                     </Button>
                   </Link>
                 </div>
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Bottom CTA: Join Leadership */}
-          <div className="mt-24 text-center">
-            <div className="inline-flex items-center gap-2 text-gray-400 mb-4">
-              <Award className="w-5 h-5 text-primary" />
-              <span className="uppercase tracking-widest text-sm font-bold">
-                Join the Ranks
-              </span>
+      {/* =========================================
+          SECTION 3: MEET THE LEADERS
+      ========================================= */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-6 lg:px-12">
+          {/* A. Regional Directors */}
+          <div className="leader-section mb-20">
+            <div className="flex items-end justify-between mb-8 border-b border-gray-200 pb-4">
+              <div>
+                <h2 className="text-3xl font-bold text-[#0e1d34]">
+                  Regional Directors
+                </h2>
+                <p className="text-gray-500 mt-1">
+                  Guardians of the GYRUP Culture.
+                </p>
+              </div>
+              <Shield className="w-8 h-8 text-primary/20" />
             </div>
-            <h2 className="text-3xl font-bold text-[#0e1d34] mb-6">
-              Do you have what it takes to lead?
-            </h2>
-            <Link href="/contact?subject=DirectorApplication">
-              <Button
-                variant="outline"
-                className="px-8 py-6 text-lg border-[#0e1d34] text-[#0e1d34] hover:bg-[#0e1d34] hover:text-white transition-all"
-              >
-                Apply for Directorship <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </Link>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {regionalDirectors.map((director) => (
+                <div
+                  key={director.id}
+                  className="bg-white rounded-xl p-6 border border-gray-100 flex gap-6 items-start hover:shadow-lg transition-shadow"
+                >
+                  <div className="w-20 h-20 rounded-lg bg-gray-200 shrink-0 overflow-hidden">
+                    <div className="w-full h-full bg-gray-300"></div>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-[#0e1d34]">
+                      {director.name}
+                    </h3>
+                    <div className="flex items-center gap-2 text-xs font-medium text-gray-500 mb-2">
+                      <span className="bg-blue-50 text-blue-700 px-2 py-0.5 rounded">
+                        {director.region}
+                      </span>
+                    </div>
+                    <p className="text-sm text-gray-600 mb-4">{director.bio}</p>
+                    <Link
+                      href={`mailto:${director.social.email}`}
+                      className="text-xs font-bold text-[#0e1d34] flex items-center gap-1 hover:text-primary"
+                    >
+                      CONTACT <ArrowRight className="w-3 h-3" />
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* B. Chapter Directors */}
+          <div className="leader-section">
+            <div className="flex items-end justify-between mb-8 border-b border-gray-200 pb-4">
+              <div>
+                <h2 className="text-3xl font-bold text-[#0e1d34]">
+                  Chapter Directors
+                </h2>
+                <p className="text-gray-500 mt-1">
+                  Driving growth on the ground.
+                </p>
+              </div>
+              <TrendingUp className="w-8 h-8 text-primary/20" />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {chapterDirectors.map((director) => (
+                <div
+                  key={director.id}
+                  className="group bg-white rounded-xl overflow-hidden border border-gray-100 hover:border-primary/50 transition-all"
+                >
+                  <div className="h-24 bg-[#0e1d34] relative overflow-hidden">
+                    <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+                  </div>
+                  <div className="px-6 relative">
+                    <div className="w-16 h-16 rounded-full border-4 border-white bg-gray-200 -mt-8 relative z-10 overflow-hidden">
+                      <div className="w-full h-full bg-gray-300"></div>
+                    </div>
+                  </div>
+                  <div className="p-6 pt-3">
+                    <h3 className="text-lg font-bold text-[#0e1d34]">
+                      {director.name}
+                    </h3>
+                    <p className="text-xs text-gray-500 uppercase tracking-wide mb-3">
+                      {director.chapter} • {director.location}
+                    </p>
+                    <p className="text-sm text-gray-600 mb-4 line-clamp-2">
+                      {director.bio}
+                    </p>
+                    <Link
+                      href={`/${director.regionCode}/${
+                        director.location
+                      }/${director.chapter.replace(/\s+/g, "-")}`}
+                      className="w-full"
+                    >
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="w-full justify-between group-hover:bg-[#0e1d34] group-hover:text-white transition-colors"
+                      >
+                        View Chapter <ArrowRight className="w-3 h-3" />
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
+
+      {/* =========================================
+          SECTION 4: REWARDS (PREMIUM DARK MODE)
+      ========================================= */}
+      <section className="py-24 bg-[#0b162a] relative overflow-hidden">
+        {/* Background Glow */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div className="container mx-auto px-6 lg:px-12 relative z-10">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 text-primary border border-primary/30 bg-primary/10 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
+              <Award className="w-4 h-4" /> Hall of Fame
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+              Community Contributors
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+              We celebrate consistency, generosity, and results. These awards
+              recognize the heroes who build the GYRUP ecosystem.
+            </p>
+          </div>
+
+          <div className="rewards-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {recognitionCategories.map((item, i) => (
+              <div
+                key={item.id}
+                className={`reward-card bg-[#0e1d34] border border-white/5 p-6 rounded-2xl hover:bg-white/5 transition-colors group relative overflow-hidden ${
+                  i === 6
+                    ? "md:col-span-2 lg:col-span-2 bg-gradient-to-r from-[#0e1d34] to-[#1a2c4a]"
+                    : ""
+                }`}
+              >
+                {/* Hover Glow */}
+                <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+                <div className="flex items-start justify-between mb-4 relative z-10">
+                  <div className={`p-3 rounded-lg bg-white/5 ${item.color}`}>
+                    {React.cloneElement(item.icon, { size: 24 })}
+                  </div>
+                  <span className="text-[10px] font-mono text-gray-500">
+                    0{item.id}
+                  </span>
+                </div>
+
+                <h3 className="text-lg font-bold text-white mb-1 relative z-10">
+                  {item.title}
+                </h3>
+                <p
+                  className={`text-xs font-bold uppercase tracking-wider mb-3 opacity-80 ${item.color} relative z-10`}
+                >
+                  {item.criteria}
+                </p>
+                <p className="text-sm text-gray-400 leading-relaxed relative z-10">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* <div className="mt-16 text-center">
+            <p className="text-gray-500 text-sm mb-4">
+              *Contributors are updated monthly on respective Chapter Pages.
+            </p>
+            <Link href="/chapters">
+              <Button className="bg-primary text-black hover:bg-white hover:text-black font-bold px-8">
+                Find Your Chapter's Heroes
+              </Button>
+            </Link>
+          </div> */}
+        </div>
+      </section>
+
+      <Footer />
     </main>
   );
 }
