@@ -19,6 +19,8 @@ import {
   Zap,
   UserPlus,
   Briefcase,
+  LayoutTemplate,
+  BrainCircuit,
 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -27,8 +29,20 @@ import Footer from "@/components/Footer";
 
 // --- DATA ---
 const founders = [
+  // PRADEEP GOYAL (Featured First)
   {
     id: 1,
+    name: "Pradeep Goyal",
+    title: "Visionary Founder | Chief Strategist | Head of Operations",
+    role_highlight: "The Brain Behind the Ecosystem",
+    image: "/founder-pradeep.jpg", // Ensure you have this image
+    bio: "With over 16 years in automobile dealership networks (Maruti, Toyota, Mahindra), Pradeep blends corporate discipline with entrepreneurial vision. He architects the systems, governance, and SOPs that make GYR UP a high-impact platform.",
+    specialties: ["System Architecture", "Governance", "Strategic Execution"],
+    social: { linkedin: "#", email: "pradeep@gyrup.com" },
+    featured: true, // Flag to style him differently
+  },
+  {
+    id: 2,
     name: "Amit Goyal",
     title: "Co-Founder & Vision Lead",
     image: "/founder-amit.jpg",
@@ -36,20 +50,12 @@ const founders = [
     social: { linkedin: "#", email: "amit@gyrup.com" },
   },
   {
-    id: 2,
+    id: 3,
     name: "Neha Verma",
     title: "Co-Founder & Growth Architect",
     image: "/founder-neha.jpg",
     bio: "Marketing strategist with a decade of experience in scaling communities and B2B brands.",
     social: { linkedin: "#", email: "neha@gyrup.com" },
-  },
-  {
-    id: 3,
-    name: "Kunal Mehta",
-    title: "Co-Founder & Operations Head",
-    image: "/founder-kunal.jpg",
-    bio: "Operations specialist ensuring every chapter runs with discipline and measurable outcomes.",
-    social: { linkedin: "#", email: "kunal@gyrup.com" },
   },
 ];
 
@@ -61,7 +67,7 @@ const regionalDirectors = [
     region: "NCR Region",
     image: "/a4.jpg",
     bio: "Oversees multiple chapters, mentors directors, and ensures every region lives the GYRUP culture.",
-    social: { linkedin: "#", email: "anjali@gyrup.com" },
+    social: { linkedin: "#", email: "#" },
   },
   {
     id: 2,
@@ -165,7 +171,7 @@ const recognitionCategories = [
     title: "Business Achiever",
     criteria: "₹1Cr / 5Cr / 10Cr+ Club",
     desc: "Honoring members who close massive business deals through GYRUP.",
-    color: "text-amber-300", // Gold
+    color: "text-amber-300",
   },
 ];
 
@@ -268,53 +274,121 @@ export default function TeamPage() {
       {/* =========================================
           SECTION 2: FOUNDERS (Floating)
       ========================================= */}
-      <section className="-mt-32 relative z-20 pb-24">
+      <section className="-mt-10 md:-mt-28 relative z-20 pb-24">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {founders.map((founder) => (
-              <div
-                key={founder.id}
-                className="founder-card bg-white rounded-2xl shadow-xl border border-gray-100 p-8 flex flex-col items-center text-center group hover:-translate-y-2 transition-transform duration-300"
-              >
-                <div className="w-24 h-24 rounded-full p-1 bg-gradient-to-br from-primary to-[#0e1d34] mb-6">
-                  <div className="w-full h-full rounded-full bg-gray-200 overflow-hidden">
+            {founders
+              .filter((f) => f.featured)
+              .map((founder) => (
+                <div
+                  key={founder.id}
+                  className="founder-card md:col-span-3 lg:col-span-3 bg-white rounded-3xl shadow-2xl border border-primary/20 overflow-hidden flex flex-col md:flex-row"
+                >
+                  {/* Image Side */}
+                  <div className="md:w-1/3 bg-[#0b162a] relative min-h-[300px] md:min-h-full flex md:items-center pt-5 md:pt-0 justify-center">
+                    <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
                     {/* Img placeholder */}
-                    <div className="w-full h-full bg-gray-300 flex items-center justify-center text-gray-500 font-bold text-2xl">
-                      {founder.name.charAt(0)}
+                    <div className="w-40 h-40 md:w-48 md:h-48 rounded-full border-4 border-primary/50 overflow-hidden relative z-10 shadow-2xl">
+                      <img src="founders/pradeep.PNG" alt="founder pradeep" />
+                    </div>
+                    <div className="absolute bottom-6 text-white text-center w-full px-4">
+                      <h3 className="text-2xl font-bold">{founder.name}</h3>
+                      <p className="text-primary text-sm font-semibold tracking-widest uppercase mt-1">
+                        {founder.title}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Content Side */}
+                  <div className="md:w-2/3 p-8 md:p-12 flex flex-col justify-center">
+                    <div className="inline-flex items-center gap-2 text-primary font-bold uppercase tracking-widest text-xs mb-4">
+                      <BrainCircuit className="w-4 h-4" />{" "}
+                      {founder.role_highlight}
+                    </div>
+                    <h4 className="text-3xl font-bold text-[#0e1d34] mb-4 leading-tight">
+                      Structuring the Ecosystem for <br />{" "}
+                      <span className="text-primary">Sustainable Growth.</span>
+                    </h4>
+                    <p className="text-gray-600 leading-relaxed mb-6 text-lg">
+                      {founder.bio}
+                    </p>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                      {founder.specialties?.map((spec, i) => (
+                        <div
+                          key={i}
+                          className="flex items-center gap-2 text-sm font-semibold text-[#0e1d34] bg-gray-50 p-3 rounded-lg border border-gray-100"
+                        >
+                          <LayoutTemplate className="w-4 h-4 text-primary" />{" "}
+                          {spec}
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="flex gap-4">
+                      <Link href={founder.social.linkedin}>
+                        <Button variant="outline" className="gap-2">
+                          <Linkedin className="w-4 h-4" /> LinkedIn
+                        </Button>
+                      </Link>
+                      <Link
+                        // href={`mailto:${founder.social.email}`}
+                        href={`mailto:${founder.social.email}`}
+                      >
+                        <Button variant="outline" className="gap-2">
+                          <Mail className="w-4 h-4" /> Email
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-[#0e1d34]">
-                  {founder.name}
-                </h3>
-                <p className="text-primary text-xs font-bold uppercase tracking-wider mb-4">
-                  {founder.title}
-                </p>
-                <p className="text-gray-600 text-sm mb-6 flex-grow">
-                  {founder.bio}
-                </p>
-                <div className="flex gap-3">
-                  <Link href={founder.social.linkedin}>
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      className="rounded-full w-8 h-8"
-                    >
-                      <Linkedin className="w-4 h-4" />
-                    </Button>
-                  </Link>
-                  <Link href={`mailto:${founder.social.email}`}>
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      className="rounded-full w-8 h-8"
-                    >
-                      <Mail className="w-4 h-4" />
-                    </Button>
-                  </Link>
+              ))}
+
+            {/* {founders
+              .filter((f) => !f.featured)
+              .map((founder) => (
+                <div
+                  key={founder.id}
+                  className="founder-card bg-white rounded-2xl shadow-xl border border-gray-100 p-8 flex flex-col items-center text-center group hover:-translate-y-2 transition-transform duration-300 h-full"
+                >
+                  <div className="w-24 h-24 rounded-full p-1 bg-gradient-to-br from-gray-200 to-gray-400 mb-6">
+                    <div className="w-full h-full rounded-full bg-gray-200 overflow-hidden">
+                      <div className="w-full h-full bg-gray-300 flex items-center justify-center text-2xl font-bold text-gray-500">
+                        {founder.name.charAt(0)}
+                      </div>
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold text-[#0e1d34]">
+                    {founder.name}
+                  </h3>
+                  <p className="text-gray-500 text-xs font-bold uppercase tracking-wider mb-4">
+                    {founder.title}
+                  </p>
+                  <p className="text-gray-600 text-sm mb-6 flex-grow">
+                    {founder.bio}
+                  </p>
+                  <div className="flex gap-3">
+                    <Link href={founder.social.linkedin}>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        className="rounded-full w-8 h-8"
+                      >
+                        <Linkedin className="w-4 h-4" />
+                      </Button>
+                    </Link>
+                    <Link href={`mailto:${founder.social.email}`}>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        className="rounded-full w-8 h-8"
+                      >
+                        <Mail className="w-4 h-4" />
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))} */}
           </div>
         </div>
       </section>
@@ -322,7 +396,7 @@ export default function TeamPage() {
       {/* =========================================
           SECTION 3: MEET THE LEADERS
       ========================================= */}
-      <section className="py-20 bg-gray-50">
+      <section className="pb-20 bg-gray-50">
         <div className="container mx-auto px-6 lg:px-12">
           {/* A. Regional Directors */}
           <div className="leader-section mb-20">
@@ -359,6 +433,7 @@ export default function TeamPage() {
                     <p className="text-sm text-gray-600 mb-4">{director.bio}</p>
                     <Link
                       href={`mailto:${director.social.email}`}
+                      // href={`mailto:${director.social.email}`}
                       className="text-xs font-bold text-[#0e1d34] flex items-center gap-1 hover:text-primary"
                     >
                       CONTACT <ArrowRight className="w-3 h-3" />
