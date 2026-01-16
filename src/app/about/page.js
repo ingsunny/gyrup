@@ -14,6 +14,9 @@ import {
   Zap,
   Briefcase,
   Phone,
+  Repeat,
+  CheckCircle,
+  BadgeCheck,
 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -104,36 +107,59 @@ export default function AboutPage() {
     return () => ctx.revert();
   }, []);
 
+  // const manifestoItems = [
+  //   {
+  //     icon: <ShieldCheck />,
+  //     title: "Ethical Networking",
+  //     desc: "Integrity is our currency. We build connections based on honest practices.",
+  //   },
+  //   {
+  //     icon: <Briefcase />,
+  //     title: "Verified Referrals",
+  //     desc: "No fluff. Only qualified, vetted business opportunities passed between members.",
+  //   },
+  //   {
+  //     icon: <HeartHandshake />,
+  //     title: "Collaboration",
+  //     desc: "We believe in the power of 'We' over 'Me'. Together, we go further.",
+  //   },
+  //   {
+  //     icon: <Target />,
+  //     title: "Quality Over Quantity",
+  //     desc: "We prioritize the caliber of members over the number of seats filled.",
+  //   },
+  //   {
+  //     icon: <Eye />,
+  //     title: "Transparency",
+  //     desc: "Open accountability in referrals, fees, and participation.",
+  //   },
+  //   {
+  //     icon: <Zap />,
+  //     title: "Givers Gain",
+  //     desc: "Helping others achieve their goals is the surest way to achieve your own.",
+  //   },
+  // ];
+
   const manifestoItems = [
     {
-      icon: <ShieldCheck />,
-      title: "Ethical Networking",
-      desc: "Integrity is our currency. We build connections based on honest practices.",
+      icon: <Repeat />,
+      title: "Consistent",
+      desc: "We show up regularly, participate actively, and follow the system with discipline. Consistency creates visibility, relationships, and long-term results.",
     },
     {
-      icon: <Briefcase />,
-      title: "Verified Referrals",
-      desc: "No fluff. Only qualified, vetted business opportunities passed between members.",
+      icon: <CheckCircle />,
+      title: "Committed",
+      desc: "We don’t just promise — we complete. Commitment builds trust and strengthens every business connection.",
     },
     {
-      icon: <HeartHandshake />,
-      title: "Collaboration",
-      desc: "We believe in the power of 'We' over 'Me'. Together, we go further.",
+      icon: <BadgeCheck />,
+      title: "Credible",
+      desc: "We operate with integrity, professionalism, and ethics. Credibility is earned through consistent delivery and reliable conduct.",
     },
     {
-      icon: <Target />,
-      title: "Quality Over Quantity",
-      desc: "We prioritize the caliber of members over the number of seats filled.",
-    },
-    {
-      icon: <Eye />,
-      title: "Transparency",
-      desc: "Open accountability in referrals, fees, and participation.",
-    },
-    {
-      icon: <Zap />,
-      title: "Givers Gain",
-      desc: "Helping others achieve their goals is the surest way to achieve your own.",
+      icon: <Users />,
+      title: "Collaborative",
+      desc: "We grow together by supporting each other, sharing opportunities, and building partnerships. We believe in collaboration over competition — because success multiplies when we win as a community.",
     },
   ];
 
@@ -268,7 +294,7 @@ export default function AboutPage() {
             </h3>
           </div>
 
-          <div className="manifesto-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10">
+          <div className="manifesto-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10">
             {manifestoItems.map((item, idx) => (
               <div
                 key={idx}
@@ -515,10 +541,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <FAQSection
-        title="GYR UP Universe – FAQs"
-        highlight="About · FAQ"
-      />
+      <FAQSection title="GYR UP Universe – FAQs" highlight="About · FAQ" />
 
       <Footer />
     </main>
