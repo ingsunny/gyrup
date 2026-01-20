@@ -419,7 +419,7 @@ export default function JoinPage() {
       </section>
 
       <FAQSection
-        title="GYR UP Universe – FAQs"
+        title="GYR UP International – FAQs"
         highlight="Join GYR UP · FAQ"
       />
 

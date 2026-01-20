@@ -155,7 +155,7 @@ export default function ContactPage() {
                     href="mailto:membership@gyrup.com"
                     className="text-gray-300 hover:text-white transition-colors border-b border-gray-700 hover:border-white pb-0.5"
                   >
-                    info@gyrupuniverse.com
+                    info@gyrupinternational.com
                   </a>
                 </div>
 
@@ -385,7 +385,7 @@ export default function ContactPage() {
       </section>
 
       <FAQSection
-        title="GYR UP Universe – FAQs"
+        title="GYR UP International – FAQs"
         highlight="Contact · FAQ"
       />
 

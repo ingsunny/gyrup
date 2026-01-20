@@ -5,11 +5,11 @@ import React from "react";
 const faqData = [
   {
     id: "about-gyrup",
-    label: "About GYR UP Universe",
+    label: "About GYR UP International",
     questions: [
       {
-        q: "What is GYR UP Universe?",
-        a: "GYR UP Universe is a structured, credibility-driven business networking and referral growth platform for entrepreneurs who want consistent, verified business opportunities and leadership development. The ecosystem operates through Zones, Regions, and Chapters to ensure strong local, regional, and national reach.",
+        q: "What is GYR UP International?",
+        a: "GYR UP International is a structured, credibility-driven business networking and referral growth platform for entrepreneurs who want consistent, verified business opportunities and leadership development. The ecosystem operates through Zones, Regions, and Chapters to ensure strong local, regional, and national reach.",
       },
       {
         q: "How is GYR UP different from typical networking groups?",
@@ -40,7 +40,7 @@ const faqData = [
     label: "Membership & Eligibility",
     questions: [
       {
-        q: "Who is eligible to join GYR UP Universe?",
+        q: "Who is eligible to join GYR UP International?",
         a: "Membership is selective and based on credibility. Applicants are expected to have a minimum of 3 years of business experience, stable operations, a strong CIBIL score, and a positive reputation with credible references, so each chapter stays trustworthy and serious.",
       },
       {
@@ -120,14 +120,17 @@ const faqData = [
         a: "New entrepreneurs can join if they meet the eligibility standards. The goal is to maintain a strong, credible business network—quality is always prioritised over quantity.",
       },
       {
-        q: "What is the biggest advantage of joining GYR UP Universe?",
+        q: "What is the biggest advantage of joining GYR UP International?",
         a: "The biggest advantage is trust. You step into a verified network of credible, experienced, and financially disciplined entrepreneurs exchanging serious, meaningful business referrals in a structured environment.",
       },
     ],
   },
 ];
 
-export default function FAQSection({ title = "Frequently Asked Questions", highlight = "FAQ" }) {
+export default function FAQSection({
+  title = "Frequently Asked Questions",
+  highlight = "FAQ",
+}) {
   return (
     <section className="py-20 md:py-24 bg-gray-50">
       <div className="container mx-auto px-6 lg:px-12">
@@ -139,8 +142,8 @@ export default function FAQSection({ title = "Frequently Asked Questions", highl
             {title}
           </h2>
           <p className="text-gray-600 text-sm md:text-base leading-relaxed">
-            Get quick answers to how GYR UP Universe works—from membership and
-            referrals to leadership, expansion, and growth.
+            Get quick answers to how GYR UP International works—from membership
+            and referrals to leadership, expansion, and growth.
           </p>
         </div>
 
@@ -192,4 +195,3 @@ export default function FAQSection({ title = "Frequently Asked Questions", highl
     </section>
   );
 }
-

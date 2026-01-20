@@ -94,7 +94,7 @@ const Page = () => {
               trigger: item,
               start: "top 85%",
             },
-          }
+          },
         );
       });
 
@@ -113,7 +113,7 @@ const Page = () => {
           ease: "power3.out",
           stagger: 0.15,
         },
-        0
+        0,
       );
 
       // Then text/images with clip-path reveal
@@ -127,7 +127,7 @@ const Page = () => {
             duration: 1.2,
             ease: "power3.out",
           },
-          i === 0 ? "+=0.3" : "-=0.9" // smooth chaining
+          i === 0 ? "+=0.3" : "-=0.9", // smooth chaining
         );
       });
 
@@ -148,13 +148,13 @@ const Page = () => {
           ".gsap-heading",
           { x: 150, opacity: 0, scaleX: 1.4, transformOrigin: "right center" },
           { x: 0, opacity: 1, scaleX: 1, duration: 1.1 },
-          "-=0.3"
+          "-=0.3",
         )
         .fromTo(
           ".gsap-para",
           { x: 120, opacity: 0, scaleX: 1.2, transformOrigin: "right center" },
           { x: 0, opacity: 1, scaleX: 1, duration: 1 },
-          "-=0.6"
+          "-=0.6",
         );
 
       /* ======================================================
@@ -176,7 +176,7 @@ const Page = () => {
             trigger: uspsWrapperRef.current, // Triggers when the wrapper hits viewport
             start: "top 80%", // Starts when top of wrapper is 80% down the screen
           },
-        }
+        },
       );
 
       const statElements = gsap.utils.toArray(".stat-number");
@@ -673,10 +673,7 @@ const Page = () => {
         </div>
       </section>
 
-      <FAQSection
-        title="GYR UP Universe – FAQs"
-        highlight="Home · FAQ"
-      />
+      <FAQSection title="GYR UP International – FAQs" highlight="Home · FAQ" />
 
       <Footer />
     </>

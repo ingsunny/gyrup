@@ -51,7 +51,7 @@ const founders = [
     // Tagline for the badge
     role_highlight: "The Brain Behind the Ecosystem",
     // Main narrative
-    bio: `Pradeep is widely regarded as the architect of the GYR UP ecosystem—its structure, systems, and execution model. With over 16 years of extensive experience in the automobile dealership network (Maruti Suzuki, Toyota, Mahindra & Mahindra), his expertise lies in sales leadership, dealer operations, and process discipline. As the Founder of SPG Group of Companies, he builds ventures with a strategist’s mindset—focused on governance and sustainable execution rather than short-term wins. By blending dealership-network discipline with entrepreneurial insight, he is shaping GYR UP Universe into a credible, structured, and high-impact business networking platform for serious entrepreneurs.`,
+    bio: `Pradeep is widely regarded as the architect of the GYR UP ecosystem—its structure, systems, and execution model. With over 16 years of extensive experience in the automobile dealership network (Maruti Suzuki, Toyota, Mahindra & Mahindra), his expertise lies in sales leadership, dealer operations, and process discipline. As the Founder of SPG Group of Companies, he builds ventures with a strategist’s mindset—focused on governance and sustainable execution rather than short-term wins. By blending dealership-network discipline with entrepreneurial insight, he is shaping GYR UP International into a credible, structured, and high-impact business networking platform for serious entrepreneurs.`,
     // The Bullet Points
     responsibilities: [
       "Vision & Ecosystem Design",
@@ -508,7 +508,7 @@ export default function TeamPage() {
                 //     </Link>
                 //   </div>
                 // </div>
-              )
+              ),
             )}
 
             {/* {founders

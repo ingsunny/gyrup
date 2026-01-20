@@ -66,7 +66,7 @@ export default function AboutPage() {
             trigger: ".story-section",
             start: "top 80%",
           },
-        }
+        },
       );
 
       // 3. MANIFESTO CARDS STAGGER
@@ -83,7 +83,7 @@ export default function AboutPage() {
             trigger: ".manifesto-grid",
             start: "top 85%",
           },
-        }
+        },
       );
 
       // 4. VISION & MISSION SLIDE IN
@@ -375,13 +375,13 @@ export default function AboutPage() {
                   <li>Chapters that inspire leadership</li>
                   <li>Regions that nurture entrepreneurship</li>
                   <li>Zones that connect business communities</li>
-                  <li>A Universe where every member rises together</li>
+                  <li>A Community where every member rises together</li>
                 </ul>
               </div>
               <p className="mt-6 text-gray-600 text-sm md:text-base leading-relaxed">
-                GYR UP Universe strives to become the most reliable referral
-                platform in India, powered by entrepreneurs who believe in
-                giving before receiving, growing through relationships,
+                GYR UP International strives to become the most reliable
+                referral platform in India, powered by entrepreneurs who believe
+                in giving before receiving, growing through relationships,
                 maintaining ethical business practices, contributing to
                 community success, and building a long-term legacy.
               </p>
@@ -541,7 +541,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <FAQSection title="GYR UP Universe – FAQs" highlight="About · FAQ" />
+      <FAQSection title="GYR UP International – FAQs" highlight="About · FAQ" />
 
       <Footer />
     </main>
