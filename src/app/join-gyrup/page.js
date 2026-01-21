@@ -369,8 +369,8 @@ export default function JoinPage() {
                     <div>
                       <h4 className="font-bold text-lg">Application Review</h4>
                       <p className="text-sm text-gray-400 mt-1">
-                        Our compliance team reviews your data within 5-7
-                        business days.
+                        Our compliance team reviews your data within 24-48
+                        hours.
                       </p>
                     </div>
                   </div>
