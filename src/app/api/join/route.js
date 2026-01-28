@@ -5,6 +5,41 @@ export async function POST(req) {
   try {
     const formData = await req.formData();
 
+const turnstileToken = formData.get("cf_turnstile_token");
+
+if (!turnstileToken) {
+  return Response.json(
+    { success: false, message: "Captcha missing" },
+    { status: 400 }
+  );
+}
+
+const verifyRes = await fetch(
+  "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: new URLSearchParams({
+      secret: process.env.TURNSTILE_SECRET_KEY!,
+      response: turnstileToken.toString(),
+    }),
+  }
+);
+
+const verifyData = await verifyRes.json();
+
+if (!verifyData.success) {
+  return Response.json(
+    { success: false, message: "Captcha verification failed" },
+    { status: 403 }
+  );
+}
+
+
+    
+
     const fullname = formData.get("fullname");
     const businessname = formData.get("businessname");
     const category = formData.get("category");
