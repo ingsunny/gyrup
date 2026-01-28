@@ -20,17 +20,180 @@ import {
   Rocket,
   ShieldCheck,
   ArrowRight,
+  Loader2,
   Users,
 } from "lucide-react";
 import gsap from "gsap";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FAQSection from "@/components/FAQSection";
-import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 export default function JoinPage() {
+  const searchParams = useSearchParams();
+  const membershipClicked = searchParams.get("selected");
   const mainRef = useRef(null);
-  const [fileSelected, setFileSelected] = useState(false);
+  const [fileSelected, setFileSelected] = useState([]);
+
+  // Form State
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    fullname: "",
+    businessname: "",
+    category: "",
+    turnover: "",
+    years: "",
+    cibil: "",
+    email: "",
+    phone: "",
+    location: "",
+    reason: "",
+    membershipClicked: membershipClicked ? membershipClicked : null,
+  });
+
+  // Handle Input Change
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+
+    // ---------- YEARS: max 2 digits ----------
+    if (id === "years") {
+      // allow empty
+      if (value === "") {
+        setFormData({ ...formData, years: "" });
+        return;
+      }
+
+      // numbers only
+      if (!/^\d+$/.test(value)) return;
+
+      // max 2 digits
+      if (value.length > 2) return;
+
+      setFormData({ ...formData, years: value });
+      return;
+    } else if (id === "cibil") {
+      // allow empty
+      if (value === "") {
+        setFormData({ ...formData, cibil: "" });
+        return;
+      }
+
+      // numbers only
+      if (!/^\d+$/.test(value)) return;
+
+      // max 2 digits
+      if (value.length > 3) return;
+
+      setFormData({ ...formData, cibil: value });
+      return;
+    } else if (id === "phone") {
+      // allow empty
+      if (value === "") {
+        setFormData({ ...formData, phone: "" });
+        return;
+      }
+
+      // allow + only at start, digits after
+      if (!/^\+?\d*$/.test(value)) return;
+
+      // optional: limit length (example: 15 digits max international)
+      if (value.replace("+", "").length > 15) return;
+
+      setFormData({ ...formData, phone: value });
+      return;
+    } else if (id === "email") {
+      if (value.length > 120) return;
+
+      setFormData({ ...formData, email: value });
+      return;
+    } else if (id === "businessname") {
+      // optional character restriction
+      if (!/^[a-zA-Z0-9\s&.\-]*$/.test(value)) return;
+
+      if (value.length > 80) return;
+
+      setFormData({ ...formData, businessname: value });
+      return;
+    } else if (id === "fullname") {
+      // optional character restriction
+      if (!/^[a-zA-Z0-9\s&.\-]*$/.test(value)) return;
+
+      if (value.length > 70) return;
+
+      setFormData({ ...formData, fullname: value });
+      return;
+    }
+
+    // ---------- DEFAULT ----------
+    setFormData({ ...formData, [id]: value });
+  };
+
+  // Handle Select Change
+  const handleSelectChange = (key, value) => {
+    setFormData({ ...formData, [key]: value });
+  };
+
+  const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
+
+  // Handle Submit
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      // ---------- FILE SIZE VALIDATION ----------
+      for (const file of fileSelected) {
+        if (file.size > MAX_FILE_SIZE) {
+          alert(
+            `File "${file.name}" exceeds 2MB limit. Please upload smaller files.`,
+          );
+          setLoading(false);
+          return;
+        }
+      }
+
+      const data = new FormData();
+      Object.entries(formData).forEach(([key, value]) => {
+        data.append(key, value);
+      });
+
+      fileSelected.forEach((file) => {
+        data.append("companyFiles", file);
+      });
+
+      // Note: File upload logic requires deeper backend parsing (e.g. formidable or arraybuffer)
+      // For this implementation, we are sending the text data.
+
+      const response = await fetch("/api/join", {
+        method: "POST",
+        body: data,
+      });
+
+      if (response.ok) {
+        alert("Application Submitted Successfully! We will contact you soon.");
+        setFormData({
+          fullname: "",
+          businessname: "",
+          category: "",
+          turnover: "",
+          years: "",
+          cibil: "",
+          email: "",
+          phone: "",
+          location: "",
+          reason: "",
+        });
+        setFileSelected([]);
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Submission Error", error);
+      alert("Error submitting form.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -70,15 +233,13 @@ export default function JoinPage() {
     const el = document.getElementById("form-section");
     if (!el) return;
 
-    // If using Lenis
     if (window.lenis) {
       window.lenis.scrollTo(el, {
         offset: -50,
         duration: 1.8,
-        easing: (t) => 1 - Math.pow(1 - t, 3), // smooth cubic ease
+        easing: (t) => 1 - Math.pow(1 - t, 3),
       });
     } else {
-      // Native smooth scroll fallback
       el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
@@ -132,13 +293,16 @@ export default function JoinPage() {
                 Membership Application
               </h2>
 
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Row 1: Basic Info */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="fullname">Full Name</Label>
                     <Input
                       id="fullname"
+                      required
+                      value={formData.fullname}
+                      onChange={handleChange}
                       placeholder="John Doe"
                       className="bg-gray-50 border-gray-200 focus:ring-primary h-12"
                     />
@@ -147,6 +311,9 @@ export default function JoinPage() {
                     <Label htmlFor="businessname">Business Name</Label>
                     <Input
                       id="businessname"
+                      required
+                      value={formData.businessname}
+                      onChange={handleChange}
                       placeholder="Acme Solutions Pvt Ltd"
                       className="bg-gray-50 border-gray-200 focus:ring-primary h-12"
                     />
@@ -157,11 +324,31 @@ export default function JoinPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label>Business Category</Label>
-                    <Select>
+                    <Select
+                      onValueChange={(val) =>
+                        handleSelectChange("category", val)
+                      }
+                    >
                       <SelectTrigger className="bg-gray-50 border-gray-200 h-12">
                         <SelectValue placeholder="Select Category" />
                       </SelectTrigger>
-                      <SelectContent>
+                      <SelectContent
+                        onWheelCapture={(e) => e.stopPropagation()}
+                        className="
+                              max-h-72 
+                              overflow-y-auto 
+                              scroll-smooth
+                              rounded-xl
+                              border border-gray-200
+                              bg-white
+                              shadow-xl
+
+                              [&::-webkit-scrollbar]:w-2
+                              [&::-webkit-scrollbar-track]:bg-transparent
+                              [&::-webkit-scrollbar-thumb]:bg-gray-300
+                              hover:[&::-webkit-scrollbar-thumb]:bg-gray-400
+                          "
+                      >
                         <SelectItem value="manufacturing">
                           Manufacturing
                         </SelectItem>
@@ -169,8 +356,74 @@ export default function JoinPage() {
                           Services / Consulting
                         </SelectItem>
                         <SelectItem value="retail">Retail / Trading</SelectItem>
-                        <SelectItem value="tech">Technology / IT</SelectItem>
-                        <SelectItem value="realestate">Real Estate</SelectItem>
+                        <SelectItem value="tech">
+                          Technology / IT / SaaS
+                        </SelectItem>
+                        <SelectItem value="realestate">
+                          Real Estate & Construction
+                        </SelectItem>
+
+                        <SelectItem value="finance">
+                          Finance / Accounting / Insurance
+                        </SelectItem>
+                        <SelectItem value="marketing">
+                          Marketing / Advertising / Media
+                        </SelectItem>
+                        <SelectItem value="ecommerce">
+                          E-commerce / D2C Brands
+                        </SelectItem>
+                        <SelectItem value="education">
+                          Education / Coaching / Training
+                        </SelectItem>
+                        <SelectItem value="healthcare">
+                          Healthcare / Pharma / Wellness
+                        </SelectItem>
+
+                        <SelectItem value="hospitality">
+                          Hospitality / Travel / Tourism
+                        </SelectItem>
+                        <SelectItem value="food">
+                          Food / Restaurant / Cloud Kitchen
+                        </SelectItem>
+                        <SelectItem value="logistics">
+                          Logistics / Transport / Supply Chain
+                        </SelectItem>
+                        <SelectItem value="agriculture">
+                          Agriculture / AgriTech
+                        </SelectItem>
+                        <SelectItem value="energy">
+                          Energy / Renewable / Utilities
+                        </SelectItem>
+
+                        <SelectItem value="legal">
+                          Legal / Compliance / Company Services
+                        </SelectItem>
+                        <SelectItem value="importexport">
+                          Import / Export
+                        </SelectItem>
+                        <SelectItem value="textile">
+                          Textile / Apparel / Fashion
+                        </SelectItem>
+                        <SelectItem value="creative">
+                          Creative / Design / Content
+                        </SelectItem>
+                        <SelectItem value="freelancer">
+                          Freelancer / Independent Professional
+                        </SelectItem>
+
+                        <SelectItem value="startup">
+                          Startup / Founder
+                        </SelectItem>
+                        <SelectItem value="investor">
+                          Investor / Angel / VC
+                        </SelectItem>
+                        <SelectItem value="trader">
+                          Stock / Crypto / Commodity Trader
+                        </SelectItem>
+
+                        <SelectItem value="other">
+                          Other / Multiple Businesses
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -178,6 +431,9 @@ export default function JoinPage() {
                     <Label htmlFor="turnover">Annual Turnover (Last FY)</Label>
                     <Input
                       id="turnover"
+                      required
+                      value={formData.turnover}
+                      onChange={handleChange}
                       placeholder="e.g. ₹2 Cr"
                       className="bg-gray-50 border-gray-200 focus:ring-primary h-12"
                     />
@@ -191,6 +447,9 @@ export default function JoinPage() {
                     <Input
                       id="years"
                       type="number"
+                      maxLength={2}
+                      value={formData.years}
+                      onChange={handleChange}
                       placeholder="5"
                       className="bg-gray-50 border-gray-200 focus:ring-primary h-12"
                     />
@@ -200,6 +459,8 @@ export default function JoinPage() {
                     <Input
                       id="cibil"
                       type="number"
+                      value={formData.cibil}
+                      onChange={handleChange}
                       placeholder="e.g. 750"
                       className="bg-gray-50 border-gray-200 focus:ring-primary h-12"
                     />
@@ -213,6 +474,9 @@ export default function JoinPage() {
                     <Input
                       id="email"
                       type="email"
+                      required
+                      value={formData.email}
+                      onChange={handleChange}
                       placeholder="john@company.com"
                       className="bg-gray-50 border-gray-200 focus:ring-primary h-12"
                     />
@@ -222,6 +486,9 @@ export default function JoinPage() {
                     <Input
                       id="phone"
                       type="tel"
+                      required
+                      value={formData.phone}
+                      onChange={handleChange}
                       placeholder="+91 98765 43210"
                       className="bg-gray-50 border-gray-200 focus:ring-primary h-12"
                     />
@@ -231,16 +498,85 @@ export default function JoinPage() {
                 {/* Row 5: Location */}
                 <div className="space-y-2">
                   <Label>Preferred Chapter / City</Label>
-                  <Select>
+                  <Select
+                    onValueChange={(val) => handleSelectChange("location", val)}
+                  >
                     <SelectTrigger className="bg-gray-50 border-gray-200 h-12">
                       <SelectValue placeholder="Select a Location" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent
+                      onWheelCapture={(e) => e.stopPropagation()}
+                      className="max-h-72 overflow-y-auto overscroll-contain"
+                    >
+                      {/* NCR */}
                       <SelectItem value="delhi">New Delhi</SelectItem>
-                      <SelectItem value="noida">Noida / Gr. Noida</SelectItem>
+                      <SelectItem value="noida">
+                        Noida / Greater Noida
+                      </SelectItem>
                       <SelectItem value="gurgaon">Gurgaon</SelectItem>
+                      <SelectItem value="faridabad">Faridabad</SelectItem>
+                      <SelectItem value="ghaziabad">Ghaziabad</SelectItem>
+
+                      {/* Maharashtra */}
                       <SelectItem value="mumbai">Mumbai</SelectItem>
+                      <SelectItem value="pune">Pune</SelectItem>
+                      <SelectItem value="nagpur">Nagpur</SelectItem>
+                      <SelectItem value="nashik">Nashik</SelectItem>
+
+                      {/* Karnataka */}
                       <SelectItem value="bangalore">Bangalore</SelectItem>
+                      <SelectItem value="mysore">Mysuru</SelectItem>
+                      <SelectItem value="hubli">Hubli–Dharwad</SelectItem>
+
+                      {/* Telangana */}
+                      <SelectItem value="hyderabad">Hyderabad</SelectItem>
+
+                      {/* Tamil Nadu */}
+                      <SelectItem value="chennai">Chennai</SelectItem>
+                      <SelectItem value="coimbatore">Coimbatore</SelectItem>
+                      <SelectItem value="madurai">Madurai</SelectItem>
+
+                      {/* Gujarat */}
+                      <SelectItem value="ahmedabad">Ahmedabad</SelectItem>
+                      <SelectItem value="surat">Surat</SelectItem>
+                      <SelectItem value="vadodara">Vadodara</SelectItem>
+                      <SelectItem value="rajkot">Rajkot</SelectItem>
+
+                      {/* Rajasthan */}
+                      <SelectItem value="jaipur">Jaipur</SelectItem>
+                      <SelectItem value="udaipur">Udaipur</SelectItem>
+                      <SelectItem value="jodhpur">Jodhpur</SelectItem>
+
+                      {/* MP */}
+                      <SelectItem value="indore">Indore</SelectItem>
+                      <SelectItem value="bhopal">Bhopal</SelectItem>
+
+                      {/* UP */}
+                      <SelectItem value="lucknow">Lucknow</SelectItem>
+                      <SelectItem value="kanpur">Kanpur</SelectItem>
+                      <SelectItem value="agra">Agra</SelectItem>
+                      <SelectItem value="varanasi">Varanasi</SelectItem>
+
+                      {/* East */}
+                      <SelectItem value="kolkata">Kolkata</SelectItem>
+                      <SelectItem value="bhubaneswar">Bhubaneswar</SelectItem>
+                      <SelectItem value="patna">Patna</SelectItem>
+
+                      {/* South */}
+                      <SelectItem value="kochi">Kochi</SelectItem>
+                      <SelectItem value="trivandrum">Trivandrum</SelectItem>
+                      <SelectItem value="trichy">Trichy</SelectItem>
+
+                      {/* North */}
+                      <SelectItem value="chandigarh">Chandigarh</SelectItem>
+                      <SelectItem value="amritsar">Amritsar</SelectItem>
+                      <SelectItem value="ludhiana">Ludhiana</SelectItem>
+
+                      {/* Others */}
+                      <SelectItem value="remote">
+                        Remote / Online Chapter
+                      </SelectItem>
+                      <SelectItem value="other">Other City</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -252,6 +588,9 @@ export default function JoinPage() {
                   </Label>
                   <Textarea
                     id="reason"
+                    required
+                    value={formData.reason}
+                    onChange={handleChange}
                     placeholder="Tell us about your growth goals..."
                     className="bg-gray-50 border-gray-200 focus:ring-primary min-h-[100px]"
                   />
@@ -259,14 +598,21 @@ export default function JoinPage() {
 
                 {/* Row 7: File Upload */}
                 <div className="space-y-2">
-                  <Label>Company Documents (Optional)</Label>
+                  <Label>Identity & Business Proof Documents (Optional)</Label>
                   <input
                     type="file"
                     id="companyFiles"
                     multiple
+                    name="companyFiles"
+                    accept=".pdf, .jpg, .jpeg, .png" // <--- ADD THIS
                     className="hidden"
                     onChange={(e) => {
                       const files = Array.from(e.target.files || []);
+                      // Optional: Add a check here immediately to warn user if they picked > 5 files
+                      if (files.length > 5) {
+                        alert("Maximum 5 files allowed");
+                        return;
+                      }
                       setFileSelected(files);
                     }}
                   />
@@ -278,7 +624,7 @@ export default function JoinPage() {
                         : "border-gray-300 hover:border-gray-400"
                     }`}
                     onClick={() =>
-                      document.getElementById("companyFiles").click()
+                      document.getElementById("companyFiles")?.click()
                     }
                   >
                     {fileSelected?.length ? (
@@ -303,19 +649,37 @@ export default function JoinPage() {
                     )}
                   </div>
                 </div>
+                <p className=" text-xs text-red-500 text-center leading-relaxed">
+                  Accepted formats:{" "}
+                  <span className="font-medium">PDF, JPG, JPEG, PNG</span>{" "}
+                  &nbsp;&nbsp;|&nbsp;&nbsp; Maximum{" "}
+                  <span className="font-medium">5 files</span>, each file up to{" "}
+                  <span className="font-medium">2MB</span>
+                </p>
 
-                <div className="pt-4">
+                <div className="">
                   <Button
+                    type="submit"
+                    disabled={loading}
                     className="
                 relative w-full overflow-hidden group
                 bg-primary text-black
                 hover:text-white
                 text-lg tracking-wide
-                !px-7 !py-7 mt-2 cursor-pointer
+                !px-7 !py-7  cursor-pointer
               "
                   >
                     <span className="relative z-10 flex items-center gap-2 font-semibold">
-                      Submit Application <ArrowRight size={20} />
+                      {loading ? (
+                        <>
+                          <Loader2 className="animate-spin w-5 h-5" />{" "}
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          Submit Application <ArrowRight size={20} />
+                        </>
+                      )}
                     </span>
 
                     {/* WAVY FILL */}
@@ -337,7 +701,6 @@ export default function JoinPage() {
                         id="wave-clip"
                         clipPathUnits="objectBoundingBox"
                       >
-                        {/* <!-- ACTUAL WAVY SHAPE --> */}
                         <path d="M0,0.7 C0.25,0.6 0.75,0.8 1,0.7 L1,1 L0,1 Z"></path>
                       </clipPath>
                     </svg>

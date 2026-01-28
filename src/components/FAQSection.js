@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import * as Accordion from "@radix-ui/react-accordion";
 
 const faqData = [
   {
@@ -134,34 +135,35 @@ export default function FAQSection({
   return (
     <section className="py-20 md:py-24 bg-gray-50">
       <div className="container mx-auto px-6 lg:px-12">
+        {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-          <p className="text-primary text-xs md:text-sm font-bold tracking-[0.25em] uppercase mb-3">
+          <p className="text-primary text-xs font-bold tracking-[0.25em] uppercase mb-3">
             {highlight}
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold text-[#0e1d34] leading-tight mb-4">
+          <h2 className="text-3xl md:text-5xl font-bold text-[#0e1d34] mb-4">
             {title}
           </h2>
-          <p className="text-gray-600 text-sm md:text-base leading-relaxed">
+          <p className="text-gray-600 text-sm md:text-base">
             Get quick answers to how GYR UP International works—from membership
             and referrals to leadership, expansion, and growth.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-          {/* Left: Section navigation */}
+          {/* Left navigation */}
           <div className="space-y-3">
             {faqData.map((group) => (
               <a
                 key={group.id}
                 href={`#faq-${group.id}`}
-                className="block text-left px-4 py-3 rounded-xl border border-gray-200 hover:border-primary/60 hover:bg-primary/5 transition-colors text-sm md:text-base font-medium text-[#0e1d34]"
+                className="block px-4 py-3 rounded-xl border border-gray-200 hover:border-primary/60 hover:bg-primary/5 transition text-sm font-medium"
               >
                 {group.label}
               </a>
             ))}
           </div>
 
-          {/* Right: Questions */}
+          {/* Right content */}
           <div className="lg:col-span-2 space-y-10">
             {faqData.map((group) => (
               <div
@@ -169,24 +171,49 @@ export default function FAQSection({
                 id={`faq-${group.id}`}
                 className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 md:p-8"
               >
-                <h3 className="text-lg md:text-xl font-bold text-[#0e1d34] mb-4">
+                <h3 className="text-lg font-bold text-[#0e1d34] mb-4">
                   {group.label}
                 </h3>
-                <div className="space-y-4">
+
+                {/* 🔥 RADIX ACCORDION */}
+                <Accordion.Root type="single" collapsible className="space-y-3">
                   {group.questions.map((item, idx) => (
-                    <div
+                    <Accordion.Item
                       key={idx}
-                      className="border-b last:border-b-0 border-gray-100 pb-4 last:pb-0"
+                      value={`${group.id}-${idx}`}
+                      className="border-b border-gray-100"
                     >
-                      <p className="font-semibold text-sm md:text-base text-[#0e1d34] mb-1">
-                        {item.q}
-                      </p>
-                      <p className="text-gray-600 text-sm md:text-base leading-relaxed">
-                        {item.a}
-                      </p>
-                    </div>
+                      <Accordion.Header>
+                        <Accordion.Trigger
+                          className="
+                            w-full flex justify-between items-center
+                            py-4 text-left text-sm md:text-base
+                            font-semibold text-[#0e1d34]
+                            transition hover:text-primary
+                          "
+                        >
+                          {item.q}
+                          <span className="ml-4 text-primary transition-transform data-[state=open]:rotate-180">
+                            ▼
+                          </span>
+                        </Accordion.Trigger>
+                      </Accordion.Header>
+
+                      <Accordion.Content
+                        className="
+                          overflow-hidden
+                          text-gray-600 text-sm md:text-base
+                          data-[state=open]:animate-accordion-down
+                          data-[state=closed]:animate-accordion-up
+                        "
+                      >
+                        <div className="pb-4 pt-1 leading-relaxed">
+                          {item.a}
+                        </div>
+                      </Accordion.Content>
+                    </Accordion.Item>
                   ))}
-                </div>
+                </Accordion.Root>
               </div>
             ))}
           </div>
