@@ -606,6 +606,19 @@ export default function JoinPage() {
                   />
                 </div>
 
+                <Turnstile
+                  siteKey="0x4AAAAAACU3xa_c2R9lsOZK"
+                  onSuccess={(token) => {
+                    setCaptchaToken(token);
+                  }}
+                  onExpire={() => {
+                    setCaptchaToken(null);
+                  }}
+                  options={{
+                    theme: "light",
+                  }}
+                />
+
                 {/* Row 7: File Upload */}
                 <div className="space-y-2">
                   <Label>Identity & Business Proof Documents (Optional)</Label>
@@ -668,19 +681,6 @@ export default function JoinPage() {
                 </p>
 
                 <div className="">
-                  <Turnstile
-                    siteKey="0x4AAAAAACU3xa_c2R9lsOZK"
-                    onSuccess={(token) => {
-                      setCaptchaToken(token);
-                    }}
-                    onExpire={() => {
-                      setCaptchaToken(null);
-                    }}
-                    options={{
-                      theme: "light",
-                    }}
-                  />
-
                   <Button
                     type="submit"
                     disabled={loading}
