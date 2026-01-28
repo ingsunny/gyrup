@@ -290,15 +290,15 @@ export default function JoinPage() {
       ========================================= */}
       <section
         id="form-section"
-        className="pt-16 pb-22 bg-cover relative z-20"
+        className="md:pt-16 md:pb-22 bg-cover relative z-20"
         style={{
           backgroundImage: "url('/service-bg.png')",
         }}
       >
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="flex flex-col lg:flex-row gap-12 items-start">
+        <div className="container mx-auto md:px-6 lg:px-12">
+          <div className="flex flex-col lg:flex-row md:gap-12 items-start">
             {/* LEFT: THE FORM */}
-            <div className="w-full lg:w-2/3 application-form bg-white rounded-2xl shadow-lg p-8 md:p-10 border border-gray-100">
+            <div className="w-full lg:w-2/3 application-form bg-white md:rounded-2xl md:shadow-lg px-8 py-12 md:p-10 border border-gray-100">
               <h2 className="text-2xl font-bold text-[#0e1d34] mb-8 border-b pb-4">
                 Membership Application
               </h2>
@@ -738,7 +738,7 @@ export default function JoinPage() {
 
             {/* RIGHT: PROCESS SIDEBAR (Sticky) */}
             <div className="w-full lg:w-1/3 lg:sticky lg:top-24">
-              <div className="bg-[#0e1d34] text-white rounded-2xl p-8 shadow-2xl border border-white/10">
+              <div className="bg-[#0e1d34] text-white md:rounded-2xl px-8 py-12 md:py-8 md:shadow-2xl border border-white/10">
                 <h3 className="text-xl font-bold mb-6 border-b border-white/10 pb-4">
                   What Happens Next?
                 </h3>
