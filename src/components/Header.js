@@ -36,7 +36,7 @@ export default function Header() {
   const navItems = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
-    { name: "Chapters", href: "/chapters" },
+    { name: "Regions", href: "/regions" },
     { name: "Membership", href: "/membership" },
     // { name: "Resources", href: "/resources" },
     // { name: "Contact", href: "/contact" },
@@ -47,7 +47,7 @@ export default function Header() {
   const mobileNavItems = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
-    { name: "Chapters", href: "/chapters" },
+    { name: "Regions", href: "/regions" },
     { name: "Membership", href: "/membership" },
     // { name: "Resources", href: "/resources" },
     { name: "Testimonials", href: "/testimonials" },
@@ -258,7 +258,7 @@ export default function Header() {
                             >
                               <Icon className="w-5 h-5" />
                             </Link>
-                          )
+                          ),
                         )}
                       </div>
                     </div>

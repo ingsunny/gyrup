@@ -19,62 +19,116 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 // --- MOCK DATA WITH PINCODES ---
-const chapters = [
+// const regions = [
+//   {
+//     id: 1,
+//     name: "Gurugram Central",
+//     status: "Active",
+//     city: "Gurugram",
+//     pincode: "122002", // Added Pincode
+//     day: "Thursday",
+//     time: "7:30 AM - 9:30 AM",
+//     venue: "Hotel Le Meridien, Sector 26",
+//     director: "Rajiv Malhotra",
+//     directorImg: "/a1.jpg",
+//     openCategories: ["Architect", "Chartered Accountant", "Digital Marketer"],
+//   },
+//   {
+//     id: 2,
+//     name: "Noida Titans",
+//     status: "Active",
+//     city: "Noida",
+//     pincode: "201301", // Added Pincode
+//     day: "Friday",
+//     time: "6:00 PM - 8:00 PM",
+//     venue: "Radisson Blu, Sector 18",
+//     director: "Simran Kaur",
+//     directorImg: "/a2.jpg",
+//     openCategories: [
+//       "Interior Designer",
+//       "Real Estate Broker",
+//       "Event Planner",
+//     ],
+//   },
+//   {
+//     id: 3,
+//     name: "Delhi South Elite",
+//     status: "Launching Soon",
+//     city: "New Delhi",
+//     pincode: "110017", // Added Pincode
+//     day: "Wednesday",
+//     time: "7:00 AM - 9:00 AM",
+//     venue: "Sheraton, Saket",
+//     director: "Vikram Singh",
+//     directorImg: "/a3.jpg",
+//     openCategories: ["All Categories Open"],
+//   },
+//   {
+//     id: 4,
+//     name: "Cyber City Pioneers",
+//     status: "Active",
+//     city: "Gurugram",
+//     pincode: "122008", // Added Pincode
+//     day: "Tuesday",
+//     time: "8:00 AM - 10:00 AM",
+//     venue: "The Oberoi, Gurgaon",
+//     director: "Anjali Gupta",
+//     directorImg: "/a4.jpg",
+//     openCategories: ["Corporate Lawyer", "HR Consultant", "IT Services"],
+//   },
+// ];
+
+const regions = [
   {
-    id: 1,
-    name: "Gurugram Central",
-    status: "Active",
-    city: "Gurugram",
-    pincode: "122002", // Added Pincode
-    day: "Thursday",
-    time: "7:30 AM - 9:30 AM",
-    venue: "Hotel Le Meridien, Sector 26",
-    director: "Rajiv Malhotra",
-    directorImg: "/a1.jpg",
-    openCategories: ["Architect", "Chartered Accountant", "Digital Marketer"],
+    name: "Delhi South",
+    city: "Delhi",
+    chapters: [],
   },
   {
-    id: 2,
-    name: "Noida Titans",
-    status: "Active",
-    city: "Noida",
-    pincode: "201301", // Added Pincode
-    day: "Friday",
-    time: "6:00 PM - 8:00 PM",
-    venue: "Radisson Blu, Sector 18",
-    director: "Simran Kaur",
-    directorImg: "/a2.jpg",
-    openCategories: [
-      "Interior Designer",
-      "Real Estate Broker",
-      "Event Planner",
+    name: "Delhi West",
+    city: "Delhi",
+    chapters: [
+      { name: "Janak", pincode: "110058" },
+      { name: "Kirti", pincode: "110015" },
     ],
   },
   {
-    id: 3,
-    name: "Delhi South Elite",
-    status: "Launching Soon",
-    city: "New Delhi",
-    pincode: "110017", // Added Pincode
-    day: "Wednesday",
-    time: "7:00 AM - 9:00 AM",
-    venue: "Sheraton, Saket",
-    director: "Vikram Singh",
-    directorImg: "/a3.jpg",
-    openCategories: ["All Categories Open"],
+    name: "Delhi North-1",
+    city: "Delhi",
+    chapters: [],
   },
   {
-    id: 4,
-    name: "Cyber City Pioneers",
-    status: "Active",
-    city: "Gurugram",
-    pincode: "122008", // Added Pincode
-    day: "Tuesday",
-    time: "8:00 AM - 10:00 AM",
-    venue: "The Oberoi, Gurgaon",
-    director: "Anjali Gupta",
-    directorImg: "/a4.jpg",
-    openCategories: ["Corporate Lawyer", "HR Consultant", "IT Services"],
+    name: "Delhi North-2",
+    city: "Delhi",
+    chapters: [
+      { name: "Shalimar", pincode: null },
+      { name: "Shakti", pincode: null },
+    ],
+  },
+  {
+    name: "Delhi East",
+    city: "Delhi",
+    chapters: [{ name: "Preet", pincode: null }],
+  },
+  {
+    name: "Delhi South West",
+    city: "Delhi",
+    chapters: [],
+  },
+  {
+    name: "Chennai East",
+    city: "Chennai",
+    chapters: [],
+  },
+  {
+    name: "Coimbatore",
+    city: "Coimbatore",
+    chapters: [], // ✅ FIXED
+  },
+  {
+    name: "Hyderabad-1",
+    city: "Hyderabad",
+    chapters: [], // ✅ FIXED
   },
 ];
 
@@ -82,13 +136,27 @@ export default function ChaptersPage() {
   const mainRef = useRef(null);
   const [filter, setFilter] = useState("");
 
-  // Filter Logic: Matches Name OR City OR Pincode
-  const filteredChapters = chapters.filter(
-    (c) =>
-      c.name.toLowerCase().includes(filter.toLowerCase()) ||
-      c.city.toLowerCase().includes(filter.toLowerCase()) ||
-      c.pincode.includes(filter)
-  );
+  const filteredRegions = regions
+    .map((region) => {
+      const filteredChapters = region.chapters.filter(
+        (chapter) =>
+          chapter.name.toLowerCase().includes(filter.toLowerCase()) ||
+          region.name.toLowerCase().includes(filter.toLowerCase()) ||
+          region.city.toLowerCase().includes(filter.toLowerCase()) ||
+          (chapter.pincode && chapter.pincode.includes(filter)),
+      );
+
+      return {
+        ...region,
+        chapters: filteredChapters,
+      };
+    })
+    .filter(
+      (region) =>
+        region.name.toLowerCase().includes(filter.toLowerCase()) ||
+        region.city.toLowerCase().includes(filter.toLowerCase()) ||
+        region.chapters.length > 0,
+    );
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -126,7 +194,7 @@ export default function ChaptersPage() {
             trigger: ".chapters-grid",
             start: "top 85%",
           },
-        }
+        },
       );
     }, mainRef);
 
@@ -172,10 +240,10 @@ export default function ChaptersPage() {
                 value={filter}
                 onChange={(e) => setFilter(e.target.value)}
               />
-              <Button className="rounded-full !py-6 !px-4 md:py-9 md:!px-7 bg-primary text-black hover:bg-[#0e1d34] hover:text-white font-bold transition-colors">
+              {/* <Button className="rounded-full !py-6 !px-4 md:py-9 md:!px-7 bg-primary text-black hover:bg-[#0e1d34] hover:text-white font-bold transition-colors">
                 <span className="md:inline-block hidden">Search</span>
                 <Search className="min-w-5 min-h-5 md:hidden" />
-              </Button>
+              </Button> */}
             </div>
           </div>
         </div>
@@ -186,129 +254,77 @@ export default function ChaptersPage() {
       ========================================= */}
       <section className="pt-18 pb-20 md:pt-22 md:pb-24">
         <div className="container mx-auto px-6 lg:px-12">
-          {/* Header & Results Count */}
-          <div className="flex flex-col md:flex-row gap-4 md:gap-0 justify-between items-center mb-10">
+          {/* Header */}
+          <div className="flex flex-col md:flex-row justify-between items-center mb-12">
             <h2 className="text-2xl font-bold text-[#0e1d34] flex items-center gap-2">
-              <MapPin className="text-primary" /> Available Chapters
+              <MapPin className="text-primary" /> Available Regions
             </h2>
-            <span className="text-gray-500 font-medium bg-white px-4 py-2 rounded-full border border-gray-200">
-              {filteredChapters.length} Chapters found
+            <span className="text-gray-500 font-medium bg-white px-4 py-2 rounded-full border">
+              {filteredRegions.length} Regions
             </span>
           </div>
 
-          {/* THE GRID */}
-          <div className="chapters-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredChapters.length > 0 ? (
-              filteredChapters.map((chapter) => (
+          {/* Regions Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredRegions.length > 0 ? (
+              filteredRegions.map((region, idx) => (
                 <div
-                  key={chapter.id}
-                  className="chapter-card bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-primary/50 shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col h-full"
+                  key={idx}
+                  className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all overflow-hidden flex flex-col"
                 >
-                  {/* 1. Header (Name & Status) */}
-                  <div className="bg-[#0e1d34] p-6 flex justify-between items-start relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-20 h-20 bg-primary/10 rounded-full blur-xl"></div>
-                    <div>
-                      <h3 className="text-xl font-bold text-white mb-1">
-                        {chapter.name}
-                      </h3>
-                      <p className="text-gray-400 text-sm flex items-center gap-1">
-                        <MapPin className="w-3 h-3" /> {chapter.city} (
-                        {chapter.pincode})
-                      </p>
-                    </div>
-                    <span
-                      className={`text-xs font-bold px-3 py-1 rounded-full ${
-                        chapter.status === "Active"
-                          ? "bg-green-500/20 text-green-400 border border-green-500/30"
-                          : "bg-primary/20 text-primary border border-primary/30"
-                      }`}
-                    >
-                      {chapter.status}
-                    </span>
+                  {/* Region Header */}
+                  <div className="bg-[#0e1d34] p-6">
+                    <h3 className="text-xl font-bold text-white">
+                      {region.name}
+                    </h3>
+                    <p className="text-gray-400 text-sm flex items-center gap-1 mt-1">
+                      <MapPin className="w-3 h-3" />
+                      {region.city}
+                    </p>
                   </div>
 
-                  {/* 2. Body Details Hidden for now */}
-                  {/* <div className="p-6 space-y-4 flex-grow">
-                    <div className="flex items-start gap-3 text-gray-600">
-                      <div className="bg-blue-50 p-2 rounded text-blue-600 shrink-0">
-                        <Calendar className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <p className="font-bold text-[#0e1d34]">
-                          Fortnightly Meeting
-                        </p>
-                        <p className="text-sm">
-                          {chapter.day}s • {chapter.time}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-3 text-gray-600">
-                      <div className="bg-purple-50 p-2 rounded text-purple-600 shrink-0">
-                        <MapPin className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <p className="font-bold text-[#0e1d34]">Venue</p>
-                        <p className="text-sm">{chapter.venue}</p>
-                      </div>
-                    </div>
-
-                    <div className="bg-orange-50 border border-orange-100 rounded-lg p-4 mt-2">
-                      <div className="flex items-center gap-2 mb-2 text-orange-800 font-bold text-xs uppercase tracking-wide">
-                        <Briefcase className="w-3 h-3" /> Open Categories
-                      </div>
-                      <div className="flex flex-wrap gap-2">
-                        {chapter.openCategories.map((cat, i) => (
-                          <span
-                            key={i}
-                            className="text-xs bg-white text-gray-700 px-2 py-1 rounded border border-orange-200"
-                          >
-                            {cat}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div> */}
-
-                  {/* 3. Footer (Director & CTA) */}
-                  <div className="p-6 pt-0 mt-auto">
-                    <div className="border-t border-gray-100 pt-4 flex items-center justify-between">
-                      {/* Director Info */}
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-gray-200 overflow-hidden border-2 border-white shadow-sm">
-                          {/* Placeholder Avatar */}
-                          <div className="w-full h-full flex items-center justify-center bg-gray-300 text-gray-500">
-                            <User className="w-5 h-5" />
-                          </div>
-                        </div>
-                        <div>
-                          <p className="text-xs text-gray-400">
-                            Chapter Director
-                          </p>
-                          <p className="text-sm font-bold text-[#0e1d34]">
-                            {chapter.director}
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* CTA Button */}
-                      <Link href={`/join?chapter=${chapter.name}`}>
-                        <Button
-                          size="sm"
-                          className="bg-[#0e1d34] hover:bg-primary hover:text-black transition-colors rounded-lg group"
+                  {/* Chapters */}
+                  <div className="p-6 space-y-3 flex-grow">
+                    {region.chapters.length > 0 ? (
+                      region.chapters.map((chapter, cIdx) => (
+                        <div
+                          key={cIdx}
+                          className="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 hover:border-primary transition"
                         >
-                          Apply{" "}
-                          <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                        </Button>
-                      </Link>
-                    </div>
+                          <div>
+                            <p className="font-semibold text-[#0e1d34]">
+                              {chapter.name}
+                            </p>
+                            {chapter.pincode && (
+                              <p className="text-xs text-gray-500">
+                                Pincode: {chapter.pincode}
+                              </p>
+                            )}
+                          </div>
+
+                          <Link href={`/join-gyrup`}>
+                            <Button
+                              size="sm"
+                              className="bg-[#0e1d34] hover:bg-primary hover:text-black rounded-lg"
+                            >
+                              Apply
+                              <ArrowRight className="ml-1 w-4 h-4" />
+                            </Button>
+                          </Link>
+                        </div>
+                      ))
+                    ) : (
+                      <p className="text-sm text-gray-400 italic">
+                        No active chapters yet
+                      </p>
+                    )}
                   </div>
                 </div>
               ))
             ) : (
               <div className="col-span-full text-center py-20">
                 <p className="text-gray-500 text-lg">
-                  No chapters found matching your search.
+                  No regions or chapters found.
                 </p>
                 <Button
                   variant="link"
@@ -321,14 +337,13 @@ export default function ChaptersPage() {
             )}
           </div>
 
-          {/* Launch a Chapter CTA */}
+          {/* CTA */}
           <div className="mt-20 bg-primary/10 border border-primary/20 rounded-2xl p-8 md:p-12 text-center">
             <h3 className="text-2xl font-bold text-[#0e1d34] mb-2">
-              Don't see a chapter in your city?
+              Don’t see a chapter in your city?
             </h3>
             <p className="text-gray-600 mb-6">
-              Take the lead. Apply to become a Chapter Director and build your
-              own legacy.
+              Take the lead. Apply to become a Chapter Director.
             </p>
             <Button
               variant="outline"

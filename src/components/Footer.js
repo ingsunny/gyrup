@@ -61,7 +61,7 @@ const Footer = () => {
                 // "Home",
                 "Contact",
                 "About",
-                "Chapters",
+                "Regions",
                 "Team",
                 "Gallery",
                 "Membership",
