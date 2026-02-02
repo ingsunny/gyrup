@@ -61,23 +61,23 @@ const teamMembers = [
   //     email: "aditya@appmontize.co.in",
   //   },
   // },
-  {
-    id: 3,
-    name: "Bikash Singhi",
-    title: "Advisor to Board | Chartered Accountant & Strategist",
-    image: "founders/Bikash.jpg", // Ensure you have this image
-    role_highlight: "Governance & Financial Discipline",
-    icon: <Scale className="w-4 h-4" />,
-    bio: `Bikash Singhi is a highly respected Chartered Accountant with over 25 years of experience across banking, finance, corporate law, taxation, compliance, and business structuring. A member of the Institute of Chartered Accountants of India since 2000, he combines strong regulatory expertise with a growth-driven advisory approach to enable scalable and sustainable businesses. He is the Founder Partner of Singhi Bikash & Associates and an Advisory Board member at Singhi Professional Services Pvt. Ltd., where he supports entrepreneurs and enterprises in building profitable, compliant, and resilient business structures. A qualified LL.B and Insolvency Professional with advanced ICAI certifications in Forensic Audit, Concurrent Audit, BRSR, and PMLA, he integrates governance with growth. As Advisor to the Board of GYR UP International, he promotes a growth-with-governance philosophy, helping members strengthen revenue, credibility, and long-term trust.`,
-    highlights: [
-      "Corporate Law & Business Structuring",
-      "Forensic Audit & Risk Management",
-      "Regulatory Compliance & Taxation",
-      "Sustainable Business Expansion",
-    ],
-    philosophy: "Credible structures. Compliant growth. Long-term value.",
-    social: { linkedin: "#", email: "bikash@gyrup.com" },
-  },
+  // {
+  //   id: 3,
+  //   name: "Bikash Singhi",
+  //   title: "Advisor to Board | Chartered Accountant & Strategist",
+  //   image: "founders/Bikash.jpg", // Ensure you have this image
+  //   role_highlight: "Governance & Financial Discipline",
+  //   icon: <Scale className="w-4 h-4" />,
+  //   bio: `Bikash Singhi is a highly respected Chartered Accountant with over 25 years of experience across banking, finance, corporate law, taxation, compliance, and business structuring. A member of the Institute of Chartered Accountants of India since 2000, he combines strong regulatory expertise with a growth-driven advisory approach to enable scalable and sustainable businesses. He is the Founder Partner of Singhi Bikash & Associates and an Advisory Board member at Singhi Professional Services Pvt. Ltd., where he supports entrepreneurs and enterprises in building profitable, compliant, and resilient business structures. A qualified LL.B and Insolvency Professional with advanced ICAI certifications in Forensic Audit, Concurrent Audit, BRSR, and PMLA, he integrates governance with growth. As Advisor to the Board of GYR UP International, he promotes a growth-with-governance philosophy, helping members strengthen revenue, credibility, and long-term trust.`,
+  //   highlights: [
+  //     "Corporate Law & Business Structuring",
+  //     "Forensic Audit & Risk Management",
+  //     "Regulatory Compliance & Taxation",
+  //     "Sustainable Business Expansion",
+  //   ],
+  //   philosophy: "Credible structures. Compliant growth. Long-term value.",
+  //   social: { linkedin: "#", email: "bikash@gyrup.com" },
+  // },
 ];
 
 export default function TeamPage() {
