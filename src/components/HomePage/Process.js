@@ -27,7 +27,7 @@ export default function Process({ processSteps }) {
     min-h-[44px] min-w-[44px]
   "
             >
-              <Link href="/contact" aria-label="Contact page: Learn more">
+              <Link href="/contact" aria-label="Contact GYR UP International">
                 <span className="relative z-10 flex items-center gap-2">
                   Learn More <ArrowRight size={20} />
                 </span>
@@ -49,6 +49,11 @@ export default function Process({ processSteps }) {
                     <path d="M0,0.7 C0.25,0.6 0.75,0.8 1,0.7 L1,1 L0,1 Z" />
                   </clipPath>
                 </svg>
+
+                <span className="sr-only">
+                  {" "}
+                  about contacting GYR UP International
+                </span>
               </Link>
             </Button>
           </div>
