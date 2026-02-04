@@ -12,71 +12,20 @@ import {
   ArrowRight,
   Briefcase,
   Unlock,
+  Mail,
+  Phone,
+  Building2,
+  Rocket,
+  X,
+  Loader2,
 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-
-// --- MOCK DATA WITH PINCODES ---
-// const regions = [
-//   {
-//     id: 1,
-//     name: "Gurugram Central",
-//     status: "Active",
-//     city: "Gurugram",
-//     pincode: "122002", // Added Pincode
-//     day: "Thursday",
-//     time: "7:30 AM - 9:30 AM",
-//     venue: "Hotel Le Meridien, Sector 26",
-//     director: "Rajiv Malhotra",
-//     directorImg: "/a1.jpg",
-//     openCategories: ["Architect", "Chartered Accountant", "Digital Marketer"],
-//   },
-//   {
-//     id: 2,
-//     name: "Noida Titans",
-//     status: "Active",
-//     city: "Noida",
-//     pincode: "201301", // Added Pincode
-//     day: "Friday",
-//     time: "6:00 PM - 8:00 PM",
-//     venue: "Radisson Blu, Sector 18",
-//     director: "Simran Kaur",
-//     directorImg: "/a2.jpg",
-//     openCategories: [
-//       "Interior Designer",
-//       "Real Estate Broker",
-//       "Event Planner",
-//     ],
-//   },
-//   {
-//     id: 3,
-//     name: "Delhi South Elite",
-//     status: "Launching Soon",
-//     city: "New Delhi",
-//     pincode: "110017", // Added Pincode
-//     day: "Wednesday",
-//     time: "7:00 AM - 9:00 AM",
-//     venue: "Sheraton, Saket",
-//     director: "Vikram Singh",
-//     directorImg: "/a3.jpg",
-//     openCategories: ["All Categories Open"],
-//   },
-//   {
-//     id: 4,
-//     name: "Cyber City Pioneers",
-//     status: "Active",
-//     city: "Gurugram",
-//     pincode: "122008", // Added Pincode
-//     day: "Tuesday",
-//     time: "8:00 AM - 10:00 AM",
-//     venue: "The Oberoi, Gurgaon",
-//     director: "Anjali Gupta",
-//     directorImg: "/a4.jpg",
-//     openCategories: ["Corporate Lawyer", "HR Consultant", "IT Services"],
-//   },
-// ];
+import { Label } from "@radix-ui/react-label";
+import { AnimatePresence, motion } from "framer-motion";
+import { Turnstile } from "@marsidev/react-turnstile";
 
 const regions = [
   {
@@ -135,6 +84,9 @@ const regions = [
 export default function ChaptersPage() {
   const mainRef = useRef(null);
   const [filter, setFilter] = useState("");
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const filteredRegions = regions
     .map((region) => {
@@ -200,6 +152,64 @@ export default function ChaptersPage() {
 
     return () => ctx.revert();
   }, []);
+
+  const [token, setToken] = useState(""); // Turnstile Token State
+  const [launchFormData, setLaunchFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    region: "",
+    city: "",
+    pincode: "",
+  });
+
+  // 2. Helper to handle input changes
+  const handleLaunchChange = (e) => {
+    setLaunchFormData({ ...launchFormData, [e.target.id]: e.target.value });
+  };
+
+  const handleLaunchSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    if (!token) {
+      alert("Please complete the security check.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/launch-chapter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        // Send data + token
+        body: JSON.stringify({ ...launchFormData, token }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert("Application Received! We will connect with you shortly.");
+        setIsModalOpen(false);
+        setLaunchFormData({
+          name: "",
+          phone: "",
+          email: "",
+          region: "",
+          city: "",
+          pincode: "",
+        });
+        setToken(""); // Reset token
+      } else {
+        alert(data.message || "Something went wrong.");
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      alert("Error submitting form.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <main ref={mainRef} className="font-jakarta bg-gray-50 min-h-screen">
@@ -345,11 +355,19 @@ export default function ChaptersPage() {
             <p className="text-gray-600 mb-6">
               Take the lead. Apply to become a Chapter Director.
             </p>
-            <Button
+            {/* <Button
               variant="outline"
               className="border-[#0e1d34] text-[#0e1d34] hover:bg-[#0e1d34] hover:text-white"
             >
               Launch a Chapter
+            </Button> */}
+
+            <Button
+              variant="outline"
+              onClick={() => setIsModalOpen(true)}
+              className="border-[#0e1d34] text-[#0e1d34] hover:bg-[#0e1d34] hover:text-white relative z-10 font-bold px-8 py-6"
+            >
+              <Building2 className="mr-2 w-5 h-5" /> Launch a Chapter
             </Button>
           </div>
         </div>
@@ -433,6 +451,176 @@ export default function ChaptersPage() {
         </div>
       </section> */}
       <Footer />
+
+      {/* =========================================
+          MODAL: LAUNCH A CHAPTER
+      ========================================= */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsModalOpen(false)}
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            />
+
+            {/* Modal Content */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
+            >
+              {/* Header */}
+              <div className="bg-[#0e1d34] p-6 text-white flex justify-between items-start shrink-0">
+                <div>
+                  <h3 className="text-2xl font-bold flex items-center gap-2">
+                    <Rocket className="w-6 h-6 text-primary" /> Launch a Chapter
+                  </h3>
+                  <p className="text-gray-400 text-sm mt-1">
+                    Lead the growth in your city.
+                  </p>
+                </div>
+                <button
+                  onClick={() => setIsModalOpen(false)}
+                  className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Scrollable Form Body */}
+              <div className="p-6 md:p-8 overflow-y-auto">
+                <form onSubmit={handleLaunchSubmit} className="space-y-6">
+                  {/* Row 1 */}
+                  {/* Row 1 */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="name">Full Name</Label>
+                      <div className="relative">
+                        <User className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+                        <Input
+                          id="name"
+                          value={launchFormData.name}
+                          onChange={handleLaunchChange}
+                          required
+                          placeholder="John Doe"
+                          className="pl-10 h-12 bg-gray-50 border-gray-200"
+                        />
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="phone">Phone Number</Label>
+                      <div className="relative">
+                        <Phone className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+                        <Input
+                          id="phone"
+                          type="tel"
+                          value={launchFormData.phone}
+                          onChange={handleLaunchChange}
+                          required
+                          placeholder="+91 98765 43210"
+                          className="pl-10 h-12 bg-gray-50 border-gray-200"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Row 2 */}
+                  <div className="space-y-2">
+                    <Label htmlFor="email">Email Address</Label>
+                    <div className="relative">
+                      <Mail className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+                      <Input
+                        id="email"
+                        type="email"
+                        value={launchFormData.email}
+                        onChange={handleLaunchChange}
+                        required
+                        placeholder="john@example.com"
+                        className="pl-10 h-12 bg-gray-50 border-gray-200"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Row 3 */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="region">Region / State</Label>
+                      <Input
+                        id="region"
+                        value={launchFormData.region}
+                        onChange={handleLaunchChange}
+                        required
+                        placeholder="e.g. Maharashtra"
+                        className="h-12 bg-gray-50 border-gray-200"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="city">City</Label>
+                      <Input
+                        id="city"
+                        value={launchFormData.city}
+                        onChange={handleLaunchChange}
+                        required
+                        placeholder="e.g. Pune"
+                        className="h-12 bg-gray-50 border-gray-200"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="pincode">Pincode</Label>
+                      <Input
+                        id="pincode"
+                        value={launchFormData.pincode}
+                        onChange={handleLaunchChange}
+                        required
+                        placeholder="411001"
+                        className="h-12 bg-gray-50 border-gray-200"
+                      />
+                    </div>
+                  </div>
+
+                  {/* TURNSTILE WIDGET */}
+                  <Turnstile
+                    siteKey="0x4AAAAAACU3xa_c2R9lsOZK"
+                    onSuccess={(token) => setToken(token)}
+                    onError={() => alert("Security check failed")}
+                    options={{ theme: "light" }}
+                  />
+
+                  {/* Submit Area */}
+                  <div className="">
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full h-14 text-lg font-bold bg-primary text-black hover:bg-[#0e1d34] hover:text-white transition-all duration-300"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="mr-2 h-5 w-5 animate-spin" />{" "}
+                          Submitting...
+                        </>
+                      ) : (
+                        <>
+                          Submit Application{" "}
+                          <ArrowRight className="ml-2 w-5 h-5" />
+                        </>
+                      )}
+                    </Button>
+                    <p className="text-center text-xs text-gray-400 mt-4">
+                      Our expansion team will connect with you within 48 hours.
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }

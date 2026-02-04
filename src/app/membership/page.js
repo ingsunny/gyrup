@@ -56,7 +56,7 @@ export default function MembershipPage() {
             trigger: ".features-section",
             start: "top 80%",
           },
-        }
+        },
       );
 
       // 3. PRICING CARDS REVEAL
@@ -87,13 +87,13 @@ export default function MembershipPage() {
           ".gsap-success-heading",
           { x: 150, opacity: 0, scaleX: 1.4, transformOrigin: "right center" },
           { x: 0, opacity: 1, scaleX: 1, duration: 1.1 },
-          "-=0.3"
+          "-=0.3",
         )
         .fromTo(
           ".gsap-success-subheading",
           { x: 120, opacity: 0, scaleX: 1.2, transformOrigin: "right center" },
           { x: 0, opacity: 1, scaleX: 1, duration: 1 },
-          "-=0.6"
+          "-=0.6",
         );
 
       // 5. FORMULA STEPS
@@ -131,7 +131,7 @@ export default function MembershipPage() {
     },
     {
       icon: <Award />,
-      title: "Reward System",
+      title: "Reward System with Passive Income",
       desc: "Earn points for referrals and participation. Get recognized.",
     },
     {

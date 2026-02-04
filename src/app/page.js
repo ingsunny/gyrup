@@ -473,7 +473,7 @@ const Page = () => {
                     Turnover:
                   </span>
                   <span className="text-gray-600">
-                    ₹1 Cr+ (Trade) OR ₹20L+ (Service)
+                    ₹1 Cr+ (Trade) OR ₹10L+ (Service)
                   </span>
                 </li>
                 <li className="flex flex-col md:flex-row items-center gap-3">
@@ -481,14 +481,14 @@ const Page = () => {
                   <span className="font-semibold text-[#0e1d34]">
                     Experience:
                   </span>
-                  <span className="text-gray-600">Minimum 5 Years</span>
+                  <span className="text-gray-600">Minimum 3 Years</span>
                 </li>
                 <li className="flex flex-col md:flex-row items-center gap-3">
                   <ShieldCheck className="text-secondary w-5 h-5" />
                   <span className="font-semibold text-[#0e1d34]">
-                    CIBIL Score:
+                    CIBIL Screening
                   </span>
-                  <span className="text-gray-600">700+ Required</span>
+                  {/* <span className="text-gray-600">700+ Required</span> */}
                 </li>
               </ul>
             </div>
@@ -686,7 +686,7 @@ const usps = [
   {
     icon: <ShieldCheck className="w-8 h-8" />,
     title: "Verified Referrals",
-    desc: "Genuine, qualified, and conversion-focused leads only.",
+    desc: "Genuine, qualified, and conversion-focused referrals only.",
   },
   {
     icon: <Ban className="w-8 h-8 " />,
@@ -700,8 +700,8 @@ const usps = [
   },
   {
     icon: <Award className="w-8 h-8 " />,
-    title: "Reward Program",
-    desc: "Give referrals, earn rewards and recognition.",
+    title: "Reward Program with Passive Income",
+    desc: "Give referrals, earn rewards, recognition with passive income.",
   },
   {
     icon: <CheckCircle2 className="w-8 h-8 " />,
@@ -718,7 +718,7 @@ const usps = [
 const processSteps = [
   "Fortnightly Meetings",
   "Verified Referrals Only",
-  "One-to-One Meetings",
+  "Face-to-Face Meetings",
   "Business Presentations",
   "Participation Reporting",
   "Reward Program",
