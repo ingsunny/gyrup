@@ -25,7 +25,7 @@ export default function Hero() {
       />
 
       <section className="font-jakarta mx-auto px-6 md:px-10 pt-14 md:pt-20 md:pb-12">
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-2 items-center page-load-y">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-2 items-center">
           <div className="w-full lg:w-2/3 text-center md:text-left">
             <h3 className="text-base md:text-lg lg:text-xl uppercase font-semibold text-[#c2e28fdd]">
               Business Consulting Agency
@@ -98,8 +98,9 @@ export default function Hero() {
             width={865}
             height={487}
             sizes="(max-width: 768px) 465px, 90vw"
-            priority
-            className="w-[465px] md:w-full max-h-[700px] object-cover md:absolute md:mb-0 top-10 object-center z-20 px-5 py-10 md:py-0 md:px-10 page-load-y"
+            priority={true} // Keeps the preload behavior
+            fetchPriority="high" // Manually forces the attribute (try this)
+            className="w-[465px] md:w-full max-h-[700px] object-cover md:absolute md:mb-0 top-10 object-center z-20 px-5 py-10 md:py-0 md:px-10"
           />
 
           <div className="hidden md:block md:w-[770px] lg:w-[800px] xl:w-[865px] md:h-[700px] lg:h-[750px] xl:h-[800px] bg-primary ml-auto" />
