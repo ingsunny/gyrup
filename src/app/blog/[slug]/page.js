@@ -13,8 +13,6 @@ import {
   Facebook,
 } from "lucide-react";
 import { motion, useScroll, useSpring } from "framer-motion";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 export default function SingleBlogPage({ params }) {
   // Mock Data (In real app, fetch based on params.slug)
@@ -46,7 +44,6 @@ export default function SingleBlogPage({ params }) {
 
       {/* 2. HEADER */}
       <div className="bg-[#0e1d34]  text-white relative">
-        <Header />
         <div className="container pt-14 md:pt-24 pb-16 md:pb-32 px-6 lg:px-12 relative z-10 max-w-4xl mx-auto text-center">
           <Link
             href="/blog"
@@ -258,8 +255,6 @@ export default function SingleBlogPage({ params }) {
           </div>
         </div>
       </article>
-
-      <Footer />
     </main>
   );
 }

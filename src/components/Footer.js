@@ -40,6 +40,7 @@ const Footer = () => {
             <div className="flex gap-4">
               {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
                 <Link
+                  aria-label={i}
                   key={i}
                   href="#"
                   className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-black transition-all duration-300 group"
@@ -70,6 +71,7 @@ const Footer = () => {
               ].map((item) => (
                 <li key={item}>
                   <Link
+                    aria-label={item}
                     href={`/${item == "Home" ? "" : item.toLowerCase()}`}
                     className="text-gray-400 hover:text-secondary transition-colors flex items-center gap-2 group text-base md:text-lg"
                   >
@@ -188,15 +190,24 @@ const Footer = () => {
           </p>
           <div className="flex gap-6 text-xs md:text-sm text-gray-500">
             <Link
+              aria-label="refund_page"
               href="/refund-policy"
               className="hover:text-primary transition-colors"
             >
               Refund Policy
             </Link>
-            <Link href="#" className="hover:text-primary transition-colors">
+            <Link
+              aria-label="privacy_policy_page"
+              href="#"
+              className="hover:text-primary transition-colors"
+            >
               Privacy Policy
             </Link>
-            <Link href="#" className="hover:text-primary transition-colors">
+            <Link
+              aria-label="term_of_service"
+              href="#"
+              className="hover:text-primary transition-colors"
+            >
               Terms of Service
             </Link>
           </div>

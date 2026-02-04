@@ -11,7 +11,6 @@ import PhotoAlbum from "react-photo-album";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import VideoPlugin from "yet-another-react-lightbox/plugins/video";
-import Header from "@/components/Header";
 
 // --- MOCK DATA (Mix of Images & Videos) ---
 // Note: In a real app, 'src' would be your image/video URL.
@@ -107,7 +106,7 @@ export default function GalleryPage() {
           poster: item.src,
           sources: [{ src: item.videoSrc, type: "video/mp4" }],
         }
-      : { src: item.src }
+      : { src: item.src },
   );
 
   useLayoutEffect(() => {
@@ -153,11 +152,6 @@ export default function GalleryPage() {
       ref={mainRef}
       className="font-jakarta bg-[#0b162a] min-h-screen text-white"
     >
-      {/* =========================================
-          SECTION 1: CINEMATIC HERO
-      ========================================= */}
-      <Header />
-
       {/* =========================================
           SECTION 2: SMART FILTERS
       ========================================= */}

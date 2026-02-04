@@ -170,7 +170,6 @@ export default function MembershipPage() {
           SECTION 1: HERO
       ========================================= */}
       <section className="relative bg-[#063231] text-white">
-        <Header />
         <div className="pt-24 md:pt-32 pb-14 md:pb-32">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] h-[500px] bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
           <div className="container mx-auto px-6 lg:px-12 text-center relative z-10">
@@ -493,8 +492,6 @@ export default function MembershipPage() {
           </Button>
         </div>
       </section> */}
-
-      <Footer />
     </main>
   );
 }

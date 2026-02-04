@@ -136,7 +136,6 @@ export default function TestimonialsPage() {
           SECTION 1: HERO
       ========================================= */}
       <section className="bg-[#0e1d34] text-white relative overflow-hidden">
-        <Header />
         <div className="pt-14 md:pt-24 pb-18 md:pb-32">
           {/* Abstract Chart Graphic */}
           <div className="absolute right-0 bottom-0 opacity-10 w-[600px] h-[400px]">
@@ -356,8 +355,6 @@ export default function TestimonialsPage() {
           </Button>
         </div>
       </section>
-
-      <Footer />
     </main>
   );
 }

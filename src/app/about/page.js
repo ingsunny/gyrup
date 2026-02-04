@@ -20,8 +20,6 @@ import {
 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import FAQSection from "@/components/FAQSection";
 
 export default function AboutPage() {
@@ -164,7 +162,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <main ref={mainRef} className="font-jakarta overflow-hidden bg-white">
+    <main ref={mainRef} className="font-jakarta overflow-hidden bg-white ">
       {/* =========================================
           SECTION 1: HERO (Impactful Intro)
       ========================================= */}
@@ -179,7 +177,6 @@ export default function AboutPage() {
       pointer-events-none
     "
         />
-        <Header />
 
         <div className="pt-14 md:pt-24 pb-28 md:pb-32">
           {/* Abstract Background Elements */}
@@ -542,8 +539,6 @@ export default function AboutPage() {
       </section>
 
       <FAQSection title="GYR UP International – FAQs" highlight="About · FAQ" />
-
-      <Footer />
     </main>
   );
 }

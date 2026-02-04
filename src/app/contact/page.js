@@ -18,8 +18,6 @@ import {
   Contact,
 } from "lucide-react";
 import gsap from "gsap";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import FAQSection from "@/components/FAQSection";
 
 export default function ContactPage() {
@@ -82,7 +80,6 @@ export default function ContactPage() {
           SECTION 1: HEADER
       ========================================= */}
       <section className="bg-[#0e1d34]  relative overflow-hidden">
-        <Header />
         <div className="pt-14 md:pt-24 pb-28 md:pb-32">
           {/* Decorative Circles */}
           <div className="absolute top-20 right-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
@@ -388,8 +385,6 @@ export default function ContactPage() {
         title="GYR UP International – FAQs"
         highlight="Contact · FAQ"
       />
-
-      <Footer />
     </main>
   );
 }

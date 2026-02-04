@@ -19,8 +19,6 @@ import {
 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 
 export default function RefundPolicyPage() {
   const mainRef = useRef(null);
@@ -62,7 +60,7 @@ export default function RefundPolicyPage() {
             trigger: ".policy-grid",
             start: "top 80%",
           },
-        }
+        },
       );
 
       // 4. MATH VISUALIZATION
@@ -115,8 +113,6 @@ export default function RefundPolicyPage() {
           SECTION 1: HERO (Trust Signal)
       ========================================= */}
       <section className="relative  bg-[#0e1d34] text-white overflow-hidden">
-        <Header />
-
         <div className="pt-14 md:pt-24 pb-18 md:pb-32">
           {/* Background Pattern */}
           <div
@@ -347,9 +343,6 @@ export default function RefundPolicyPage() {
           </div>
         </div>
       </section>
-
-      {/* // Footer  */}
-      <Footer />
     </main>
   );
 }

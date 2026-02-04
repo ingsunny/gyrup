@@ -116,7 +116,7 @@ export default function ResourcesPage() {
             trigger: ".downloads-grid",
             start: "top 80%",
           },
-        }
+        },
       );
 
       // 3. BLOG FADE UP
@@ -141,7 +141,6 @@ export default function ResourcesPage() {
           SECTION 1: HERO
       ========================================= */}
       <section className="bg-[#0e1d34]  text-white relative overflow-hidden">
-        <Header />
         <div className="pt-14 md:pt-24 pb-20 md:pb-32">
           {/* Abstract Book/Doc Graphic */}
           <div className="absolute right-[-100px] top-1/2 -translate-y-1/2 opacity-5 rotate-12">
@@ -333,8 +332,6 @@ export default function ResourcesPage() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </main>
   );
 }

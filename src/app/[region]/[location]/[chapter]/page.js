@@ -1,8 +1,6 @@
 "use client";
 
 import React, { use, useLayoutEffect, useRef } from "react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import {
   Award,
   Users,
@@ -169,7 +167,7 @@ export default function ChapterDetailPage({ params }) {
   // Merge Data
   const contributors = baseContributors.map((c) => {
     const category = recognitionCategories.find(
-      (cat) => cat.key === c.awardKey
+      (cat) => cat.key === c.awardKey,
     );
     return {
       ...c,
@@ -205,7 +203,7 @@ export default function ChapterDetailPage({ params }) {
           stagger: 0.15,
           ease: "power2.out",
           scrollTrigger: { trigger: ".contributors-grid", start: "top 85%" },
-        }
+        },
       );
 
       // Legend Fade Up
@@ -225,8 +223,6 @@ export default function ChapterDetailPage({ params }) {
           SECTION 1: HERO (Dark & Premium)
       ========================================= */}
       <section className="bg-[#0b162a] text-white relative overflow-hidden pb-24">
-        <Header />
-
         <div className="pt-22 pb-10 relative z-10 container mx-auto px-6 lg:px-12 text-center">
           {/* Breadcrumb / Location Badge */}
           <div className="hero-text inline-flex items-center gap-2 border border-white/10 bg-white/5 rounded-full px-4 py-1.5 mb-8 backdrop-blur-md">
@@ -372,8 +368,6 @@ export default function ChapterDetailPage({ params }) {
           </div>
         </div>
       </section>
-
-      <Footer />
     </main>
   );
 }

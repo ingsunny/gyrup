@@ -24,8 +24,7 @@ import {
   Users,
 } from "lucide-react";
 import gsap from "gsap";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+
 import FAQSection from "@/components/FAQSection";
 import { useSearchParams } from "next/navigation";
 import { Turnstile } from "@marsidev/react-turnstile";
@@ -260,8 +259,6 @@ export default function JoinPage() {
           SECTION 1: HERO HEADER
       ========================================= */}
       <section className="bg-[#0e1d34] text-white relative overflow-hidden">
-        <Header />
-
         <div className="pt-14 md:pt-24 pb-16 md:pb-32s">
           {/* Abstract Glow */}
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2"></div>
@@ -893,8 +890,6 @@ export default function JoinPage() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </main>
   );
 }

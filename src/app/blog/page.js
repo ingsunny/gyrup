@@ -13,8 +13,6 @@ import {
 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 // --- MOCK DATA ---
 const categories = [
@@ -121,7 +119,7 @@ export default function BlogListingPage() {
           stagger: 0.1,
           ease: "power2.out",
           scrollTrigger: { trigger: ".blog-grid", start: "top 85%" },
-        }
+        },
       );
     }, mainRef);
 
@@ -134,8 +132,6 @@ export default function BlogListingPage() {
           SECTION 1: HERO
       ========================================= */}
       <section className="bg-[#0e1d34]  text-white relative overflow-hidden">
-        <Header />
-
         <div className="pt-14 md:pt-24 pb-16 md:pb-32">
           <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
           <div className="container mx-auto px-6 lg:px-12 relative z-10 text-center">
@@ -307,8 +303,6 @@ export default function BlogListingPage() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </main>
   );
 }

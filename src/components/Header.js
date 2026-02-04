@@ -17,18 +17,11 @@ import {
   Sheet,
   SheetContent,
   SheetTrigger,
-  SheetHeader,
-  SheetTitle,
   SheetClose,
 } from "@/components/ui/sheet";
 import { useState } from "react";
-
-import {
-  AnimatePresence,
-  motion,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,8 +31,6 @@ export default function Header() {
     { name: "About", href: "/about" },
     { name: "Regions", href: "/regions" },
     { name: "Membership", href: "/membership" },
-    // { name: "Resources", href: "/resources" },
-    // { name: "Contact", href: "/contact" },
     { name: "Team", href: "/team" },
     { name: "Gallery", href: "/gallery" },
   ];
@@ -49,52 +40,27 @@ export default function Header() {
     { name: "About", href: "/about" },
     { name: "Regions", href: "/regions" },
     { name: "Membership", href: "/membership" },
-    // { name: "Resources", href: "/resources" },
     { name: "Testimonials", href: "/testimonials" },
     { name: "Team", href: "/team" },
     { name: "Gallery", href: "/gallery" },
     { name: "Contact", href: "/contact" },
   ];
 
-  const { scrollY } = useScroll();
-
-  const y = useTransform(scrollY, [2, 300], [0, -300]);
-
-  // const opacity = useTransform(scrollY, [0, 100], [1, 1]);
-
-  const containerVars = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1, // The "Buttery" delay between items
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVars = {
-    hidden: { y: 20, opacity: 0 },
-    show: { y: 0, opacity: 1, transition: { ease: "easeOut", duration: 0.4 } },
-  };
-
   return (
-    <motion.header
-      style={{ y }}
-      className="header w-full bg-transparent border-b border-[#365a59] px-5 md:px-10 z-50"
-    >
+    <header className="fixed top-0 left-0 right-0 w-full bg-[#063231] border-b border-[#365a59] px-5 md:px-10 z-50">
       {/* --- MAIN NAVBAR --- */}
-      <div className="bg-transparent font-jakarta  sticky top-0 z-50 shadow-sm">
-        <div className="py-2 md:py-4 flex items-center justify-between ">
+      <div className="font-jakarta">
+        <div className="py-2 md:py-4 flex items-center justify-between">
           {/* Logo */}
-          <Link
-            href="/"
-            className="text-2xl font-bold text-[#0e1d34] flex items-center gap-2"
-          >
-            <img
+          <Link href="/" className="flex items-center gap-2">
+            <Image
               src="/logo2.png"
-              alt="Bizzen logo"
-              className="w-32 md:w-42 h-18 object-contain"
+              alt="logo"
+              width={180}
+              height={70}
+              sizes="(max-width: 768px) 128px, 180px"
+              priority
+              className="w-32 md:w-[180px] h-auto object-contain"
             />
           </Link>
 
@@ -104,52 +70,48 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-base font-medium  text-white hover:text-primary transition-colors relative group"
+                className="text-base font-medium text-white hover:text-primary transition-colors relative group"
               >
                 {item.name}
-                <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+                <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
               </Link>
             ))}
           </nav>
 
           {/* CTA */}
           <div className="hidden lg:block">
-            <Button
-              className="
-                relative overflow-hidden group
-                bg-primary/90 text-black
-                hover:text-white
-                text-lg tracking-wide rounded-none
-                !px-7 !py-7 mt-2 cursor-pointer
-              "
-            >
-              <Link href="/join-gyrup">
+            <Link href="/join-gyrup">
+              <Button
+                className="
+                  relative overflow-hidden group
+                  bg-primary/90 text-black hover:text-white
+                  text-lg tracking-wide rounded-none
+                  !px-7 !py-7 mt-2 cursor-pointer
+                "
+              >
                 <span className="relative z-10 flex items-center gap-2">
                   Join GYR UP <ArrowRight size={20} />
                 </span>
 
-                {/* WAVY FILL */}
                 <span
                   className="
-                  absolute inset-0 -z-0
-                  before:absolute before:inset-0
-                  before:bg-secondary
-                  before:[clip-path:url(#wave-clip)]
-                  before:translate-y-full
-                  group-hover:before:translate-y-0
-                  before:transition-transform before:duration-700 before:ease-in-out
-                "
-                ></span>
+                    absolute inset-0 -z-0
+                    before:absolute before:inset-0
+                    before:bg-secondary
+                    before:[clip-path:url(#wave-clip)]
+                    before:translate-y-full
+                    group-hover:before:translate-y-0
+                    before:transition-transform before:duration-700 before:ease-in-out
+                  "
+                />
 
-                {/* Hidden SVG wave definition */}
                 <svg className="hidden">
                   <clipPath id="wave-clip" clipPathUnits="objectBoundingBox">
-                    {/* <!-- ACTUAL WAVY SHAPE --> */}
-                    <path d="M0,0.7 C0.25,0.6 0.75,0.8 1,0.7 L1,1 L0,1 Z"></path>
+                    <path d="M0,0.7 C0.25,0.6 0.75,0.8 1,0.7 L1,1 L0,1 Z" />
                   </clipPath>
                 </svg>
-              </Link>
-            </Button>
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu */}
@@ -165,30 +127,23 @@ export default function Header() {
                 </Button>
               </SheetTrigger>
 
-              {/* 1. DARK THEME: bg-[#0b162a]
-                  2. BORDER: border-white/10 for subtle edge
-                  3. FULL WIDTH on small screens: w-full3
-              */}
               <SheetContent
                 side="right"
-                className="w-full sm:w-[400px] bg-[#0b162a] border-l border-white/10 p-0 text-white "
+                className="w-full sm:w-[400px] bg-[#0b162a] border-l border-white/10 p-0 text-white"
               >
-                {/* Custom Header inside Sheet to hold the Close Button */}
                 <div className="flex justify-between items-center py-2 md:py-4 px-5 md:px-10 border-b border-white/5">
-                  {/* <span className="text-2xl font-bold tracking-tighter">
-                    GYR<span className="text-primary">UP</span>
-                  </span> */}
-                  <Link
-                    href="/"
-                    className="text-2xl font-bold text-[#0e1d34] flex items-center gap-2"
-                  >
-                    <img
+                  <Link href="/" className="flex items-center gap-2">
+                    <Image
                       src="/logo2.png"
-                      alt="Bizzen logo"
-                      className="w-32 md:w-42 h-18 object-contain"
+                      alt="logo mobile"
+                      width={180}
+                      height={70}
+                      sizes="(max-width: 768px) 128px, 180px"
+                      priority
+                      className="w-32 md:w-[180px] h-auto object-contain"
                     />
                   </Link>
-                  {/* Using SheetClose for accessible closing */}
+
                   <SheetClose asChild>
                     <Button
                       variant="ghost"
@@ -200,27 +155,43 @@ export default function Header() {
                   </SheetClose>
                 </div>
 
-                {/* ANIMATED LIST CONTAINER */}
                 <div className="h-full flex flex-col justify-between p-8 pb-12 overflow-y-auto">
-                  {/* NAVIGATION LINKS */}
                   <AnimatePresence>
                     {isOpen && (
                       <motion.ul
-                        variants={containerVars}
                         initial="hidden"
                         animate="show"
                         exit="hidden"
+                        variants={{
+                          hidden: { opacity: 0 },
+                          show: {
+                            opacity: 1,
+                            transition: {
+                              staggerChildren: 0.08,
+                              delayChildren: 0.1,
+                            },
+                          },
+                        }}
                         className="flex flex-col gap-6 mb-6"
                       >
-                        {mobileNavItems.map((item, i) => (
-                          <motion.li key={item.name} variants={itemVars}>
+                        {mobileNavItems.map((item) => (
+                          <motion.li
+                            key={item.name}
+                            variants={{
+                              hidden: { y: 16, opacity: 0 },
+                              show: {
+                                y: 0,
+                                opacity: 1,
+                                transition: { duration: 0.25 },
+                              },
+                            }}
+                          >
                             <Link
                               href={item.href}
                               onClick={() => setIsOpen(false)}
                               className="group flex items-center justify-between text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-300 to-gray-500 hover:from-white hover:to-primary transition-all duration-300"
                             >
                               {item.name}
-                              {/* Hover Arrow */}
                               <ArrowRight className="w-6 h-6 text-primary opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
                             </Link>
                           </motion.li>
@@ -229,13 +200,7 @@ export default function Header() {
                     )}
                   </AnimatePresence>
 
-                  {/* BOTTOM SECTION: Socials & Contact */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.6, duration: 0.5 }}
-                    className="space-y-6"
-                  >
+                  <div className="space-y-6">
                     <Button className="w-full bg-primary text-black hover:bg-white font-bold h-12 text-lg rounded-none">
                       <Link href="/join-gyrup">
                         <span className="flex items-center gap-2">
@@ -273,13 +238,13 @@ export default function Header() {
                         <span>+91 99115 69713</span>
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
                 </div>
               </SheetContent>
             </Sheet>
           </div>
         </div>
       </div>
-    </motion.header>
+    </header>
   );
 }

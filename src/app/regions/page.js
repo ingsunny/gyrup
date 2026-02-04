@@ -21,8 +21,6 @@ import {
 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import { Label } from "@radix-ui/react-label";
 import { AnimatePresence, motion } from "framer-motion";
 import { Turnstile } from "@marsidev/react-turnstile";
@@ -217,8 +215,7 @@ export default function ChaptersPage() {
           SECTION 1: HERO & SEARCH
       ========================================= */}
       <section className="bg-[#0e1d34] text-white relative">
-        <Header />
-        <div className="pt-14 md:pt-24 pb-32">
+        <div className="pt-16 md:pt-28 pb-32 md:pb-38">
           <div
             className="absolute inset-0 opacity-10"
             style={{
@@ -262,7 +259,7 @@ export default function ChaptersPage() {
       {/* =========================================
           SECTION 2: CHAPTERS GRID
       ========================================= */}
-      <section className="pt-18 pb-20 md:pt-22 md:pb-24">
+      <section className="pt-16 pb-20 md:pt-18 md:pb-24">
         <div className="container mx-auto px-6 lg:px-12">
           {/* Header */}
           <div className="flex flex-col md:flex-row justify-between items-center mb-12">
@@ -450,7 +447,6 @@ export default function ChaptersPage() {
           </div>
         </div>
       </section> */}
-      <Footer />
 
       {/* =========================================
           MODAL: LAUNCH A CHAPTER

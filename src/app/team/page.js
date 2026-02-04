@@ -1,93 +1,103 @@
 "use client";
 
 import React, { useLayoutEffect, useRef } from "react";
+import * as Accordion from "@radix-ui/react-accordion";
 import Link from "next/link";
+import Image from "next/image";
 import {
+  ChevronDown,
   Linkedin,
   Mail,
+  User,
   BrainCircuit,
+  Rocket,
+  Scale,
   CheckCircle2,
   Quote,
-  User,
-  Globe,
-  Building2,
-  Scale,
-  Cpu,
-  ArrowRight,
 } from "lucide-react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 // --- DATA ---
 const teamMembers = [
   {
-    id: 1,
+    id: "pradeep",
     name: "Pradeep Goyal",
     title: "Visionary Founder | Chief Strategist | Head of Operations",
-    image: "founders/pradeep.PNG",
-    role_highlight: "The Ecosystem Architect",
-    icon: <BrainCircuit className="w-4 h-4" />,
-    bio: `Pradeep is widely regarded as the architect of the GYR UP ecosystem—its structure, systems, and execution model. With over 16 years of extensive experience in the automobile dealership network (Maruti Suzuki, Toyota, Mahindra & Mahindra), his expertise lies in sales leadership, dealer operations, and process discipline. As the Founder of SPG Group of Companies, he builds ventures with a strategist’s mindset—focused on governance and sustainable execution rather than short-term wins. By blending dealership-network discipline with entrepreneurial insight, he is shaping GYR UP International into a credible, structured, and high-impact business networking platform.`,
+    icon: <BrainCircuit className="w-5 h-5 text-primary" />,
+    image: "/founders/pradeep.PNG",
+    // Short Intro for the collapsed view
+    intro:
+      "The architect of the GYR UP ecosystem. Blending 16+ years of corporate automotive discipline with entrepreneurial vision to build scalable governance frameworks.",
+    // Full Bio for expanded view
+    bio: `Pradeep is widely regarded as the architect of the GYR UP ecosystem—its structure, systems, and execution model. With over 16 years of extensive experience in the automobile dealership network (Maruti Suzuki, Toyota, Mahindra & Mahindra), his expertise lies in sales leadership, dealer operations, and process discipline. 
+
+    As the Founder of SPG Group of Companies, he builds ventures with a strategist’s mindset—focused on governance and sustainable execution rather than short-term wins. By blending dealership-network discipline with entrepreneurial insight, he is shaping GYR UP International into a credible, structured, and high-impact business networking platform for serious entrepreneurs.`,
     highlights: [
       "Vision & Ecosystem Design",
       "Strategic Thinking & System Architecture",
       "Operations, SOPs & Governance",
-      "Ethics, Discipline & Process Compliance",
       "Chapter, Region & Leadership Frameworks",
+      "Ethics, Discipline & Process Compliance",
     ],
-    philosophy:
+    quote:
       "A strong ecosystem is not built by motivation alone, but by clarity, systems, and consistent execution.",
     social: { linkedin: "#", email: "pradeep@gyrup.com" },
   },
+  {
+    id: "aditya",
+    name: "Aditya Aggarwal",
+    title: "Founder – GYR UP Universe",
+    icon: <Rocket className="w-5 h-5 text-blue-500" />,
+    image: null,
+    intro:
+      "Global digital growth leader & technology-first entrepreneur. Scaling performance-driven businesses across international markets with data-led execution.",
+    bio: `Aditya Aggarwal is a global digital growth leader and technology-first entrepreneur with 12+ years of experience scaling performance-driven businesses across international markets. He is the Founder of Appmontize Media, a high-growth digital marketing company operating across the United States, India, Singapore, Indonesia, and the UAE, with ₹100 crore+ in cumulative revenue.
+
+    An Electrical Engineering graduate, Aditya previously worked with Affle India, where he built deep capabilities in large-scale performance marketing, user acquisition, and analytics-driven growth strategies. As a Founder of GYR UP Universe, Aditya brings a technology, automation, and growth-systems mindset, contributing to the creation of digital platforms and scalable growth frameworks.`,
+    highlights: [
+      "Data-Led Growth Systems",
+      "Digital Platforms & Automation",
+      "Referral Tracking Systems",
+      "Performance Dashboards",
+      "ROI-Focused Digital Execution",
+    ],
+    quote: "Build systems. Drive growth. Multiply value.",
+    social: {
+      linkedin: "https://www.linkedin.com/in/aditya-agarwal-b66a5750/",
+      email: "aditya@appmontize.co.in",
+    },
+  },
   // {
-  //   id: 2,
-  //   name: "Aditya Aggarwal",
-  //   title: "Founder – GYR UP International | Global Digital Growth Leader",
-  //   image: "founders/aditya.png", // Ensure you have this image
-  //   role_highlight: "Technology & Growth Engines",
-  //   icon: <Cpu className="w-4 h-4" />,
-  //   bio: `Aditya Aggarwal is a global digital growth leader and technology-first entrepreneur with 12+ years of experience scaling performance-driven businesses across international markets. He is the Founder of Appmontize Media, a high-growth digital marketing company operating across the United States, India, Singapore, Indonesia, and the UAE, with ₹100 crore+ in cumulative revenue. An Electrical Engineering graduate, Aditya previously worked with Affle India, building deep capabilities in large-scale performance marketing, user acquisition, and analytics-driven growth strategies. As a Founder of GYR UP International, he brings a technology, automation, and growth-systems mindset, creating digital platforms, referral tracking systems, and performance dashboards and scalable growth frameworks for members.`,
-  //   highlights: [
-  //     "Data-Led Growth & Scalable Systems",
-  //     "ROI-Focused Digital Execution",
-  //     "Performance Dashboards & Automation",
-  //     "Global Market Expansion Strategy",
-  //   ],
-  //   philosophy: "Build systems. Drive growth. Multiply value.",
-  //   social: {
-  //     linkedin: "https://www.linkedin.com/in/aditya-agarwal-b66a5750/",
-  //     email: "aditya@appmontize.co.in",
-  //   },
-  // },
-  // {
-  //   id: 3,
+  //   id: "bikash",
   //   name: "Bikash Singhi",
-  //   title: "Advisor to Board | Chartered Accountant & Strategist",
-  //   image: "founders/Bikash.jpg", // Ensure you have this image
-  //   role_highlight: "Governance & Financial Discipline",
-  //   icon: <Scale className="w-4 h-4" />,
-  //   bio: `Bikash Singhi is a highly respected Chartered Accountant with over 25 years of experience across banking, finance, corporate law, taxation, compliance, and business structuring. A member of the Institute of Chartered Accountants of India since 2000, he combines strong regulatory expertise with a growth-driven advisory approach to enable scalable and sustainable businesses. He is the Founder Partner of Singhi Bikash & Associates and an Advisory Board member at Singhi Professional Services Pvt. Ltd., where he supports entrepreneurs and enterprises in building profitable, compliant, and resilient business structures. A qualified LL.B and Insolvency Professional with advanced ICAI certifications in Forensic Audit, Concurrent Audit, BRSR, and PMLA, he integrates governance with growth. As Advisor to the Board of GYR UP International, he promotes a growth-with-governance philosophy, helping members strengthen revenue, credibility, and long-term trust.`,
+  //   title: "Advisor to Board",
+  //   icon: <Scale className="w-5 h-5 text-green-500" />,
+  //   image: "/founders/bikash.png",
+  //   intro:
+  //     "Highly respected CA with 25+ years in finance & law. Enabling scalable, compliant, and sustainable business growth through governance.",
+  //   bio: `Bikash Singhi is a highly respected Chartered Accountant with over 25 years of professional experience spanning banking, finance, corporate law, taxation, compliance, and business structuring. A member of the ICAI since 2000, he is known for enabling scalable, compliant, and sustainable business growth.
+
+  //   He is the Founder Partner of Singhi Bikash & Associates and serves on the Advisory Board of Singhi Professional Services Pvt. Ltd. A qualified LL.B and Insolvency Professional, Bikash also holds advanced ICAI certifications in Forensic Audit, Concurrent Audit, BRSR, and PMLA. As an Advisor to Board of GYR UP International, Bikash brings a growth-with-governance philosophy, ensuring the ecosystem enables members to expand through credible structures.`,
   //   highlights: [
-  //     "Corporate Law & Business Structuring",
-  //     "Forensic Audit & Risk Management",
-  //     "Regulatory Compliance & Taxation",
-  //     "Sustainable Business Expansion",
+  //     "Corporate Law & Taxation",
+  //     "Business Structuring for Expansion",
+  //     "Risk Management & Compliance",
+  //     "Forensic Audit & Financial Discipline",
+  //     "Growth-with-Governance Strategy",
   //   ],
-  //   philosophy: "Credible structures. Compliant growth. Long-term value.",
+  //   quote: "Credible structures. Compliant growth. Long-term value.",
   //   social: { linkedin: "#", email: "bikash@gyrup.com" },
   // },
 ];
 
 export default function TeamPage() {
-  const mainRef = useRef(null);
+  const heroRef = useRef(null);
 
   useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
     const ctx = gsap.context(() => {
-      // Hero
+      // Simple fade up for hero text
       gsap.from(".hero-anim", {
         y: 50,
         opacity: 0,
@@ -95,176 +105,175 @@ export default function TeamPage() {
         stagger: 0.1,
         ease: "power3.out",
       });
-
-      // Rows
-      teamMembers.forEach((_, i) => {
-        const row = `.founder-row-${i}`;
-        const img = `.founder-img-${i}`;
-        const txt = `.founder-txt-${i}`;
-
-        // Image Slide
-        gsap.from(img, {
-          x: i % 2 === 0 ? -50 : 50,
-          opacity: 0,
-          duration: 1,
-          scrollTrigger: { trigger: row, start: "top 75%" },
-        });
-
-        // Text Fade Up
-        gsap.from(txt, {
-          y: 40,
-          opacity: 0,
-          duration: 1,
-          delay: 0.2,
-          scrollTrigger: { trigger: row, start: "top 75%" },
-        });
-      });
-    }, mainRef);
-
+    }, heroRef);
     return () => ctx.revert();
   }, []);
 
   return (
-    <main ref={mainRef} className="font-jakarta bg-white text-[#0e1d34]">
+    <div className="font-jakarta bg-gray-50 min-h-screen">
       {/* =========================================
-          SECTION 1: HERO (UNCHANGED)
+          SECTION 1: HERO (Preserved Style)
       ========================================= */}
-      <section className="bg-[#0e1d34] text-white relative overflow-hidden">
-        <Header />
-        <div className="pt-18 pb-20 relative z-10">
+      <section
+        ref={heroRef}
+        className="bg-[#0e1d34] text-white relative overflow-hidden pb-18"
+      >
+        <div className="pt-20 pb-24 relative z-10 container mx-auto px-6 lg:px-12 text-center">
           <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px]"></div>
-          <div className="container mx-auto px-6 lg:px-12 text-center">
-            <div className="hero-anim inline-flex items-center border border-white/10 bg-white/5 rounded-full px-5 py-2 mb-6 backdrop-blur-md">
-              <User className="w-5 h-5 text-primary inline-block mr-2" />
-              <span className="text-primary text-sm font-bold tracking-[0.2rem] uppercase">
-                Core Leadership
-              </span>
-            </div>
-            <h1 className="hero-anim text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              Meet The Visionaries
-            </h1>
-            <p className="hero-anim text-gray-300 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
-              Driving the GYR UP ecosystem with strategy, technology, and
-              governance.
-            </p>
+
+          <div className="hero-anim inline-flex items-center border border-white/10 bg-white/5 rounded-full px-5 py-2 mb-6 backdrop-blur-md">
+            <User className="w-5 h-5 text-primary inline-block mr-2" />
+            <span className="text-primary text-sm font-bold tracking-[0.2rem] uppercase">
+              Core Leadership
+            </span>
           </div>
+
+          <h1 className="hero-anim text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+            Meet The Visionaries
+          </h1>
+
+          <p className="hero-anim text-gray-300 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
+            Driving the GYR UP ecosystem with strategy, technology, and
+            governance.
+          </p>
         </div>
+
+        {/* Gradient Fade at bottom */}
       </section>
 
       {/* =========================================
-          SECTION 2: FOUNDERS (ZIG ZAG LAYOUT)
+          SECTION 2: INTERACTIVE ACCORDION LIST
       ========================================= */}
-      <div className="flex flex-col pb-20 lg:pb-28">
-        {teamMembers.map((member, index) => (
-          <section
-            key={member.id}
-            className={`founder-row-${index} pt-18 md:pt-20 relative `}
-          >
-            <div className=" max-w-[2000px] mx-auto px-6 lg:px-12">
-              <div
-                className={`flex flex-col lg:flex-row items-center gap-12 lg:gap-20 ${
-                  index % 2 !== 0 ? "lg:flex-row-reverse" : ""
-                }`}
+      <section className="-mt-20 relative z-30 pb-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+          <Accordion.Root type="single" collapsible className="space-y-4">
+            {teamMembers.map((m) => (
+              <Accordion.Item
+                key={m.id}
+                value={m.id}
+                className="border border-gray-200 rounded-2xl overflow-hidden bg-white shadow-lg transition-all duration-300 data-[state=open]:ring-2 data-[state=open]:ring-primary/20"
               >
-                {/* --- IMAGE COLUMN --- */}
-                <div className={`founder-img-${index} w-full lg:w-5/12`}>
-                  <div className="relative group mx-auto max-w-md lg:max-w-none">
-                    {/* Abstract Background Decoration */}
-                    <div
-                      className={`absolute top-6 ${index % 2 === 0 ? "-left-6" : "-right-6"} w-3/4 h-3/4 bg-gray-50 -z-10 rounded-3xl`}
-                    ></div>
-                    <div
-                      className={`absolute -bottom-4 ${index % 2 === 0 ? "-right-4" : "-left-4"} w-24 h-24 bg-primary/5 rounded-full -z-10 blur-xl`}
-                    ></div>
+                {/* HEADER TRIGGER */}
+                <Accordion.Header>
+                  <Accordion.Trigger className="group w-full text-left p-5 md:p-6 flex flex-col md:flex-row items-start md:items-center gap-6 hover:bg-gray-50 transition-colors cursor-pointer outline-none">
+                    {/* 1. Circular Avatar */}
+                    <div className="relative w-16 h-16 md:w-20 md:h-20 shrink-0 rounded-full overflow-hidden border-2 border-gray-100 bg-gray-200 shadow-sm group-hover:scale-105 transition-transform duration-300 flex items-center justify-center">
+                      {m.image ? (
+                        <Image
+                          src={m.image}
+                          alt={m.name}
+                          fill
+                          sizes="(max-width: 768px) 64px, 80px"
+                          className="object-cover object-top"
+                        />
+                      ) : (
+                        <span
+                          aria-hidden="true"
+                          className="text-xl md:text-3xl font-bold text-[#0e1d34] select-none"
+                        >
+                          {m.name ? m.name.charAt(0).toUpperCase() : "?"}
+                        </span>
+                      )}
+                    </div>
 
-                    {/* Image Frame */}
-                    <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl bg-gray-200">
-                      {/* Use <img> tag here */}
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        className="w-full h-full object-cover object-top transition-all duration-700 ease-in-out scale-100 group-hover:scale-105"
-                      />
+                    {/* 2. Middle Content (Name, Title, Intro) */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
+                        <div>
+                          <h3 className="text-xl font-bold text-[#0e1d34] flex items-center gap-2">
+                            {m.name}
+                          </h3>
+                          <p className="text-sm font-semibold text-primary uppercase tracking-wide">
+                            {m.title}
+                          </p>
+                        </div>
+                      </div>
 
-                      {/* Floating Name Overlay (Mobile Only) */}
-                      <div className="lg:hidden absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-6 pt-12">
-                        <h3 className="text-white text-2xl font-bold">
-                          {member.name}
-                        </h3>
+                      {/* Short Intro (Visible in Collapsed) */}
+                      <p className="text-sm text-gray-500 line-clamp-2 md:line-clamp-2 leading-relaxed">
+                        {m.intro}
+                      </p>
+                    </div>
+
+                    {/* 3. Right Side: Socials & Chevron */}
+                    <div className="flex items-center gap-3 shrink-0 mt-2 md:mt-0 w-full md:w-auto justify-between md:justify-end border-t md:border-t-0 border-gray-100 pt-4 md:pt-0">
+                      <div
+                        className="flex gap-2"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <Link href={m.social.linkedin} target="_blank">
+                          <div className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-[#0077b5] hover:text-white transition-colors cursor-pointer">
+                            <Linkedin className="w-4 h-4" />
+                          </div>
+                        </Link>
+                        <Link href={`mailto:${m.social.email}`}>
+                          <div className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-primary hover:text-white transition-colors cursor-pointer">
+                            <Mail className="w-4 h-4" />
+                          </div>
+                        </Link>
+                      </div>
+
+                      {/* Chevron Indicator */}
+                      <div className="w-9 h-9 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-400 group-data-[state=open]:bg-[#0e1d34] group-data-[state=open]:text-white transition-all">
+                        <ChevronDown className="w-5 h-5 transition-transform duration-300 group-data-[state=open]:rotate-180" />
+                      </div>
+                    </div>
+                  </Accordion.Trigger>
+                </Accordion.Header>
+
+                {/* EXPANDED CONTENT */}
+                <Accordion.Content className="overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up bg-gray-50/50">
+                  <div className="px-6 md:px-8 pb-8 pt-4">
+                    <div className="h-px w-full bg-gray-200 mb-6"></div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                      {/* Bio Column */}
+                      <div className="lg:col-span-2 space-y-6">
+                        <div>
+                          <h4 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">
+                            About The Leader
+                          </h4>
+                          <p className="text-gray-700 leading-relaxed whitespace-pre-line text-sm md:text-base">
+                            {m.bio}
+                          </p>
+                        </div>
+
+                        {/* Quote Box */}
+                        <div className="bg-white border-l-4 border-primary p-5 rounded-r-lg shadow-sm">
+                          <Quote className="w-6 h-6 text-gray-300 mb-2" />
+                          <p className="text-[#0e1d34] font-medium italic">
+                            "{m.quote}"
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Details Column */}
+                      <div className="lg:col-span-1">
+                        <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm h-fit">
+                          <h4 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4 flex items-center gap-2">
+                            Key Areas of Focus
+                          </h4>
+                          <ul className="space-y-3">
+                            {m.highlights.map((h, i) => (
+                              <li
+                                key={i}
+                                className="flex items-start gap-3 text-sm text-gray-700 font-medium"
+                              >
+                                <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                                {h}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-
-                {/* --- TEXT COLUMN --- */}
-                <div className={`founder-txt-${index} w-full lg:w-7/12`}>
-                  {/* Role Tag */}
-                  <div className="flex items-center gap-2 text-primary font-bold uppercase tracking-widest text-xs mb-4">
-                    {member.icon}
-                    <span>{member.role_highlight}</span>
-                  </div>
-
-                  {/* Name & Title */}
-                  <h2 className="text-4xl md:text-5xl font-bold text-[#0e1d34] mb-3 leading-tight hidden lg:block">
-                    {member.name}
-                  </h2>
-                  <p className="text-lg md:text-xl text-gray-500 font-medium mb-8">
-                    {member.title}
-                  </p>
-
-                  {/* Bio */}
-                  <div className="text-gray-600 mb-10 leading-relaxed text-lg space-y-4">
-                    {/* We can split the bio if it has newlines, or just render it */}
-                    <p>{member.bio}</p>
-                  </div>
-
-                  {/* Quote / Philosophy */}
-                  <div className="mb-10 pl-6 border-l-4 border-primary/30 py-1">
-                    <p className="text-xl md:text-2xl font-serif italic text-[#0e1d34] leading-relaxed">
-                      "{member.philosophy}"
-                    </p>
-                  </div>
-
-                  {/* Highlights Grid */}
-                  <div className="bg-gray-50 rounded-xl p-6 md:p-8">
-                    <h4 className="text-sm font-bold uppercase text-gray-400 mb-4 tracking-wider">
-                      Key Areas of Impact
-                    </h4>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-6">
-                      {member.highlights.map((highlight, idx) => (
-                        <div key={idx} className="flex items-start gap-3">
-                          <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                          <span className="text-sm font-semibold text-[#0e1d34]">
-                            {highlight}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Social Actions */}
-                  <div className="flex gap-6 mt-8">
-                    <Link
-                      href={member.social.linkedin}
-                      className="flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-[#0077b5] transition-colors"
-                    >
-                      <Linkedin className="w-5 h-5" /> LinkedIn Profile
-                    </Link>
-                    <Link
-                      href={`mailto:${member.social.email}`}
-                      className="flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-primary transition-colors"
-                    >
-                      <Mail className="w-5 h-5" /> Email Contact
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        ))}
-      </div>
-
-      <Footer />
-    </main>
+                </Accordion.Content>
+              </Accordion.Item>
+            ))}
+          </Accordion.Root>
+        </div>
+      </section>
+    </div>
   );
 }
