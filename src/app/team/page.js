@@ -16,8 +16,6 @@ import {
   Quote,
 } from "lucide-react";
 import gsap from "gsap";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 // --- DATA ---
 const teamMembers = [
@@ -48,7 +46,7 @@ const teamMembers = [
   {
     id: "aditya",
     name: "Aditya Aggarwal",
-    title: "Founder – GYR UP Universe",
+    title: "Founder – GYR UP International | Global Digital Growth Leader",
     icon: <Rocket className="w-5 h-5 text-blue-500" />,
     image: null,
     intro:

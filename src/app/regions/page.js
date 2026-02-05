@@ -63,6 +63,32 @@ const regions = [
     chapters: [],
   },
   {
+    name: "Haryana",
+    city: "Gurugram",
+    chapters: [{ name: "Gurugram", pincode: null }],
+  },
+  {
+    name: "Uttar Pradesh",
+    city: "Muzaffarpur",
+    chapters: [{ name: "Muzaffarpur", pincode: null }],
+  },
+  {
+    name: "Madhya Pradesh",
+    city: "Indore",
+    chapters: [{ name: "Indore", pincode: null }],
+  },
+  {
+    name: "Rajasthan",
+    city: "Jaipur",
+    chapters: [{ name: "Jaipur", pincode: null }],
+  },
+  {
+    name: "Goa",
+    city: "Goa",
+    chapters: [{ name: "Goa", pincode: null }],
+  },
+
+  {
     name: "Chennai East",
     city: "Chennai",
     chapters: [],
@@ -106,7 +132,17 @@ export default function ChaptersPage() {
         region.name.toLowerCase().includes(filter.toLowerCase()) ||
         region.city.toLowerCase().includes(filter.toLowerCase()) ||
         region.chapters.length > 0,
-    );
+    )
+
+    .sort((a, b) => {
+      const aHasChapters = a.chapters.length > 0;
+      const bHasChapters = b.chapters.length > 0;
+
+      if (aHasChapters && !bHasChapters) return -1;
+      if (!aHasChapters && bHasChapters) return 1;
+
+      return 0;
+    });
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -264,7 +300,7 @@ export default function ChaptersPage() {
           {/* Header */}
           <div className="flex flex-col md:flex-row justify-between items-center mb-12">
             <h2 className="text-2xl font-bold text-[#0e1d34] flex items-center gap-2">
-              <MapPin className="text-primary" /> Available Regions
+              <MapPin className="text-primary" /> Our Regions
             </h2>
             <span className="text-gray-500 font-medium bg-white px-4 py-2 rounded-full border">
               {filteredRegions.length} Regions
