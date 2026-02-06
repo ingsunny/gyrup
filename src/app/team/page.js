@@ -27,7 +27,7 @@ const teamMembers = [
     title:
       "Visionary Founder – GYR UP International | Chief Strategist & Head of Operations",
     icon: <Compass className="w-5 h-5 text-slate-700" />,
-    image: "/founders/Pradeep1.png",
+    image: "/founders/Pradeep1.PNG",
     intro:
       "Ecosystem architect and operations strategist with deep expertise in dealership networks, performance systems, and governance-led execution.",
     bio: `Pradeep Goyal is the Visionary Founder, Chief Strategist, and Head of Operations at GYR UP International, widely regarded as the architect behind the GYR UP ecosystem—its structure, systems, and execution model.
@@ -59,7 +59,7 @@ const teamMembers = [
     name: "Aditya Aggarwal",
     title: "Founder – GYR UP International | Global Digital Growth Leader",
     icon: <Rocket className="w-5 h-5 text-slate-700" />,
-    image: "/founders/Aditya1.png",
+    image: "/founders/Aditya1.PNG",
     intro:
       "Technology-first entrepreneur specializing in data-led growth, scalable performance systems, and ROI-driven digital expansion across global markets.",
     bio: `Aditya Aggarwal is a global digital growth leader and technology-first entrepreneur with over 12 years of experience scaling performance-driven businesses across international markets.
@@ -89,7 +89,7 @@ const teamMembers = [
     title:
       "Founder – GYR UP International | Finance & Business Strategy Leader",
     icon: <Briefcase className="w-5 h-5 text-slate-700" />,
-    image: "/founders/Dimple.png",
+    image: "/founders/Dimple.PNG",
     intro:
       "Entrepreneurial leader with deep expertise in banking, finance, business structuring, and diversified trade. Driving sustainable growth through governance-led strategy.",
     bio: `Dimple Singhi is a seasoned entrepreneur with extensive experience across banking, finance, business structuring, and diversified trade industries. With professional exposure since 2009, she brings strong strategic insight, financial discipline, and a growth-focused advisory approach to every venture she leads.
