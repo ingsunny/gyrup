@@ -14,6 +14,8 @@ import {
   Scale,
   CheckCircle2,
   Quote,
+  Briefcase,
+  Compass,
 } from "lucide-react";
 import gsap from "gsap";
 
@@ -22,38 +24,51 @@ const teamMembers = [
   {
     id: "pradeep",
     name: "Pradeep Goyal",
-    title: "Visionary Founder | Chief Strategist | Head of Operations",
-    icon: <BrainCircuit className="w-5 h-5 text-primary" />,
-    image: "/founders/pradeep.PNG",
-    // Short Intro for the collapsed view
+    title:
+      "Visionary Founder – GYR UP International | Chief Strategist & Head of Operations",
+    icon: <Compass className="w-5 h-5 text-slate-700" />,
+    image: "/founders/Pradeep1.png",
     intro:
-      "The architect of the GYR UP ecosystem. Blending 16+ years of corporate automotive discipline with entrepreneurial vision to build scalable governance frameworks.",
-    // Full Bio for expanded view
-    bio: `Pradeep is widely regarded as the architect of the GYR UP ecosystem—its structure, systems, and execution model. With over 16 years of extensive experience in the automobile dealership network (Maruti Suzuki, Toyota, Mahindra & Mahindra), his expertise lies in sales leadership, dealer operations, and process discipline. 
+      "Ecosystem architect and operations strategist with deep expertise in dealership networks, performance systems, and governance-led execution.",
+    bio: `Pradeep Goyal is the Visionary Founder, Chief Strategist, and Head of Operations at GYR UP International, widely regarded as the architect behind the GYR UP ecosystem—its structure, systems, and execution model.
 
-    As the Founder of SPG Group of Companies, he builds ventures with a strategist’s mindset—focused on governance and sustainable execution rather than short-term wins. By blending dealership-network discipline with entrepreneurial insight, he is shaping GYR UP International into a credible, structured, and high-impact business networking platform for serious entrepreneurs.`,
+  With over 16 years of extensive experience in the automobile dealership network ecosystem, Pradeep has worked closely with the dealership networks of Maruti Suzuki, Toyota, and Mahindra & Mahindra. His expertise spans sales leadership, dealer operations, team performance, network structuring, and process discipline. In his last corporate role as Group Sales Head within the Mahindra & Mahindra dealership network, he led large teams while implementing performance-driven operating systems.
+
+  As the Founder of SPG Group of Companies, Pradeep has built multiple ventures using a strategist’s mindset rooted in systems, governance, and sustainable execution rather than short-term wins.
+
+  At GYR UP International, he leads vision and ecosystem design, strategic system architecture, operations and SOP frameworks, leadership structures across chapters and regions, and ensures ethics, discipline, and process compliance across the network.
+
+  Pradeep believes strong ecosystems are built not by motivation alone, but by clarity, systems, and consistent execution. By blending dealership-network discipline with entrepreneurial insight, he is shaping GYR UP International into a credible, structured, and high-impact business networking platform for serious entrepreneurs.`,
     highlights: [
-      "Vision & Ecosystem Design",
-      "Strategic Thinking & System Architecture",
-      "Operations, SOPs & Governance",
-      "Chapter, Region & Leadership Frameworks",
-      "Ethics, Discipline & Process Compliance",
+      "Ecosystem & System Architecture",
+      "Dealer Network Operations",
+      "Sales Leadership & Team Performance",
+      "SOPs, Governance & Compliance",
+      "Strategic Execution Frameworks",
     ],
     quote:
-      "A strong ecosystem is not built by motivation alone, but by clarity, systems, and consistent execution.",
-    social: { linkedin: "#", email: "pradeep@gyrup.com" },
+      "Strong ecosystems are built on clarity, systems, and consistent execution.",
+    social: {
+      linkedin: "#",
+      email: "#",
+    },
   },
+
   {
     id: "aditya",
     name: "Aditya Aggarwal",
     title: "Founder – GYR UP International | Global Digital Growth Leader",
-    icon: <Rocket className="w-5 h-5 text-blue-500" />,
-    image: null,
+    icon: <Rocket className="w-5 h-5 text-slate-700" />,
+    image: "/founders/Aditya1.png",
     intro:
-      "Global digital growth leader & technology-first entrepreneur. Scaling performance-driven businesses across international markets with data-led execution.",
-    bio: `Aditya Aggarwal is a global digital growth leader and technology-first entrepreneur with 12+ years of experience scaling performance-driven businesses across international markets. He is the Founder of Appmontize Media, a high-growth digital marketing company operating across the United States, India, Singapore, Indonesia, and the UAE, with ₹100 crore+ in cumulative revenue.
+      "Technology-first entrepreneur specializing in data-led growth, scalable performance systems, and ROI-driven digital expansion across global markets.",
+    bio: `Aditya Aggarwal is a global digital growth leader and technology-first entrepreneur with over 12 years of experience scaling performance-driven businesses across international markets.
 
-    An Electrical Engineering graduate, Aditya previously worked with Affle India, where he built deep capabilities in large-scale performance marketing, user acquisition, and analytics-driven growth strategies. As a Founder of GYR UP Universe, Aditya brings a technology, automation, and growth-systems mindset, contributing to the creation of digital platforms and scalable growth frameworks.`,
+  He is the Founder of Appmontize Media, a high-growth digital marketing company operating across the United States, India, Singapore, Indonesia, and the UAE, with ₹100 crore+ in cumulative revenue. His expertise centers on data-led growth, scalable performance systems, and ROI-focused digital execution.
+
+  An Electrical Engineering graduate, Aditya previously worked with Affle India, where he developed strong capabilities in large-scale performance marketing, user acquisition, and analytics-driven growth strategies.
+
+  As a Founder of GYR UP International, Aditya brings a technology, automation, and growth-systems mindset, contributing to the creation of digital platforms, referral tracking systems, performance dashboards, and scalable growth frameworks designed to help members grow faster and more efficiently.`,
     highlights: [
       "Data-Led Growth Systems",
       "Digital Platforms & Automation",
@@ -67,6 +82,36 @@ const teamMembers = [
       email: "aditya@appmontize.co.in",
     },
   },
+
+  {
+    id: "dimple",
+    name: "Dimple Singhi W/O CA Bikash Singhi",
+    title:
+      "Founder – GYR UP International | Finance & Business Strategy Leader",
+    icon: <Briefcase className="w-5 h-5 text-slate-700" />,
+    image: "/founders/Dimple.png",
+    intro:
+      "Entrepreneurial leader with deep expertise in banking, finance, business structuring, and diversified trade. Driving sustainable growth through governance-led strategy.",
+    bio: `Dimple Singhi is a seasoned entrepreneur with extensive experience across banking, finance, business structuring, and diversified trade industries. With professional exposure since 2009, she brings strong strategic insight, financial discipline, and a growth-focused advisory approach to every venture she leads.
+
+  She serves as Director of Singhi Professional Services Pvt. Ltd. and DJH Tradex Pvt. Ltd., where she is recognized for driving profitability, long-term value creation, and structured risk management. Her work emphasizes building stable financial foundations while enabling scalable business expansion.
+
+  As the Founder of GYR UP International, Dimple leads with a “growth with governance” philosophy—establishing a trusted ecosystem built on credible systems, transparency, and sustainable business practices. Her leadership empowers entrepreneurs to scale responsibly while strengthening revenue, reputation, and long-term trust.`,
+    highlights: [
+      "Financial Strategy & Governance",
+      "Business Structuring",
+      "Risk Management Frameworks",
+      "Sustainable Growth Advisory",
+      "Profitability Optimization",
+    ],
+    quote:
+      "Growth is strongest when built on governance, trust, and discipline.",
+    social: {
+      linkedin: "#",
+      email: "#",
+    },
+  },
+
   // {
   //   id: "bikash",
   //   name: "Bikash Singhi",
@@ -143,25 +188,29 @@ export default function TeamPage() {
           SECTION 2: INTERACTIVE ACCORDION LIST
       ========================================= */}
       <section className="-mt-20 relative z-30 pb-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
-          <Accordion.Root type="single" collapsible className="space-y-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 ">
+          <Accordion.Root
+            type="single"
+            collapsible
+            className="space-y-4 lg:scale-105"
+          >
             {teamMembers.map((m) => (
               <Accordion.Item
                 key={m.id}
                 value={m.id}
-                className="border border-gray-200 rounded-2xl overflow-hidden bg-white shadow-lg transition-all duration-300 data-[state=open]:ring-2 data-[state=open]:ring-primary/20"
+                className="border border-gray-200 rounded-2xl overflow-hidden bg-white shadow-lg transition-all duration-300 data-[state=open]:ring-2 data-[state=open]:ring-primary/20 "
               >
                 {/* HEADER TRIGGER */}
                 <Accordion.Header>
-                  <Accordion.Trigger className="group w-full text-left p-5 md:p-6 flex flex-col md:flex-row items-start md:items-center gap-6 hover:bg-gray-50 transition-colors cursor-pointer outline-none">
+                  <Accordion.Trigger className="group w-full text-left p-5 md:p-6 flex flex-col md:flex-row items-start md:items-center gap-2 sm:gap-6 hover:bg-gray-50 transition-colors cursor-pointer outline-none">
                     {/* 1. Circular Avatar */}
-                    <div className="relative w-16 h-16 md:w-20 md:h-20 shrink-0 rounded-full overflow-hidden border-2 border-gray-100 bg-gray-200 shadow-sm group-hover:scale-105 transition-transform duration-300 flex items-center justify-center">
+                    <div className="relative w-28 h-28 lg:w-32 lg:h-32 shrink-0 rounded-full overflow-hidden border-2 border-gray-100 bg-gray-200 shadow-sm group-hover:scale-105 transition-transform duration-300 flex items-center justify-center">
                       {m.image ? (
                         <Image
                           src={m.image}
                           alt={m.name}
                           fill
-                          sizes="(max-width: 768px) 64px, 80px"
+                          priority
                           className="object-cover object-top"
                         />
                       ) : (
